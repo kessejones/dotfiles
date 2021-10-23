@@ -1,8 +1,10 @@
+env:
+  TERM: xterm-256color
+
 colors:
   # Default colors
   primary:
     background: "#1e2127"
-    # background: "#2E3440"
     foreground: "#D8DEE9"
 
   # Normal colors
@@ -27,9 +29,31 @@ colors:
     cyan: "#56b6c2"
     white: "#ECEFF4"
 
+font:
+    normal:
+      family: Operator Mono
+      style: Regular 
+    bold:
+      family: Operator Mono
+      style: Bold
+    bold_italic:
+      family: Operator Mono
+      style: Bold Italic
+    italic:
+      family: Operator Mono
+      style: Italic
+    offset:
+      x: 0
+      y: 0
+    glyph_offset:
+      x: -1
+      y: -1 
+
+    size: 14.0
+    use_thin_strokes: true
 
 window:
-  opacity: 0.8
+  opacity: 0.9
   padding:
     x: 2
     y: 2
@@ -52,9 +76,13 @@ selection:
 
 live_config_reload: true
 
-
 shell:
     program: /usr/bin/tmux
     args:
       - -u # force UTF-8 in tmux
 
+# key_bindings:
+  # - { 
+  #     mods: CapsLock, 
+  #     action: Escape
+  # }
