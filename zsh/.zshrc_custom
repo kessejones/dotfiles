@@ -1,0 +1,5 @@
+
+# custom keybind to autosuggestion
+bindkey '[[ ' autosuggest-accept
+bindkey '[[\n' autosuggest-execute
+
