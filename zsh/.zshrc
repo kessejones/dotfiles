@@ -1,12 +1,6 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
-export ZSH="/home/kesse/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="gentoo"
 
@@ -101,18 +95,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-source $HOME/.cargo/env
-
-export USR_BIN=$HOME/.local/bin
-
-export JAVA_PATH="/usr/lib/jvm/jdk-17/bin"
-export PATH="$PATH:$JAVA_PATH:$USR_BIN"
-
-bindkey '^\n' autosuggest-execute
-bindkey '^ ' autosuggest-accept
+source $HOME/.zshrc_custom
 
