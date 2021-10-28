@@ -81,8 +81,10 @@ shell:
     args:
       - -u # force UTF-8 in tmux
 
-# key_bindings:
-  # - { 
-  #     mods: CapsLock, 
-  #     action: Escape
-  # }
+key_bindings:
+  - { key: N, mods: Control|Shift, action: SpawnNewInstance }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: Space, mods: Control, chars: "[[ "  }
+  - { key: Return, mods: Control, chars: "[[\n"  }
+
