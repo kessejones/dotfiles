@@ -3,3 +3,7 @@
 bindkey '[[ ' autosuggest-accept
 bindkey '[[\n' autosuggest-execute
 
+# custom move up/down in history
+bindkey "[[i" history-beginning-search-backward
+bindkey "[[p" history-beginning-search-forward
+
