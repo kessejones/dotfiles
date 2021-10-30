@@ -87,6 +87,6 @@ key_bindings:
   - { key: V, mods: Control|Shift, action: Paste }
   - { key: Space, mods: Control, chars: "[[ "  }
   - { key: Return, mods: Control, chars: "[[\n"  }
-  - { key: I, mods: Control, chars: "[[n"  }
+  - { key: I, mods: Control, chars: "[[i"  }
   - { key: P, mods: Control, chars: "[[p"  }
 
