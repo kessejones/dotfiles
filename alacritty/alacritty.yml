@@ -88,5 +88,8 @@ key_bindings:
   - { key: Space, mods: Control, chars: "[[ "  }
   - { key: Return, mods: Control, chars: "[[\n"  }
   - { key: I, mods: Control, chars: "[[i"  }
-  - { key: P, mods: Control, chars: "[[p"  }
-
+  - { key: LBracket, mods: Control, chars: "[[p"  }
+  - { key: H, mods: Command, chars: "\x1bOD",   mode: AppCursor }
+  - { key: H, mods: Alt, chars: "\x1bOD",   mode: AppCursor }
+  - { key: L, mods: Command, chars: "\x1bOC",   mode: AppCursor }
+  - { key: L, mods: Alt, chars: "\x1bOC",   mode: AppCursor }
