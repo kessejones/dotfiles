@@ -46,8 +46,8 @@ font:
       x: 0
       y: 0
     glyph_offset:
-      x: -1
-      y: -1 
+      x: 0
+      y: 0 
 
     size: 14.0
     use_thin_strokes: true
@@ -55,8 +55,8 @@ font:
 window:
   opacity: 0.9
   padding:
-    x: 2
-    y: 2
+    x: 0
+    y: 0
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -68,7 +68,7 @@ scrolling:
   multiplier: 10
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+#draw_bold_text_with_bright_colors: true
 
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
@@ -85,12 +85,6 @@ key_bindings:
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
   - { key: C, mods: Control|Shift, action: Copy }
   - { key: V, mods: Control|Shift, action: Paste }
-  - { key: Space, mods: Control, chars: "[[ "  }
-  - { key: Return, mods: Control, chars: "[[\n"  }
-  - { key: I, mods: Control, chars: "[[i"  }
-  - { key: LBracket, mods: Control, chars: "[[p"  }
-  - { key: H, mods: Command, chars: "\x1bOD",   mode: AppCursor }
-  - { key: H, mods: Alt, chars: "\x1bOD",   mode: AppCursor }
-  - { key: L, mods: Command, chars: "\x1bOC",   mode: AppCursor }
-  - { key: L, mods: Alt, chars: "\x1bOC",   mode: AppCursor }
+  - { key: 39, mods: Control, chars: "'" }
+  - { key: 40, mods: Control, chars: '"' }
   - { key: Return, mods: Alt, action: ToggleFullscreen }
