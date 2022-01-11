@@ -8,6 +8,9 @@ set -gx EDITOR nvim
 #set -g theme_hide_hostname yes
 #set -g theme_hostname no 
 
+set fish_color_command green
+set fish_color_autosuggestion grey 
+
 # aliases
 alias g git
 alias v nvim
@@ -17,3 +20,9 @@ set -g fish_key_bindings fish_vi_key_bindings
 
 bind -M insert \[aa accept-autosuggestion
 bind -M normal \[aa accept-autosuggestion
+
+fish_add_path ~/.local/bin
+
+if test -f ~/.user-config.fish
+    source ~/.user-config.fish
+end
