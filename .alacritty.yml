@@ -79,7 +79,7 @@ selection:
 live_config_reload: true
 
 shell:
-    program: /opt/homebrew/bin/tmux
+    program: /usr/local/bin/tmux
     args:
       - -u # force UTF-8 in tmux
 
