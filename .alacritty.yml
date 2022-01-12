@@ -54,8 +54,8 @@ font:
 
     use_thin_strokes: true
 
-background_opacity: 0.9
 window:
+  opacity: 0.9
   padding:
     x: 2
     y: 2
