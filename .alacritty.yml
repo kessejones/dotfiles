@@ -1,4 +1,6 @@
 import:
+  ## Create and put your custom settings in this file
+  ## - Font size should be in this file
   - ~/.alacritty-user.yml
 
 env:
