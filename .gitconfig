@@ -1,0 +1,6 @@
+[user]
+	name = Kesse Jones
+[core]
+	editor = nvim
+[pull]
+	rebase = true
