@@ -9,6 +9,6 @@ if [ ! -d "$DOTFILES" ]; then
 fi
 
 $GIT init
-cd $DOTFILES && $GIT remote add origin $GITREPO && $GIT fetch && $GIT checkout --force new
+cd $DOTFILES && $GIT remote add origin $GITREPO && $GIT fetch && $GIT checkout -b main origin/main --force
 
 echo "Instalation completed"
