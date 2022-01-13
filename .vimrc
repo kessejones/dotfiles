@@ -23,6 +23,8 @@ set wildmenu
 set incsearch
 set path+=**
 
+colorscheme gruvbox
+
 let mapleader = ' '
 imap jk <ESC>
 map <C-s> :w<CR>
