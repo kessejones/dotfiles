@@ -36,16 +36,16 @@ colors:
 
 font:
     normal:
-      family: Hack Nerd Font 
+      family: Hack
       style: Regular
     bold:
-      family: Hack Nerd Font
+      family: Hack
       style: Bold
     bold_italic:
-      family: Hack Nerd Font
+      family: Hack
       style: Bold Italic
     italic:
-      family: Hack Nerd Font
+      family: Hack
       style: Italic
     offset:
       x: 0
