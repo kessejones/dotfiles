@@ -1,6 +1,8 @@
 # general
 set -gx EDITOR nvim
 
+set fish_greeting
+
 # theme
 #set -g theme_color_scheme terminal-dark
 #set -g fish_prompt_pwd_dir_length 1
