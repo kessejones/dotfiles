@@ -84,6 +84,10 @@ shell:
     program: /usr/local/bin/tmux
     args:
       - -u # force UTF-8 in tmux
+      - new-session
+      - -A
+      - -s
+      - main
 
 key_bindings:
   - { key: Space, mods: Control, chars: '[aa'}
