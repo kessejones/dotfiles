@@ -99,4 +99,6 @@ key_bindings:
   - { key: L, mods: Command, chars: "\x1bOC",   mode: AppCursor }
   - { key: L, mods: Alt, chars: "\x1bOC",   mode: AppCursor }
   - { key: Return, mods: Command, action: ToggleFullscreen }
+  - { key: 39, mods: Control, chars: "'" }
+  - { key: 40, mods: Control, chars: "\"" }
 
