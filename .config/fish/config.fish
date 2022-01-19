@@ -12,6 +12,7 @@ set fish_greeting
 
 set fish_color_command green
 set fish_color_autosuggestion grey 
+set fish_color_error red
 
 # aliases
 alias g git
