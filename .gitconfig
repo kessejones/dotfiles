@@ -4,6 +4,8 @@
 	editor = nvim
 [pull]
 	rebase = true
+[push]
+    default = current
 
 [include]
     path = ~/.gitconfig-user
