@@ -102,4 +102,6 @@ key_bindings:
   - { key: Return, mods: Alt, action: ToggleFullscreen }
   - { key: 39, mods: Control, chars: "'" }
   - { key: 40, mods: Control, chars: "\"" }
+  - { key: Q, mods: Control, chars: "\"" }
+  - { key: W, mods: Control, chars: "'" }
 
