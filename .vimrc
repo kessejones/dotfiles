@@ -2,6 +2,7 @@ set ai
 set si
 set lazyredraw
 set smarttab
+set backup!
 set clipboard=unnamedplus
 set hlsearch
 set ignorecase
@@ -22,6 +23,10 @@ set sidescrolloff=5
 set wildmenu
 set incsearch
 set path+=**
+set conceallevel=0
+set completeopt=menu,menuone,noselect
+set list
+set listchars=eol:↴
 
 colorscheme gruvbox
 
