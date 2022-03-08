@@ -35,26 +35,26 @@ colors:
     white: "#ECEFF4"
 
 font:
-    normal:
-      family: Hack Nerd Font
-      style: Regular
-    bold:
-      family: Hack Nerd Font
-      style: Bold
-    bold_italic:
-      family: Hack Nerd Font
-      style: Bold Italic
-    italic:
-      family: Hack Nerd Font
-      style: Italic
-    offset:
-      x: 0
-      y: 0
-    glyph_offset:
-      x: 0
-      y: 0 
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+  bold:
+    family: Hack Nerd Font
+    style: Bold
+  bold_italic:
+    family: Hack Nerd Font
+    style: Bold Italic
+  italic:
+    family: Hack Nerd Font
+    style: Italic
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
 
-    use_thin_strokes: true
+  use_thin_strokes: true
 
 window:
   opacity: 0.9
@@ -81,27 +81,21 @@ selection:
 live_config_reload: true
 
 shell:
-    program: /usr/local/bin/tmux
-    args:
-      - -u # force UTF-8 in tmux
-      - new-session
-      - -A
-      - -s
-      - main
+  program: /usr/local/bin/tmux
+  args:
+    - -u # force UTF-8 in tmux
+    - new-session
+    - -A
+    - -s
+    - main
 
 key_bindings:
-  - { key: Space, mods: Control, chars: '[aa'}
+  - { key: Space, mods: Control, chars: "[aa" }
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
   - { key: C, mods: Control|Shift, action: Copy }
   - { key: V, mods: Control|Shift, action: Paste }
-  - { key: H, mods: Command, chars: "\x1bOD",   mode: AppCursor }
-  - { key: H, mods: Alt, chars: "\x1bOD",   mode: AppCursor }
-  - { key: L, mods: Command, chars: "\x1bOC",   mode: AppCursor }
-  - { key: L, mods: Alt, chars: "\x1bOC",   mode: AppCursor }
   - { key: Return, mods: Command, action: ToggleFullscreen }
   - { key: Return, mods: Alt, action: ToggleFullscreen }
   - { key: 39, mods: Control, chars: "'" }
-  - { key: 40, mods: Control, chars: "\"" }
-  - { key: Q, mods: Control, chars: "\"" }
+  - { key: Q, mods: Control, chars: '"' }
   - { key: W, mods: Control, chars: "'" }
-
