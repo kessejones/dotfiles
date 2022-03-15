@@ -9,9 +9,8 @@ set fish_greeting
 #set -g theme_display_user yes
 #set -g theme_hide_hostname yes
 #set -g theme_hostname no 
-
 set fish_color_command green
-set fish_color_autosuggestion grey 
+set fish_color_autosuggestion 656565 
 set fish_color_error red
 
 # aliases
