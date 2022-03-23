@@ -1,11 +1,17 @@
 [user]
 	name = Kesse Jones
+
 [core]
 	editor = nvim
+
 [pull]
 	rebase = true
+
 [push]
     default = current
+
+[init]
+	defaultBranch = main
 
 [include]
     path = ~/.gitconfig-user
