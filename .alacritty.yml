@@ -90,7 +90,6 @@ shell:
     - main
 
 key_bindings:
-  - { key: Space, mods: Control, chars: "[aa" }
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
   - { key: C, mods: Control|Shift, action: Copy }
   - { key: V, mods: Control|Shift, action: Paste }
