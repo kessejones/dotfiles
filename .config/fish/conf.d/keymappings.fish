@@ -9,3 +9,7 @@ bind -M insert \cg _fzf_search_git_log
 bind -M insert \cf _fzf_search_directory
 bind -M insert \ce _fzf_change_directory
 bind -M insert \ch _fzf_change_directory_home
+
+bind -M insert \cb '_bookmark -m list'
+bind -M insert \ca '_bookmark -m save'
+bind -M insert \cx '_bookmark -m remove'
