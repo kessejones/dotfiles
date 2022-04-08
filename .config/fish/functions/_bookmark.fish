@@ -11,10 +11,6 @@ function _save
     set -l current $argv
     set -l all (cat $save_file)
 
-    if contains $current $all
-        return
-    end
-
     if test -n "$current"
         echo $current >> $save_file
     end
@@ -23,6 +19,10 @@ end
 function _remove
     set -l current $argv
     set -l all (cat $save_file)
+
+    if not contains $current $all
+        return
+    end
 
     for i in (seq (count $all))
         if test $current = $all[$i]
@@ -40,7 +40,7 @@ end
 
 function _list
     set --append fzf_arguments --header-first --header 'Bookmark'
-    set --append fzf_arguments --bind "ctrl-x:execute(_bookmark -m remove -p {})+reload(cat $save_file | sort)"
+    set --append fzf_arguments --bind "ctrl-x:execute(_bookmark -m remove -p '{}')+reload(cat $save_file | sort)"
     set -l selected (cat $save_file | sort | _fzf_wrapper $fzf_arguments)
     if test $status -eq 0
         if test -n "$selected"
@@ -55,10 +55,11 @@ function _bookmark
 
     argparse 'm/mode=' 'p/path=' -- $argv
 
-    if not test -n "$_flag_p"
-        set -l current $_flag_p
+    if test -n "$_flag_p"
+        set current $_flag_p
     end
 
+    _create_file 0
     switch $_flag_m
         case save
             _save $current
