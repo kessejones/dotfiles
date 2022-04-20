@@ -2,7 +2,10 @@ set ai
 set si
 set lazyredraw
 set smarttab
-set backup!
+set nobackup
+set nowritebackup
+set noswapfile
+set noshowcmd
 set clipboard=unnamedplus
 set hlsearch
 set ignorecase
@@ -31,20 +34,36 @@ set listchars=eol:↴
 colorscheme gruvbox
 
 let mapleader = ' '
-imap jk <ESC>
-map <C-s> :w<CR>
+nnoremap <Space> <NOP>
+inoremap jk <ESC>
+nnoremap <ESC> :noh<CR>
 
-nmap <Space>ss :w<CR>
-nmap <Space>sq :wq<CR>
-nmap <Space>q :q<CR>
-nmap <Space>y yyp<ESC>
-nmap <Space>cc :close<ESC>
-nmap <Space>sv :vsplit<ESC>
-nmap <Space>sh :split<ESC>
-nmap <Space>wh :wincmd h<CR>
-nmap <Space>wl :wincmd l<CR>
-nmap <Space>wj :wincmd j<CR>
-nmap <Space>wk :wincmd k<CR>
+nnoremap <Leader>ss :w<CR>
+nnoremap <Leader>sq :wq<CR>
 
-nmap <S-h> :bprevious<CR>
-nmap <S-l> :bnext<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>y yyp<ESC>
+
+nnoremap <Leader>sv :vsplit<ESC>
+nnoremap <Leader>sh :split<ESC>
+
+nnoremap <Leader>wh :wincmd h<CR>
+nnoremap <Leader>wl :wincmd l<CR>
+nnoremap <Leader>wj :wincmd j<CR>
+nnoremap <Leader>wk :wincmd k<CR>
+
+nnoremap <S-h> :bprevious<CR>
+nnoremap <S-l> :bnext<CR>
+nnoremap <Leader>. :bdelete<CR>
+nnoremap <Leader>.f :bdelete!<CR>
+
+nnoremap <C-h> <ESC>:%s/
+
+noremap <Leader>aa gg<S-v>G
+noremap <Leader>ay gg<S-v>Gy
+
+vnoremap < <gv
+vnoremap > >gv
+vnoremap ,, <ESC>
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
