@@ -2,6 +2,7 @@
 	name = Kesse Jones
 
 [core]
+	excludesfile = ~/.gitignore_global
 	editor = nvim
 
 [pull]
