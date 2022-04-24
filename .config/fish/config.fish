@@ -12,6 +12,11 @@ set fish_color_error red
 # path
 fish_add_path ~/.local/bin
 
+if type -q exa
+    alias ll "exa -l -g --icons"
+    alias lla "ll -a"
+end
+
 # local config
 if test -f ~/.user-config.fish
     source ~/.user-config.fish
