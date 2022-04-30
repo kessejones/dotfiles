@@ -1,8 +1,3 @@
-# name: RobbyRussel
-#
-# You can override some default options in your config.fish:
-#   set -g theme_display_git_untracked no
-
 function _git_branch_name
     echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
 end
