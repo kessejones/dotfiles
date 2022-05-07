@@ -58,9 +58,6 @@ font:
 
 window:
   opacity: 0.9
-  padding:
-    x: 2
-    y: 2
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
