@@ -17,6 +17,10 @@ if type -q exa
     alias lla "ll -a"
 end
 
+if type -q bpytop
+    alias top "bpytop"
+end
+
 # local config
 if test -f ~/.user-config.fish
     source ~/.user-config.fish
