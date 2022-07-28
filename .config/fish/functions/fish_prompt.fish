@@ -1,3 +1,11 @@
+function _is_git_repository
+    echo (git rev-parse 2>/dev/null; echo $status)
+end
+
+function _git_root_path
+    echo (git rev-parse --show-toplevel)
+end
+
 function _git_branch_name
     echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
 end
@@ -17,14 +25,21 @@ function fish_prompt
     set -l blue (set_color blue)
     set -l normal (set_color normal)
 
-    if [ (_git_branch_name) ]
-        set -l git_branch $red(_git_branch_name)
+    if test 0 -eq (_is_git_repository) 
+        if [ (_git_branch_name) ]
+            set -l git_branch $red(_git_branch_name)
 
-        set -l dirty ''
-        if [ (_is_git_dirty) ]
-            set dirty "$yellow ✗"
+            set -l dirty ''
+            if [ (_is_git_dirty) ]
+                set dirty "$yellow ✗"
+            end
+            set git_info "$blue  $git_branch$blue$dirty "
+        else
+            if test -e (_git_root_path)/.git/rebase-merge/git-rebase-todo
+                set -l rebasing $red"REBASING"
+                set git_info "$blue  $rebasing"
+            end
         end
-        set git_info "$blue  $git_branch$blue$dirty "
     end
 
     set -l reset_color '394050'
@@ -36,7 +51,7 @@ function fish_prompt
     set -l background_color_git '394050'
     set -l foreground_color_git red
 
-    if test -n "$git_branch"
+    if test -n "$git_info"
         _power_prompt --text="$cwd " --background=$background_color_cwd --foreground=$foreground_color_cwd --reset=$reset_color
         _power_prompt --text="$git_info" --background=$background_color_git --foreground=$foreground_color_git --reset=normal
     else
