@@ -7,6 +7,7 @@ APPS= \
     tmux \
     ripgrep \
     tree-sitter \
-    bpytop
+    bpytop \
+    exa
 
 brew install $APPS
