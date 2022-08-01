@@ -21,6 +21,10 @@ if type -q bpytop
     alias top "bpytop"
 end
 
+alias g git
+alias n nvim
+alias t tmux
+
 # local config
 if test -f ~/.user-config.fish
     source ~/.user-config.fish

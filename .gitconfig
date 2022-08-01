@@ -15,8 +15,20 @@
 	defaultBranch = main
 
 [alias]
-    fp = push --force-with-lease
+    a = "!git status --short | awk '{print $2}' | xargs git add"
+    d = diff
+    b = branch
+    l = lg
+    s = status
+    r = rebase
+
     lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    co = checkout
+    ci = commit
+    ca = commit -a
+    ps = push
+    fp = push --force-with-lease
+    pl = pull
 
 [include]
     path = ~/.gitconfig-user
