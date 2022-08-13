@@ -1,5 +1,5 @@
-# general
-set -gx EDITOR nvim
+# global variables
+export EDITOR=nvim
 
 # disable welcome message
 set fish_greeting
@@ -9,23 +9,7 @@ set fish_color_command green
 set fish_color_autosuggestion 656565 
 set fish_color_error red
 
-# path
-fish_add_path ~/.local/bin
-
-if type -q exa
-    alias ll "exa -l -g --icons"
-    alias lla "ll -a"
-end
-
-if type -q bpytop
-    alias top "bpytop"
-end
-
-alias g git
-alias n nvim
-alias t tmux
-
 # local config
-if test -f ~/.user-config.fish
-    source ~/.user-config.fish
+if test -f ~/.config.fish
+    source ~/.config.fish
 end
