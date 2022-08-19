@@ -16,4 +16,6 @@ brew install\
     bpytop\
     tree-sitter\
     ripgrep\
-    exa
+    exa\
+    gnu-sed\
+    tidy-html5
