@@ -31,7 +31,7 @@
     ps = push
     fp = push --force-with-lease
     pl = pull
-    mv = branch -m
+    brn = branch -m
 
 [include]
     path = ~/.gitconfig-user
