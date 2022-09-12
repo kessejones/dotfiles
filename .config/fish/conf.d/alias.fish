@@ -1,6 +1,7 @@
 if type -q exa
-    alias ll "exa -l -g --icons"
-    alias lla "ll -a"
+    alias ll "exa --long --group --icons"
+    alias la "ll --all"
+    alias tree "exa --tree --icons"
 end
 
 if type -q bpytop
