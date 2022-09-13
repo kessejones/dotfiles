@@ -13,7 +13,7 @@ brew install\
     fzf\
     fish\
     tmux\
-    bpytop\
+    btop\
     tree-sitter\
     ripgrep\
     exa\

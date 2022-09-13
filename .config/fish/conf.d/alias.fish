@@ -4,8 +4,8 @@ if type -q exa
     alias tree "exa --tree --icons"
 end
 
-if type -q bpytop
-    alias top bpytop
+if type -q btop
+    alias top btop
 end
 
 alias g git
