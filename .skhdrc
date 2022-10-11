@@ -162,6 +162,8 @@ alt - space : \
 # alt - f : yabai -m window --toggle native-fullscreen
 alt - f : yabai -m window --toggle zoom-fullscreen
 
+alt - q : yabai -m window --close
+
 # Moving windows
 shift + alt - h : yabai -m window --warp west
 shift + alt - j : yabai -m window --warp south
