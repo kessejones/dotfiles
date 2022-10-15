@@ -56,56 +56,84 @@ alt - m ; win_move
 
 ## moving directions
 win_move < h : yabai -m window --swap west;\
+               if test $status -ne 0;\
+                   yabai -m window --display prev;\
+                   yabai -m display --focus prev;\
+               end;\
                skhd -k "space"
 
-win_move < j : yabai -m window --swrp south;\
+win_move < j : yabai -m window --swap south;\
                skhd -k "space"
 
 win_move < k : yabai -m window --swap north;\
                skhd -k "space"
 
 win_move < l : yabai -m window --swap east;\
+               if test $status -ne 0;\
+                   yabai -m window --display next;\
+                   yabai -m display --focus next;\
+               end;\
                skhd -k "space"
 
 ## moving spaces
-win_move < 1 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[0]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[0]');\
+win_move < 1 : \
+               set space (yabai -m query --displays --display | jq '.spaces[0]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 2 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[1]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[1]');\
+win_move < 2 : \
+               set space (yabai -m query --displays --display | jq '.spaces[1]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 3 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[2]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[2]');\
+win_move < 3 : \
+               set space (yabai -m query --displays --display | jq '.spaces[2]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 4 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[3]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[3]');\
+win_move < 4 : \
+               set space (yabai -m query --displays --display | jq '.spaces[3]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 5 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[4]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[4]');\
+win_move < 5 : \
+               set space (yabai -m query --displays --display | jq '.spaces[4]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 6 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[5]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[5]');\
+win_move < 6 : \
+               set space (yabai -m query --displays --display | jq '.spaces[5]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 7 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[6]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[6]');\
+win_move < 7 : \
+               set space (yabai -m query --displays --display | jq '.spaces[6]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 8 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[7]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[7]');\
+win_move < 8 : \
+               set space (yabai -m query --displays --display | jq '.spaces[7]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 9 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[8]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[8]');\
+win_move < 9 : \
+               set space (yabai -m query --displays --display | jq '.spaces[8]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
-win_move < 0 : yabai -m window --space (yabai -m query --displays --display | jq '.spaces[9]'); \
-               yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[0]');\
+win_move < 0 : \
+               set space (yabai -m query --displays --display | jq '.spaces[9]');\
+               yabai -m window --space $space;\
+               yabai -m space --focus $space;\
                skhd -k "space"
 
 win_move < n : if test (yabai -m query --spaces --space | jq '.index' ) -ne (yabai -m query --displays --display | jq '.spaces[-1]');\
@@ -120,6 +148,8 @@ win_move < p : if test (yabai -m query --spaces --space | jq '.index' ) -ne (yab
                end;\
                skhd -k "space"
 
+
+win_move < return ; default
 win_move < space ; default
 
 # Resizing window
