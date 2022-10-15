@@ -24,9 +24,9 @@ yabai -m config                                 \
     normal_window_opacity        0.90           \
     window_opacity               off            \
     insert_feedback_color        0xffd75f5f     \
-    active_window_border_color   0xff775759     \
+    active_window_border_color   0xff2196f3     \
     normal_window_border_color   0xff555555     \
-    window_border_width          4              \
+    window_border_width          3              \
     window_border_radius         12             \
     window_border_blur           off            \
     window_border_hidpi          on             \
@@ -46,3 +46,15 @@ yabai -m config                                 \
     mouse_drop_action            swap
 
 echo "yabai configuration loaded.."
+
+SPACES=5
+DISPLAYS=$(yabai -m query --displays | jq 'length')
+
+for ((i=1; i<=$DISPLAYS; i++)) do
+    SPACES_DISPLAY=$(yabai -m query --spaces --display $i | jq 'length')
+
+    yabai -m display --focus $i
+    for ((j=$SPACES_DISPLAY; j<$SPACES; j++)) do
+        yabai -m space --create
+    done
+done
