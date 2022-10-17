@@ -272,6 +272,30 @@ function M.get_client_keys()
                             awful.client.swap.bydirection("up")
                         end,
                     },
+                    {
+                        { modKey },
+                        "n",
+                        function()
+                            local c = client.focus
+                            local s = awful.screen.focused()
+                            if c and s then
+                                awful.tag.viewnext(awful.screen.focused())
+                                c:move_to_tag(s.selected_tag)
+                            end
+                        end,
+                    },
+                    {
+                        { modKey },
+                        "p",
+                        function()
+                            local c = client.focus
+                            local s = awful.screen.focused()
+                            if c and s then
+                                awful.tag.viewprev(awful.screen.focused())
+                                c:move_to_tag(s.selected_tag)
+                            end
+                        end,
+                    },
                 }, keys_move_to_tag),
                 stop_key = modKey,
                 stop_event = "release",
