@@ -1,0 +1,5 @@
+require("core.layouts")
+require("core.screens")
+require("core.rules")
+require("core.signals")
+require("core.bindings")
