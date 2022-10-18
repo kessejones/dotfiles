@@ -17,7 +17,11 @@ alt - space : \
 # Full screen window or close
 alt - b : yabai -m window --toggle native-fullscreen
 alt - f : yabai -m window --toggle zoom-fullscreen
-alt - q : yabai -m window --close
+alt - q : yabai -m window --close;\
+          yabai -m window --focus first
+
+alt - u : yabai -m space --rotate 90
+alt - z : yabai -m window --toggle float
 
 # Navigating Workspaces
 alt - 1 : yabai -m space --focus (yabai -m query --displays --display | jq '.spaces[0]')
