@@ -7,7 +7,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 
-local themes_path = gfs.get_configuration_dir() .. "themes/"
+local themes_path = gfs.get_configuration_dir() .. "theme/"
 local helpers = require("helpers")
 
 local theme = {}
@@ -90,7 +90,7 @@ theme.fg_urgent = "#ffffff"
 theme.fg_minimize = "#ffffff"
 
 theme.useless_gap = dpi(10)
-theme.border_width = dpi(2)
+theme.border_width = dpi(3)
 theme.border_normal = theme.xcolorS0
 theme.border_focus = theme.xcolor15
 theme.border_marked = "#91231c"
