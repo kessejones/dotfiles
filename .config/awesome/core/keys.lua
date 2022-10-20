@@ -152,7 +152,18 @@ function M.get_global_keys()
 
         awful.key({ modKey }, "w", function()
             awful.spawn("rofi -show p -modi p:rofi-power-menu")
-        end, { description = "go to next tag", group = "tags" })
+        end, { description = "go to next tag", group = "tags" }),
+
+        -- volume
+        awful.key({}, "XF86AudioMute", function()
+            require("lib.pulseaudio").toggle_mute()
+        end),
+        awful.key({}, "XF86AudioRaiseVolume", function()
+            require("lib.pulseaudio").volume_up()
+        end),
+        awful.key({}, "XF86AudioLowerVolume", function()
+            require("lib.pulseaudio").volume_down()
+        end)
     )
 
     for i = 1, #config.tags do

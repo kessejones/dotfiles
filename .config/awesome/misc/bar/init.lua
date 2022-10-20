@@ -18,6 +18,8 @@ function M.new(s)
     local layoutbox = awful.widget.layoutbox(s)
     local textclock = wibox.widget.textclock()
 
+    local audio = require("misc.bar.audio").new(s)
+
     layoutbox:buttons(gears.table.join(
         awful.button({}, 1, function()
             awful.layout.inc(1)
@@ -48,6 +50,7 @@ function M.new(s)
         -- tasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            audio,
             keyboardlayout,
             wibox.widget.systray(),
             textclock,
