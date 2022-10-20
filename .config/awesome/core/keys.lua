@@ -81,6 +81,9 @@ function M.get_global_keys()
         awful.key({ modKey }, "Return", function()
             awful.spawn(default.terminal)
         end, { description = "open a terminal", group = "launcher" }),
+        awful.key({ modKey }, ";", function()
+            awful.spawn(default.secondary_terminal)
+        end, { description = "open a terminal", group = "launcher" }),
 
         -- system
         awful.key(
