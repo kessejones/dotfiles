@@ -10,12 +10,4 @@ return {
     font = wezterm.font({ family = 'Hack' }),
 
     font_size = 11.0,
-    default_prog = {
-        "/usr/local/bin/tmux",
-        "-u",
-        "new-session",
-        "-A",
-        "-s",
-        "main"
-    },
 }
