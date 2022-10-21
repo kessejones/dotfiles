@@ -7,11 +7,6 @@ import:
 env:
   TERM: tmux-256color
 
-window:
-  padding:
-    y: 5
-    x: 5
-
 font:
   normal:
     family: Hack Nerd Font
@@ -36,6 +31,9 @@ font:
 
 window:
   opacity: 0.9
+  padding:
+    y: 5
+    x: 5
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
