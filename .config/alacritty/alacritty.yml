@@ -6,6 +6,12 @@ import:
 
 env:
   TERM: tmux-256color
+
+window:
+  padding:
+    y: 5
+    x: 5
+
 font:
   normal:
     family: Hack Nerd Font
