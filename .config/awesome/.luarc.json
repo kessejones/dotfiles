@@ -5,6 +5,7 @@
     "os",
     "root",
     "screen",
-    "tag"
+    "tag",
+    "mouse"
   ]
 }

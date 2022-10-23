@@ -2,6 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local config = require("config")
 local default = require("default")
+local helper = require("helpers.ui")
 
 local Modifiers = {
     Alt = "Mod1",
@@ -41,6 +42,12 @@ local function key_move_to_tag()
 end
 
 local function focus_client_direction(dir)
+    if dir == "down" or dir == "up" then
+        awful.client.focus.bydirection(dir)
+        helper.move_cursor_to_window(client.focus)
+        return
+    end
+
     local client_focused = client.focus
     if client_focused and client_focused.maximized then
         awful.screen.focus_bydirection(dir)
@@ -48,14 +55,30 @@ local function focus_client_direction(dir)
         awful.client.focus.bydirection(dir)
         if screen.count() > 1 and client_focused == client.focus then
             awful.screen.focus_bydirection(dir)
+            gears.timer.delayed_call(function()
+                if #awful.screen.focused().clients == 0 then
+                    client.focus = nil
+                end
+            end)
+        else
+            helper.move_cursor_to_window(client.focus)
         end
     end
 end
 
 local function move_client_direction(dir)
+    if dir == "down" or dir == "up" then
+        awful.client.swap.bydirection(dir)
+        gears.timer.delayed_call(function()
+            helper.move_cursor_to_window(client.focus)
+        end)
+        return
+    end
+
     local client_focused = client.focus
     local x, y = client_focused.x, client_focused.y
     awful.client.swap.bydirection(dir)
+
     gears.timer.delayed_call(function()
         if x == client_focused.x and y == client_focused.y then
             local screen_in_direction = client_focused.screen:get_next_in_direction(dir)
@@ -63,6 +86,10 @@ local function move_client_direction(dir)
                 client_focused:move_to_screen(screen_in_direction)
             end
         end
+
+        gears.timer.delayed_call(function()
+            helper.move_cursor_to_window(client.focus)
+        end)
     end)
 end
 
@@ -89,10 +116,10 @@ function M.get_global_keys()
             focus_client_direction("right")
         end, { description = "focus next by index", group = "client" }),
         awful.key({ modKey }, "j", function()
-            awful.client.focus.bydirection("down")
+            focus_client_direction("down")
         end, { description = "focus next by index", group = "client" }),
         awful.key({ modKey }, "k", function()
-            awful.client.focus.bydirection("up")
+            focus_client_direction("up")
         end, { description = "focus previous by index", group = "client" }),
 
         -- standard program
@@ -248,14 +275,14 @@ function M.get_client_keys()
                         { modKey },
                         "j",
                         function()
-                            awful.client.swap.bydirection("down")
+                            move_client_direction("down")
                         end,
                     },
                     {
                         { modKey },
                         "k",
                         function()
-                            awful.client.swap.bydirection("up")
+                            move_client_direction("up")
                         end,
                     },
                     {

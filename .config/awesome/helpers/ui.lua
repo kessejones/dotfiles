@@ -126,4 +126,13 @@ function _ui.grouping_widget(w1, w2, dpi1)
     return container
 end
 
+function _ui.move_cursor_to_window(c)
+    if c then
+        if mouse.object_under_pointer() ~= c then
+            local geometry = c:geometry()
+            mouse.coords({ x = geometry.x, y = geometry.y }, true)
+        end
+    end
+end
+
 return _ui
