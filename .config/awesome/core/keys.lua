@@ -40,6 +40,32 @@ local function key_move_to_tag()
     return keys
 end
 
+local function focus_client_direction(dir)
+    local client_focused = client.focus
+    if client_focused.maximized then
+        awful.screen.focus_bydirection(dir)
+    else
+        awful.client.focus.bydirection(dir)
+        if screen.count() > 1 and client_focused == client.focus then
+            awful.screen.focus_bydirection(dir)
+        end
+    end
+end
+
+local function move_client_direction(dir)
+    local client_focused = client.focus
+    local x, y = client_focused.x, client_focused.y
+    awful.client.swap.bydirection(dir)
+    gears.timer.delayed_call(function()
+        if x == client_focused.x and y == client_focused.y then
+            local screen_in_direction = client_focused.screen:get_next_in_direction(dir)
+            if screen_in_direction then
+                client_focused:move_to_screen(screen_in_direction)
+            end
+        end
+    end)
+end
+
 function M.get_global_keys()
     local globalkeys = gears.table.join(
         -- launcher
@@ -57,18 +83,10 @@ function M.get_global_keys()
 
         -- focus
         awful.key({ modKey }, "h", function()
-            local old_client = client.focus
-            awful.client.focus.bydirection("left")
-            if screen.count() > 1 and old_client == client.focus then
-                awful.screen.focus_bydirection("left")
-            end
+            focus_client_direction("left")
         end, { description = "focus next by index", group = "client" }),
         awful.key({ modKey }, "l", function()
-            local old_client = client.focus
-            awful.client.focus.bydirection("right")
-            if screen.count() > 1 and old_client == client.focus then
-                awful.screen.focus_bydirection("right")
-            end
+            focus_client_direction("right")
         end, { description = "focus next by index", group = "client" }),
         awful.key({ modKey }, "j", function()
             awful.client.focus.bydirection("down")
@@ -179,33 +197,7 @@ function M.get_global_keys()
                 if tag then
                     tag:view_only()
                 end
-            end, { description = "view tag #" .. i, group = "tag" }),
-            -- Toggle tag display.
-            awful.key({ modKey, Modifiers.Ctrl }, "#" .. i + 9, function()
-                local screen = awful.screen.focused()
-                local tag = screen.tags[i]
-                if tag then
-                    awful.tag.viewtoggle(tag)
-                end
-            end, { description = "toggle tag #" .. i, group = "tag" }),
-            -- Move client to tag.
-            awful.key({ modKey, Modifiers.Shift }, "#" .. i + 9, function()
-                if client.focus then
-                    local tag = client.focus.screen.tags[i]
-                    if tag then
-                        client.focus:move_to_tag(tag)
-                    end
-                end
-            end, { description = "move focused client to tag #" .. i, group = "tag" }),
-            -- Toggle tag on focused client.
-            awful.key({ modKey, Modifiers.Ctrl, Modifiers.Shift }, "#" .. i + 9, function()
-                if client.focus then
-                    local tag = client.focus.screen.tags[i]
-                    if tag then
-                        client.focus:toggle_tag(tag)
-                    end
-                end
-            end, { description = "toggle focused client on tag #" .. i, group = "tag" })
+            end, { description = "view tag #" .. i, group = "tag" })
         )
     end
 
@@ -242,34 +234,14 @@ function M.get_client_keys()
                         { modKey },
                         "h",
                         function()
-                            local c = client.focus
-                            local x, y = c.x, c.y
-                            awful.client.swap.bydirection("left")
-                            gears.timer.delayed_call(function()
-                                if x == c.x and y == c.y then
-                                    local s = c.screen:get_next_in_direction("left")
-                                    if s then
-                                        c:move_to_screen(s)
-                                    end
-                                end
-                            end)
+                            move_client_direction("left")
                         end,
                     },
                     {
                         { modKey },
                         "l",
                         function()
-                            local c = client.focus
-                            local x, y = c.x, c.y
-                            awful.client.swap.bydirection("right")
-                            gears.timer.delayed_call(function()
-                                if x == c.x and y == c.y then
-                                    local s = c.screen:get_next_in_direction("right")
-                                    if s then
-                                        c:move_to_screen(s)
-                                    end
-                                end
-                            end)
+                            move_client_direction("right")
                         end,
                     },
                     {
