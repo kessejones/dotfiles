@@ -49,6 +49,7 @@ M.new = function(s)
         filter = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
         layout = {
+            left = dpi(4),
             spacing = dpi(4),
             layout = wibox.layout.fixed.horizontal,
         },
@@ -71,7 +72,14 @@ M.new = function(s)
         },
     })
 
-    return taglist
+    local widget = wibox.widget({
+        layout = wibox.container.margin,
+        bottom = dpi(5),
+        top = dpi(5),
+        taglist,
+    })
+
+    return widget
 end
 
 return M

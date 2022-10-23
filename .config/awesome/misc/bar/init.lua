@@ -5,12 +5,15 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local tags = require("misc.bar.tags")
-local launcher = require("misc.bar.launcher")
 
 local M = {}
 
 function M.new(s)
-    local mywibox = awful.wibar({ position = "top", screen = s, height = dpi(32) })
+    local wibar = awful.wibar({
+        position = "top",
+        screen = s,
+        height = dpi(32),
+    })
 
     local tagslist = tags.new(s)
 
@@ -34,11 +37,11 @@ function M.new(s)
         end)
     ))
 
-    mywibox:setup({
+    wibar:setup({
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            launcher.new(),
+            layout = wibox.container.margin,
+            left = dpi(4),
             tagslist,
         },
         {
@@ -55,7 +58,7 @@ function M.new(s)
         },
     })
 
-    return mywibox
+    return wibar
 end
 
 return M
