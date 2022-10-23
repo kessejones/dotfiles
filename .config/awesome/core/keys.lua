@@ -42,7 +42,7 @@ end
 
 local function focus_client_direction(dir)
     local client_focused = client.focus
-    if client_focused.maximized then
+    if client_focused and client_focused.maximized then
         awful.screen.focus_bydirection(dir)
     else
         awful.client.focus.bydirection(dir)
