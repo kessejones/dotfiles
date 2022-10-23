@@ -1,5 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
+local beautiful = require("beautiful")
 
 local M = {}
 
@@ -9,7 +10,7 @@ function M.new(s)
         align = "center",
         valign = "center",
         widget = wibox.widget.textbox,
-        font = "Material Icons Round 18",
+        font = beautiful.font_icon_with_size(beautiful.topbar_icon_size),
         id = "icon",
     })
 

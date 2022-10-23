@@ -92,7 +92,8 @@ theme.fg_minimize = "#ffffff"
 theme.useless_gap = dpi(10)
 theme.border_width = dpi(3)
 theme.border_normal = theme.xcolorS0
-theme.border_focus = theme.xcolor15
+-- theme.border_focus = theme.xcolor15
+theme.border_focus = theme.xcolor2
 theme.border_marked = "#91231c"
 
 theme.menu_font = "FiraCode Nerd Font 12"

@@ -1,6 +1,8 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 local tags = require("misc.bar.tags")
 local launcher = require("misc.bar.launcher")
@@ -8,16 +10,13 @@ local launcher = require("misc.bar.launcher")
 local M = {}
 
 function M.new(s)
-    local mywibox = awful.wibar({ position = "top", screen = s })
+    local mywibox = awful.wibar({ position = "top", screen = s, height = dpi(32) })
 
     local tagslist = tags.new(s)
-    -- local tasklist = task.new(s)
 
     local keyboardlayout = awful.widget.keyboardlayout()
-    local promptbox = awful.widget.prompt()
     local layoutbox = awful.widget.layoutbox(s)
     local textclock = wibox.widget.textclock()
-
     local audio = require("misc.bar.audio").new(s)
 
     layoutbox:buttons(gears.table.join(
@@ -41,13 +40,11 @@ function M.new(s)
             layout = wibox.layout.fixed.horizontal,
             launcher.new(),
             tagslist,
-            promptbox,
         },
         {
             layout = wibox.layout.fixed.horizontal,
             nil,
         },
-        -- tasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             audio,
@@ -57,6 +54,7 @@ function M.new(s)
             layoutbox,
         },
     })
+
     return mywibox
 end
 

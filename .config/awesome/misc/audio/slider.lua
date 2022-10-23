@@ -4,6 +4,7 @@ local gears = require("gears")
 
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local str = require("helpers.string")
 
 local M = {}
 
@@ -16,7 +17,6 @@ function M.new(args)
         bar_shape = gears.shape.rounded_bar,
         bar_color = beautiful.border_normal,
         bar_margins = { bottom = dpi(10), top = dpi(10) },
-        bar_active_color = "#ff0000",
         handle_color = beautiful.border_focus,
         handle_shape = gears.shape.circle,
         handle_border_color = beautiful.border_focus,
@@ -28,15 +28,15 @@ function M.new(args)
     local widget_icon = wibox.widget({
         widget = wibox.widget.textbox,
         markup = args.icon or "",
-        font = "Material Icons Round 18",
+        font = beautiful.font_icon_with_size(beautiful.topbar_icon_size),
         align = "center",
         valign = "center",
     })
 
     local widget_text = wibox.widget({
         widget = wibox.widget.textbox,
-        markup = " 0%",
-        font = beautiful.font_name .. "12",
+        markup = "  0%",
+        font = beautiful.font_text_with_size(12),
         align = "center",
         valign = "center",
     })
@@ -46,7 +46,7 @@ function M.new(args)
             args.on_change(c.value)
         end
 
-        widget_text.markup = c.value .. "%"
+        widget_text.markup = str.pad_left(c.value, 3, " ") .. "%"
     end)
 
     local widget = wibox.widget({
@@ -63,7 +63,7 @@ function M.new(args)
         },
         set_value = function(self, value)
             widget_slider.value = value
-            widget_text.markup = value .. "%"
+            widget_text.markup = str.pad_left(value, 3, " ") .. "%"
         end,
         set_icon = function(self, value)
             widget_icon.markup = value
