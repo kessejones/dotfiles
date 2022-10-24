@@ -18,7 +18,7 @@ alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 alt - 0x2C : /Applications/Alacritty.app/Contents/MacOS/alacritty -e $SHELL
 
 # Full screen window or close
-alt - b : yabai -m window --toggle native-fullscreen
+alt - g : yabai -m window --toggle native-fullscreen
 alt - f : yabai -m window --toggle zoom-fullscreen
 alt - q : yabai -m window --close;\
           yabai -m window --focus first
@@ -47,15 +47,15 @@ alt - p : if test (yabai -m query --spaces --space | jq '.index' ) -ne (yabai -m
           end;
 
 # manage spaces
-alt - g ; workspace
-
-workspace < n : yabai -m space --create && \
-                yabai -m space --focus last; \
-                skhd -k "space"
-
-workspace < q : yabai -m space --destroy;\
-                skhd -k "space"
-
+# alt - g ; workspace
+#
+# workspace < n : yabai -m space --create && \
+#                 yabai -m space --focus last; \
+#                 skhd -k "space"
+#
+# workspace < q : yabai -m space --destroy;\
+#                 skhd -k "space"
+#
 workspace < space ; default
 
 # Moving windows
