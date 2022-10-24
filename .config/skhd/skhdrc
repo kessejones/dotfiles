@@ -14,6 +14,9 @@ alt - space : \
     yabai -m window --toggle float; \
     yabai -m window --toggle border
 
+alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+alt - 0x2C : /Applications/Alacritty.app/Contents/MacOS/alacritty -e $SHELL
+
 # Full screen window or close
 alt - b : yabai -m window --toggle native-fullscreen
 alt - f : yabai -m window --toggle zoom-fullscreen
