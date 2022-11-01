@@ -12,9 +12,9 @@ local function update_tag(item, tag, index)
     if tag.selected then
         item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolor2)
     elseif #tag:clients() > 0 then
-        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolor2)
+        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorS1)
     else
-        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolor2)
+        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorS1)
     end
 end
 

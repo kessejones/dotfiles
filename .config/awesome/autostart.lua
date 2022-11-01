@@ -2,7 +2,8 @@ local awful = require("awful")
 
 local programs = {
     os.getenv("HOME") .. "/.config/picom/start.sh",
-    os.getenv("HOME") .. "/.screenlayout/monitor.sh",
+    os.getenv("HOME") .. "/.scripts/linux/monitor.sh",
+    os.getenv("HOME") .. "/.scripts/linux/enable-tapping-touchpad.sh",
 }
 
 for _, program in ipairs(programs) do

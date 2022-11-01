@@ -17,6 +17,22 @@ client.connect_signal("manage", function(c)
     if awesome.startup and not c.size_hints.user_position and not c.size_hints.program_position then
         awful.placement.no_offscreen(c)
     end
+
+    -- NOTE: demaximize windows when new window is opened
+    if not c.floating then
+        local function filter_maximized(filter_c)
+            return (filter_c.maximized == true or filter_c.fullscreen == true)
+                and filter_c.screen == c.screen
+                and filter_c.first_tag == c.first_tag
+        end
+
+        for iter_c in awful.client.iterate(filter_maximized) do
+            iter_c.maximized = false
+            iter_c.fullscreen = false
+        end
+    end
+
+    c.placement_values = {}
 end)
 
 client.connect_signal("mouse::enter", function(c)
@@ -37,6 +53,17 @@ end)
 
 client.connect_signal("property::fullscreen", function(c)
     window_rounded(c)
+end)
+
+client.connect_signal("property::floating", function(c)
+    c.ontop = c.floating
+    if c.floating then
+        local screen_geometry = c.screen.geometry
+
+        c.width = screen_geometry.width * 0.5
+        c.height = screen_geometry.height * 0.5
+        awful.placement.centered(c)
+    end
 end)
 
 screen.connect_signal("property::geometry", helper.wallpaper.set)

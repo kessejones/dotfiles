@@ -58,6 +58,8 @@ local function focus_client_direction(dir)
             gears.timer.delayed_call(function()
                 if #awful.screen.focused().clients == 0 then
                     client.focus = nil
+                else
+                    helper.move_cursor_to_window(client.focus)
                 end
             end)
         else
@@ -67,6 +69,39 @@ local function focus_client_direction(dir)
 end
 
 local function move_client_direction(dir)
+    local client_focused = client.focus
+    local screen_focused = awful.screen.focused()
+
+    if client_focused.floating then
+        local step_y = screen_focused.geometry.height * 0.1
+        local step_x = screen_focused.geometry.width * 0.1
+
+        if dir == "down" then
+            if
+                client_focused.y + client_focused.height
+                < screen_focused.geometry.y + screen_focused.geometry.height
+            then
+                client_focused.y = client_focused.y + step_y
+                return
+            end
+        elseif dir == "up" then
+            if client_focused.y > screen_focused.geometry.y then
+                client_focused.y = client_focused.y - step_y
+                return
+            end
+        elseif dir == "left" then
+            if client_focused.x > screen_focused.geometry.x then
+                client_focused.x = client_focused.x - step_x
+                return
+            end
+        elseif dir == "right" then
+            if client_focused.x + client_focused.width < screen_focused.geometry.x + screen_focused.geometry.width then
+                client_focused.x = client_focused.x + step_x
+                return
+            end
+        end
+    end
+
     if dir == "down" or dir == "up" then
         awful.client.swap.bydirection(dir)
         gears.timer.delayed_call(function()
@@ -75,7 +110,6 @@ local function move_client_direction(dir)
         return
     end
 
-    local client_focused = client.focus
     local x, y = client_focused.x, client_focused.y
     awful.client.swap.bydirection(dir)
 
@@ -91,6 +125,29 @@ local function move_client_direction(dir)
             helper.move_cursor_to_window(client.focus)
         end)
     end)
+end
+
+local function resize_by_orientation(orientation, value)
+    local focused = client.focus
+    local screen_focused = awful.screen.focused()
+
+    local tile_step = 0.05
+
+    if orientation == "vertical" then
+        if focused.floating then
+            local step = screen_focused.geometry.height * 0.1
+            focused.height = focused.height + (step * value)
+        else
+            awful.client.incwfact(tile_step * value)
+        end
+    elseif orientation == "horizontal" then
+        if focused.floating then
+            local step = screen_focused.geometry.width * 0.1
+            focused.width = focused.width + (step * value)
+        else
+            awful.tag.incmwfact(tile_step * value)
+        end
+    end
 end
 
 function M.get_global_keys()
@@ -149,28 +206,28 @@ function M.get_global_keys()
                         { modKey },
                         "h",
                         function()
-                            awful.tag.incmwfact(-0.05)
+                            resize_by_orientation("horizontal", -1)
                         end,
                     },
                     {
                         { modKey },
                         "l",
                         function()
-                            awful.tag.incmwfact(0.05)
+                            resize_by_orientation("horizontal", 1)
                         end,
                     },
                     {
                         { modKey },
                         "j",
                         function()
-                            awful.client.incwfact(-0.05)
+                            resize_by_orientation("vertical", 1)
                         end,
                     },
                     {
                         { modKey },
                         "k",
                         function()
-                            awful.client.incwfact(0.05)
+                            resize_by_orientation("vertical", -1)
                         end,
                     },
                     {
@@ -252,6 +309,10 @@ function M.get_client_keys()
             c.ontop = not c.ontop
         end, { description = "toggle keep on top", group = "client" }),
 
+        awful.key({ modKey }, "z", function(c)
+            c.floating = not c.floating
+        end, { description = "toggle floating", group = "client" }),
+
         awful.key(
             { modKey },
             "m",
@@ -309,11 +370,18 @@ function M.get_client_keys()
                             end
                         end,
                     },
+                    {
+                        { modKey },
+                        "m",
+                        function()
+                            awful.placement.centered(client.focus)
+                        end,
+                    },
                 }, keys_move_to_tag),
                 stop_key = modKey,
                 stop_event = "release",
             }),
-            { description = "focus previous by index", group = "client" }
+            { description = "move client by direction or tag index", group = "client" }
         )
     )
 

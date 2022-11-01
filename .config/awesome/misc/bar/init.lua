@@ -12,15 +12,17 @@ function M.new(s)
     local wibar = awful.wibar({
         position = "top",
         screen = s,
-        height = dpi(32),
+        height = dpi(36),
     })
 
     local tagslist = tags.new(s)
 
     local keyboardlayout = awful.widget.keyboardlayout()
+
     local layoutbox = awful.widget.layoutbox(s)
-    local textclock = wibox.widget.textclock()
+
     local audio = require("misc.bar.audio").new(s)
+    local date = require("misc.bar.date").new(s)
 
     layoutbox:buttons(gears.table.join(
         awful.button({}, 1, function()
@@ -39,25 +41,41 @@ function M.new(s)
 
     wibar:setup({
         layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.container.margin,
-            left = dpi(4),
-            tagslist,
-        },
+        expand = "none",
+        -- left
         {
-            layout = wibox.layout.fixed.horizontal,
-            nil,
+            layout = wibox.container.margin,
+            left = dpi(5),
+            right = dpi(5),
+            {
+                layout = wibox.layout.align.horizontal,
+                tagslist,
+            },
         },
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            audio,
-            keyboardlayout,
-            wibox.widget.systray(),
-            textclock,
-            layoutbox,
+        -- center
+        {
+            layout = wibox.container.margin,
+            left = dpi(5),
+            right = dpi(5),
+            {
+                layout = wibox.layout.align.horizontal,
+                date,
+            },
+        },
+        -- right
+        {
+            layout = wibox.container.margin,
+            left = dpi(5),
+            right = dpi(5),
+            {
+                layout = wibox.layout.fixed.horizontal,
+                audio,
+                keyboardlayout,
+                wibox.widget.systray(),
+                layoutbox,
+            },
         },
     })
-
     return wibar
 end
 

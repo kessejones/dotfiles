@@ -89,10 +89,9 @@ theme.fg_focus = theme.xcolor5
 theme.fg_urgent = "#ffffff"
 theme.fg_minimize = "#ffffff"
 
-theme.useless_gap = dpi(10)
-theme.border_width = dpi(3)
+theme.useless_gap = 8
+theme.border_width = 3
 theme.border_normal = theme.xcolorS0
--- theme.border_focus = theme.xcolor15
 theme.border_focus = theme.xcolor2
 theme.border_marked = "#91231c"
 
@@ -235,13 +234,15 @@ theme.layout_centered = themes_path .. "catppuccin/layouts/centered.png"
 theme.layout_mstab = themes_path .. "catppuccin/layouts/mstab.png"
 theme.layout_equalarea = themes_path .. "catppuccin/layouts/equalarea.png"
 theme.layout_machi = themes_path .. "catppuccin/layouts/machi.png"
+theme.layout_fairv = themes_path .. "catppuccin/layouts/fairv.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = "Tela-circle-dark"
+-- theme.icon_theme = "Tela-circle-dark"
+-- theme.icon_theme = "Tela-circle-dark"
 
 return theme
 

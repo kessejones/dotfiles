@@ -15,7 +15,7 @@ awful.rules.rules = {
             keys = keys.get_client_keys(),
             buttons = keys.get_client_buttons(),
             screen = awful.screen.preferred,
-            placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+            placement = awful.placement.no_overlap + awful.placement.no_offscreen + awful.placement.centered,
             maximized = false,
             floating = false,
         },
