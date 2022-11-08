@@ -66,8 +66,4 @@ key_bindings:
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
   - { key: C, mods: Control|Shift, action: Copy }
   - { key: V, mods: Control|Shift, action: Paste }
-  - { key: Return, mods: Command, action: ToggleFullscreen }
-  - { key: Return, mods: Alt, action: ToggleFullscreen }
   - { key: F12, action: ToggleFullscreen }
-  - { key: Q, mods: Control, chars: '"' }
-  - { key: W, mods: Control, chars: "'" }
