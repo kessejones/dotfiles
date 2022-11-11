@@ -2,3 +2,4 @@ git_protocol: ssh
 aliases:
   set-account: "!~/.config/gh/set-account.sh $1"
   auth-account: "!~/.config/gh/auth-account.sh $1"
+  acc: "!~/.config/gh/accounts.sh"
