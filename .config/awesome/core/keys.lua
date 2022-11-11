@@ -220,14 +220,14 @@ function M.get_global_keys()
                         { modKey },
                         "j",
                         function()
-                            resize_by_orientation("vertical", 1)
+                            resize_by_orientation("vertical", -1)
                         end,
                     },
                     {
                         { modKey },
                         "k",
                         function()
-                            resize_by_orientation("vertical", -1)
+                            resize_by_orientation("vertical", 1)
                         end,
                     },
                     {

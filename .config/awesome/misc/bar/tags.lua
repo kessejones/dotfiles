@@ -48,15 +48,8 @@ M.new = function(s)
         screen = s,
         filter = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
-        layout = {
-            left = dpi(4),
-            spacing = dpi(4),
-            layout = wibox.layout.fixed.horizontal,
-        },
         style = {
             spacing = dpi(10),
-            shape_border_color = beautiful.border_focus,
-            shape = gears.shape.rounded_bar,
         },
         widget_template = {
             id = "tag",

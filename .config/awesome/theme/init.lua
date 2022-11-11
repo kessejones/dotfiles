@@ -17,4 +17,6 @@ theme.font_text_with_size = function(size)
     return string.format("%s %d", theme.font_name, size or 1)
 end
 
+theme.wibar_border_color = theme.border_normal
+
 return theme

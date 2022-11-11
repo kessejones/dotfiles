@@ -31,12 +31,14 @@ client.connect_signal("manage", function(c)
             iter_c.fullscreen = false
         end
     end
-
-    c.placement_values = {}
 end)
 
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", { raise = false })
+end)
+
+client.connect_signal("property::minimized", function(c)
+    c.minimized = false
 end)
 
 client.connect_signal("focus", function(c)
@@ -58,10 +60,6 @@ end)
 client.connect_signal("property::floating", function(c)
     c.ontop = c.floating
     if c.floating then
-        local screen_geometry = c.screen.geometry
-
-        c.width = screen_geometry.width * 0.5
-        c.height = screen_geometry.height * 0.5
         awful.placement.centered(c)
     end
 end)
