@@ -20,9 +20,10 @@
     b = branch
     l = lg
     s = status
-    r = rebase
     f = fetch
-    m = merge
+
+    r = "!f() { if [ -z "$@" ]; then git branch | awk '!/\\*/ { print $1 } ' | gum choose --limit 1 | xargs git rebase; else git rebase $@; fi; }; f"
+    m = "!f() { if [ -z "$@" ]; then git branch | awk '!/\\*/ { print $1 } ' | gum choose --limit 1 | xargs git merge; else git merge $@; fi; }; f"
 
     lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
@@ -32,7 +33,7 @@
     ai = "add --interactive"
 
     # checkout
-    co = checkout
+    co = "!f() { if [ -z "$@" ]; then git branch | awk '!/\\*/ { print $1 } ' | gum choose --limit 1 | xargs git checkout; else git checkout $@; fi; }; f"
     cb = checkout -b
 
     # commit
@@ -67,10 +68,15 @@
 
     # stash
     ss = stash
-    sl = stash list
-    sa = stash apply
-    sd = stash drop
-    sp = stash pop
+    ; sl = stash list
+    ; sa = stash apply
+    ; sd = stash drop
+    ; sp = stash pop
+
+    sa = "!f() { if [ -z "$@" ]; then git stash list | gum choose --limit 1 | cut -d':' -f1 | xargs git stash apply; else git stash apply $@; fi; }; f"
+    sd = "!f() { if [ -z "$@" ]; then git stash list | gum choose --limit 1 | cut -d':' -f1 | xargs git stash drop; else git stash drop $@; fi; }; f"
+    sp = "!f() { if [ -z "$@" ]; then git stash list | gum choose --limit 1 | cut -d':' -f1 | xargs git stash pop; else git stash pop $@; fi; }; f"
+    sl = "!git stash list | gum choose --limit 1 >/dev/null"
 
 [include]
     path = ~/.gitconfig-user
