@@ -14,16 +14,18 @@
 [init]
 	defaultBranch = main
 
+
 [alias]
-    a = add
+    a = "!~/.scripts/git/git-add.sh"
+
     d = diff
     b = branch
     l = lg
     s = status
     f = fetch
 
-    r = "!f() { if [ -z "$@" ]; then git branch | awk '!/\\*/ { print $1 } ' | gum choose --limit 1 | xargs git rebase; else git rebase $@; fi; }; f"
-    m = "!f() { if [ -z "$@" ]; then git branch | awk '!/\\*/ { print $1 } ' | gum choose --limit 1 | xargs git merge; else git merge $@; fi; }; f"
+    r = "!~/.scripts/git/git-rebase.sh"
+    r = "!~/.scripts/git/git-merge.sh"
 
     lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
@@ -33,7 +35,7 @@
     ai = "add --interactive"
 
     # checkout
-    co = "!f() { if [ -z "$@" ]; then git branch | awk '!/\\*/ { print $1 } ' | gum choose --limit 1 | xargs git checkout; else git checkout $@; fi; }; f"
+    co = "!~/.scripts/git/git-checkout.sh"
     cb = checkout -b
 
     # commit
@@ -62,20 +64,18 @@
     rs = rebase --skip
     ra = rebase --abort
 
+    # restore
+    rt = "!~/.scripts/git/git-restore-staged.sh"
+
     # merge
     ma = merge --abort
     mc = merge --continue
 
     # stash
     ss = stash
-    ; sl = stash list
-    ; sa = stash apply
-    ; sd = stash drop
-    ; sp = stash pop
-
-    sa = "!f() { if [ -z "$@" ]; then git stash list | gum choose --limit 1 | cut -d':' -f1 | xargs git stash apply; else git stash apply $@; fi; }; f"
-    sd = "!f() { if [ -z "$@" ]; then git stash list | gum choose --limit 1 | cut -d':' -f1 | xargs git stash drop; else git stash drop $@; fi; }; f"
-    sp = "!f() { if [ -z "$@" ]; then git stash list | gum choose --limit 1 | cut -d':' -f1 | xargs git stash pop; else git stash pop $@; fi; }; f"
+    sa = "!~/.scripts/git/git-stash.sh apply"
+    sd = "!~/.scripts/git/git-stash.sh drop"
+    sp = "!~/.scripts/git/git-stash.sh pop"
     sl = "!git stash list | gum choose --limit 1 >/dev/null"
 
 [include]
