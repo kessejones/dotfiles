@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$@" ]; then
-    git branch | cut -c 4- | gum choose --no-limit | xargs git add
+    git branch | cut -c 3- | gum choose --limit 1 | xargs git checkout
 else
-    git add $@
+    git checkout $@
 fi
