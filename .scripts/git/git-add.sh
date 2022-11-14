@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if [ -z "$@" ]; then
-    git status --short | cut -c 4- | gum choose --no-limit | xargs git add
-else
-    git add $@
+args=$@
+
+if [ -z "$args" ]; then
+    args=$(git status --short | cut -c 4- | gum choose --no-limit) 
+    [ -z "$args" ] && exit 1
 fi
+
+git add $args

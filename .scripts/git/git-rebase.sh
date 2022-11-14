@@ -1,8 +1,10 @@
 #!/bin/bash
 
-if [ -z "$@" ]; then
-    git branch | awk '!/\\*/ { print $1 } ' | gum choose --limit 1 | xargs git rebase
-else
-    git rebase $@
-fi;
+args=$@
 
+if [ -z "$args" ]; then
+    args=$(git branch | awk '!/\*/ { print $1 } ' | gum choose --limit 1)
+    [ -z "$args" ] && exit 1
+fi
+
+git rebase $args
