@@ -38,6 +38,9 @@
     co = "!~/.scripts/git/git-checkout.sh"
     cb = checkout -b
 
+    # discard files
+    cd = "!~/.scripts/git/git-discard.sh"
+
     # commit
     ci = commit
     ca = commit --amend
