@@ -27,8 +27,6 @@ font:
     x: 0
     y: 0
 
-  use_thin_strokes: true
-
 window:
   opacity: 0.9
   padding:
@@ -67,3 +65,7 @@ key_bindings:
   - { key: C, mods: Control|Shift, action: Copy }
   - { key: V, mods: Control|Shift, action: Paste }
   - { key: F12, action: ToggleFullscreen }
+  - { key: PageUp, action: ScrollPageUp }
+  - { key: PageDown, action: ScrollPageDown }
+  - { key: Slash, mods: Shift|Control, mode: ~Search, action: ToggleViMode }
+  - { key: Escape, mode: Vi|~Search, action: ToggleViMode }
