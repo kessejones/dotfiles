@@ -9,6 +9,7 @@ function fish_user_key_bindings
     bind -M insert \cb '_bookmarks -m list'
     bind -M insert \ca '_bookmarks -m save'
     bind -M insert \cx '_bookmarks -m remove'
+    bind -M insert \cy dotconf
 
     bind --user -M insert \cg accept-autosuggestion
     bind --preset -M insert \cu accept-autosuggestion
