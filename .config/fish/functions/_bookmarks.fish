@@ -31,26 +31,29 @@ function _remove
         end
     end
 
+    _create_file 1
     if test -n "$all"
-        echo $all > $save_file
-    else
-        _create_file 1
-    end
-end
-
-function _list
-    set --append fzf_arguments --header-first --header 'Bookmark'
-    set --append fzf_arguments --bind "ctrl-x:execute(_bookmark -m remove -p '{}')+reload(cat $save_file | sort)"
-    set -l selected (cat $save_file | sort | _fzf_wrapper $fzf_arguments)
-    if test $status -eq 0
-        if test -n "$selected"
-            cd $selected
+        for item in $all
+            echo $item >> $save_file
         end
     end
 end
 
-function _bookmark
-    set -g save_file $HOME/.cache/bookmark
+function _list
+    clear
+    set -l list (cat $save_file)
+    if test -n "$list"
+        set -l selected (gum choose --limit 1 $list)
+        if test -n "$selected"
+            cd $selected
+        end
+    else
+        echo "Empty bookmarks"
+    end
+end
+
+function _bookmarks
+    set -g save_file $HOME/.cache/bookmarks
     set -l current (pwd)
 
     argparse 'm/mode=' 'p/path=' -- $argv
