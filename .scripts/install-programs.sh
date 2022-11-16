@@ -18,4 +18,5 @@ brew install\
     ripgrep\
     exa\
     gnu-sed\
-    tidy-html5
+    tidy-html5\
+    gum
