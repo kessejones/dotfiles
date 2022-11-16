@@ -53,8 +53,9 @@
     # branch
     bm = branch -m
     bM = branch -M
-    bx = branch -d
-    bX = branch -D
+
+    bd = "!~/.scripts/git/git-branch-delete.sh -d"
+    bx = "!~/.scripts/git/git-branch-delete.sh -D"
 
     # diff
     dh = diff HEAD^
@@ -63,6 +64,7 @@
     rc = rebase --continue
     rs = rebase --skip
     ra = rebase --abort
+    ri = "!~/.scripts/git/git-rebase-interactive.sh"
 
     # restore
     rt = "!~/.scripts/git/git-restore-staged.sh"
