@@ -5,7 +5,7 @@ shift
 args="$@"
 
 if [ -z "$args" ]; then
-    args=$(git branch | awk '!/\*/ { print $1 } ' | gum choose --limit 1)
+    args=$(git branch | awk '!/\*/ { print $1 } ' | gum choose --no-limit)
 
     [ -z "$args" ] && exit 1
 fi
