@@ -15,6 +15,7 @@ function dotconf
     set -l selected (gum choose --limit 1 $dots | cut -d' ' -f2)
     if test -n "$selected"
         cd $selected
-        commandline --function repaint
     end
+
+    commandline --function repaint
 end
