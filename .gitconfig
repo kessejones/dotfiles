@@ -14,7 +14,6 @@
 [init]
 	defaultBranch = main
 
-
 [alias]
     a = "!~/.scripts/git/git-add.sh"
 
@@ -62,6 +61,7 @@
 
     # diff
     dh = diff HEAD^
+    dv = "!nvim -c \"DiffviewOpen\""
 
     # rebase
     rc = rebase --continue
