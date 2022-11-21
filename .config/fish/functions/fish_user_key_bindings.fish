@@ -1,19 +1,14 @@
 function fish_user_key_bindings
-    bind -M insert \cj _normal_mode
+    # bind -M insert \cj _normal_mode
 
-    bind -M insert \cs _fzf_search_git_status
-    bind -M insert \cf _fzf_search_directory
-    bind -M insert \ce _fzf_change_directory
-    bind -M insert \ch _fzf_change_directory_home
-
-    bind -M insert \cb '_bookmarks -m list'
-    bind -M insert \ca '_bookmarks -m save'
-    bind -M insert \cx '_bookmarks -m remove'
-    bind -M insert \c_ dotconf
-
-    bind --user -M insert \cg accept-autosuggestion
-    bind --preset -M insert \cu accept-autosuggestion
-    bind --preset -M insert -k nul accept-autosuggestion
+    bind --user -M insert \ce _fzf_change_directory
+    bind --user -M insert \ch _fzf_change_directory_home
+    bind --user -M insert \cb '_bookmarks -m list'
+    bind --user -M insert \ca '_bookmarks -m save'
+    bind --user -M insert \cx '_bookmarks -m remove'
+    bind --user -M insert \c_ dotconf
+    bind --user -M insert \cf accept-autosuggestion
+    bind --user -M insert \cg accept-autosuggestion execute
 
     set -g fish_key_bindings fish_vi_key_bindings
 end
