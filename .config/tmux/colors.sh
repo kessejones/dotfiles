@@ -1,3 +1,5 @@
+#!/bin/bash
+
 base="#1e1e2e"
 mantle="#181825"
 surface0="#313244"
@@ -23,5 +25,3 @@ mauve="#cba6f7"
 pink="#f5c2e7"
 flamingo="#f2cdcd"
 rosewater="#f4e0dc"
-
-# vim: set filetype=tmux :
