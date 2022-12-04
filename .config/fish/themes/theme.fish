@@ -1,7 +1,7 @@
 # custom colors
-set fish_color_command green
+set fish_color_command $fish_color_green
 set fish_color_autosuggestion $fish_color_overlay0
-set fish_color_error red
+set fish_color_error $fish_color_red
 
 # prompt cwd and gitinfo
 set fish_color_cwd_bg $fish_color_surface0
