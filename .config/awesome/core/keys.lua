@@ -189,7 +189,7 @@ function M.get_global_keys()
 
         -- system
         awful.key(
-            { modKey, Modifiers.Ctrl },
+            { modKey, Modifiers.Shift },
             "r",
             awesome.restart,
             { description = "reload awesome", group = "awesome" }
