@@ -18,7 +18,7 @@ function M.new(s)
     local tagslist = tags.new(s)
 
     local keyboardlayout = require("misc.bar.keyboardlayout").new()
-    local audio = require("misc.bar.audio").new(s)
+    local volume = require("misc.bar.volume").new(s)
     local date = require("misc.bar.date").new(s)
     local systray = require("misc.bar.systray").new()
     local layoutbox = require("misc.bar.layoutbox").new(s)
@@ -70,7 +70,8 @@ function M.new(s)
                 layout = wibox.layout.fixed.horizontal,
                 systray,
                 keyboardlayout,
-                audio,
+                -- audio,
+                volume,
                 layoutbox,
             },
         },
