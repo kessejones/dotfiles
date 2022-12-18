@@ -1,7 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
-local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
@@ -14,16 +13,15 @@ function M.new(s)
         position = "top",
         screen = s,
         height = dpi(36),
-        opacity = 0.85,
     })
 
     local tagslist = tags.new(s)
 
-    local keyboardlayout = awful.widget.keyboardlayout()
-    local layoutbox = awful.widget.layoutbox(s)
-
+    local keyboardlayout = require("misc.bar.keyboardlayout").new()
     local audio = require("misc.bar.audio").new(s)
     local date = require("misc.bar.date").new(s)
+    local systray = require("misc.bar.systray").new()
+    local layoutbox = require("misc.bar.layoutbox").new(s)
 
     layoutbox:buttons(gears.table.join(
         awful.button({}, 1, function()
@@ -70,7 +68,7 @@ function M.new(s)
             right = dpi(5),
             {
                 layout = wibox.layout.fixed.horizontal,
-                wibox.widget.systray(),
+                systray,
                 keyboardlayout,
                 audio,
                 layoutbox,
