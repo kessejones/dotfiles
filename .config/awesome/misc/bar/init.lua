@@ -24,6 +24,7 @@ function M.new(s)
     local date = require("misc.bar.date").new()
     local layoutbox = require("misc.bar.layoutbox").new(s)
     local systray = require("misc.bar.systray").new()
+    local battery = require("misc.bar.battery").new()
 
     layoutbox:buttons(gears.table.join(
         awful.button({}, 1, function()
@@ -87,6 +88,7 @@ function M.new(s)
                 systray,
                 keyboardlayout,
                 volume,
+                battery,
                 layoutbox,
             },
         },
