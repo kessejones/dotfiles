@@ -24,6 +24,7 @@ set status on
 set status-interval 2
 set status-bg ${status_bg}
 set status-fg ${status_fg}
+set status-left-length 20
 set window-status-style "fg=${win_fg},bg=${win_bg}"
 set window-status-current-style "fg=${win_active_fg},bg=${win_active_bg}"
 set window-status-separator ''
