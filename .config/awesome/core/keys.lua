@@ -305,10 +305,6 @@ function M.get_client_keys()
             c:kill()
         end, { description = "close", group = "client" }),
 
-        awful.key({ modKey }, "t", function(c)
-            c.ontop = not c.ontop
-        end, { description = "toggle keep on top", group = "client" }),
-
         awful.key({ modKey }, "z", function(c)
             c.floating = not c.floating
         end, { description = "toggle floating", group = "client" }),

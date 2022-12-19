@@ -12,9 +12,9 @@ local function update_tag(item, tag, index)
     if tag.selected then
         item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolor2)
     elseif #tag:clients() > 0 then
-        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorS1)
+        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorO2)
     else
-        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorS1)
+        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorO2)
     end
 end
 
@@ -66,10 +66,30 @@ M.new = function(s)
     })
 
     local widget = wibox.widget({
-        layout = wibox.container.margin,
-        bottom = dpi(5),
+        {
+            {
+                {
+                    taglist,
+                    widget = wibox.container.margin,
+                    left = dpi(10),
+                    right = dpi(10),
+                    top = dpi(2),
+                    bottom = dpi(2),
+                },
+                strategy = "exact",
+                layout = wibox.container.constraint,
+            },
+            widget = wibox.container.background,
+            bg = beautiful.wibar_widget_bg,
+            shape = function(cr, width, height)
+                gears.shape.rounded_rect(cr, width, height, 5)
+            end,
+        },
+        widget = wibox.container.margin,
+        left = dpi(5),
+        right = dpi(5),
         top = dpi(5),
-        taglist,
+        bottom = dpi(5),
     })
 
     return widget

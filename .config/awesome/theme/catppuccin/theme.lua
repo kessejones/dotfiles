@@ -72,9 +72,10 @@ theme.music = themes_path .. "catppuccin/assets/music.png"
 theme.volume_on = themes_path .. "catppuccin/assets/volume-on.png"
 theme.volume_off = themes_path .. "catppuccin/assets/volume-off.png"
 theme.pfp = themes_path .. "catppuccin/assets/pfp.jpg"
-theme.font = "FiraCode Nerd Font 10"
 
-theme.font_name = "FiraCode Nerd Font "
+theme.font_size = 10
+theme.font_name = "FiraCode Nerd Font"
+theme.font = string.format("%s %s", theme.font_name, theme.font_size)
 
 theme.titlebar_bg_focus = theme.xcolorbase
 theme.titlebar_bg = theme.xcolorbase
@@ -239,12 +240,13 @@ theme.layout_machi = themes_path .. "catppuccin/layouts/machi.png"
 theme.layout_fairv = themes_path .. "catppuccin/layouts/fairv.png"
 
 -- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
+theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.xcolorS1)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 -- theme.icon_theme = "Tela-circle-dark"
 -- theme.icon_theme = "Tela-circle-dark"
+-- theme.wibar_fg = theme.xcolorT0
 
 return theme
 

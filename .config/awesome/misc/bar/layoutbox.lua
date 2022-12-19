@@ -1,4 +1,5 @@
 local awful = require("awful")
+local beautiful = require("beautiful")
 local wibox = require("wibox")
 local gears = require("gears")
 local xresources = require("beautiful.xresources")
@@ -15,11 +16,16 @@ function M.new(s)
                 {
                     layoutbox,
                     widget = wibox.container.margin,
+                    left = dpi(5),
+                    right = dpi(5),
+                    top = dpi(5),
+                    bottom = dpi(5),
                 },
                 strategy = "exact",
                 layout = wibox.container.constraint,
             },
             widget = wibox.container.background,
+            bg = beautiful.wibar_widget_bg,
             shape = function(cr, width, height)
                 gears.shape.rounded_rect(cr, width, height, 5)
             end,
