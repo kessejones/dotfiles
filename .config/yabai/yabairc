@@ -16,9 +16,9 @@ yabai -m config                                 \
     focus_follows_mouse          autofocus      \
     window_origin_display        default        \
     window_placement             second_child   \
-    window_topmost               off            \
-    window_shadow                on             \
-    window_animation_duration    0.5            \
+    window_topmost               on             \
+    window_shadow                float          \
+    window_animation_duration    0              \
     window_opacity_duration      0.0            \
     active_window_opacity        1.0            \
     normal_window_opacity        0.90           \
