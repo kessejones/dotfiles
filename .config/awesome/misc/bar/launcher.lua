@@ -48,10 +48,6 @@ function M.new()
     })
     main_menu:get_root().wibox.shape = gears.shape.rounded_rect
 
-    main_menu:get_root().wibox:connect_signal("mouse::leave", function(c)
-        main_menu:hide()
-    end)
-
     local launcher = awful.widget.launcher({
         image = beautiful.awesome_icon,
         menu = main_menu,
