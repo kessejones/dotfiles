@@ -23,8 +23,12 @@ function M.new(s)
     local volume = require("misc.bar.volume").new(s)
     local date = require("misc.bar.date").new()
     local layoutbox = require("misc.bar.layoutbox").new(s)
-    local systray = require("misc.bar.systray").new()
     local battery = require("misc.bar.battery").new()
+    local systray = { nil, layout = wibox.container.background }
+
+    if s == screen.primary then
+        systray = require("misc.bar.systray").new()
+    end
 
     layoutbox:buttons(gears.table.join(
         awful.button({}, 1, function()

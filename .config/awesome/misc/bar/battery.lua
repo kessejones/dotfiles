@@ -9,7 +9,7 @@ local M = {}
 function M.new()
     local charging_icon = wibox.widget({
         markup = helpers.ui.colorize_text("", beautiful.xcolorT2),
-        font = beautiful.font_icon_with_size(12),
+        font = beautiful.font_icon_with_size(beautiful.wibar_widget_font_size + 2),
         align = "center",
         valign = "center",
         widget = wibox.widget.textbox,
@@ -39,7 +39,7 @@ function M.new()
     local battery_percentage_text = wibox.widget({
         id = "percent_text",
         text = "0%",
-        font = beautiful.font_text_with_size(12),
+        font = beautiful.font_text_with_size(beautiful.wibar_widget_font_size, "Bold"),
         align = "center",
         valign = "center",
         widget = wibox.widget.textbox,
