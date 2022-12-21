@@ -11,3 +11,8 @@ local programs = {
 for _, program in ipairs(programs) do
     awful.spawn(program)
 end
+
+local exit_script = os.getenv("HOME") .. "/.scripts/linux/on-exit.sh"
+awesome.connect_signal("exit", function()
+    awful.spawn(exit_script)
+end)
