@@ -5,7 +5,7 @@ local dpi = xresources.apply_dpi
 local theme = require("theme.catppuccin.theme")
 local themes_path = gfs.get_configuration_dir() .. "theme/"
 
--- theme.wallpaper = themes_path .. "assets/wallpaper.png"
+theme.wallpaper = themes_path .. "assets/wallpaper.png"
 
 theme.border_radius = 8
 

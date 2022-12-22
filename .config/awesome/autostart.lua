@@ -1,18 +1,37 @@
 local awful = require("awful")
 
+local scripts_path = os.getenv("HOME") .. "/.scripts/linux/"
+
+local function run(args)
+    if not args or #args == 0 then
+        return
+    end
+
+    local command = args.command or args[1]
+    if args.script then
+        command = scripts_path .. command
+    end
+
+    if args.single then
+        awful.spawn.single_instance(command, {}, {}, command)
+    else
+        awful.spawn(command)
+    end
+end
+
 local programs = {
-    os.getenv("HOME") .. "/.config/picom/start.sh",
-    os.getenv("HOME") .. "/.scripts/linux/monitor.sh",
-    os.getenv("HOME") .. "/.scripts/linux/enable-tapping-touchpad.sh",
-    os.getenv("HOME") .. "/.scripts/linux/polkit-gnome-authentication-agent.sh",
-    "nm-applet",
+    { "monitor.sh", script = true },
+    { "enable-tapping-touchpad.sh", script = true },
+    { "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1", single = true },
+    { "nm-applet", single = true },
+    { "picom -b", single = true },
+    { "setxkbmap br" },
 }
 
 for _, program in ipairs(programs) do
-    awful.spawn(program)
+    run(program)
 end
 
-local exit_script = os.getenv("HOME") .. "/.scripts/linux/on-exit.sh"
 awesome.connect_signal("exit", function()
-    awful.spawn(exit_script)
+    awful.spawn(scripts_path .. "on-exit.sh")
 end)

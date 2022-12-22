@@ -8,6 +8,7 @@ local dpi = xresources.apply_dpi
 local helper = require("helpers.ui")
 local keys = require("core.keys")
 local ui = require("helpers.ui")
+local config = require("config")
 
 local function update_tag(item, tag, index)
     if tag.selected then
@@ -21,7 +22,9 @@ end
 
 local M = {}
 
-M.new = function(s)
+function M.new(s)
+    awful.tag(config.tags, s, awful.layout.layouts[1])
+
     local taglist_buttons = gears.table.join(
         awful.button({}, 1, function(t)
             t:view_only()
