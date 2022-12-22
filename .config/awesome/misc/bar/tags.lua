@@ -7,14 +7,15 @@ local dpi = xresources.apply_dpi
 
 local helper = require("helpers.ui")
 local keys = require("core.keys")
+local ui = require("helpers.ui")
 
 local function update_tag(item, tag, index)
     if tag.selected then
         item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolor2)
     elseif #tag:clients() > 0 then
-        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorO2)
+        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorS2)
     else
-        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorO2)
+        item:get_children_by_id("tag")[1].markup = helper.colorize_text("", beautiful.xcolorS2)
     end
 end
 
@@ -57,6 +58,7 @@ M.new = function(s)
             widget = wibox.widget.textbox,
             create_callback = function(self, c3, index, object)
                 update_tag(self, c3, index)
+                ui.add_hover_cursor(self, "hand1")
             end,
 
             update_callback = function(self, c3, index, object)

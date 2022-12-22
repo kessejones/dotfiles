@@ -6,6 +6,7 @@ local dpi = xresources.apply_dpi
 local wibox = require("wibox")
 
 local default = require("default")
+local ui = require("helpers.ui")
 
 local M = {}
 
@@ -80,6 +81,8 @@ function M.new()
         top = dpi(5),
         bottom = dpi(5),
     })
+
+    ui.add_hover_cursor(widget, "hand1")
 
     return widget
 end

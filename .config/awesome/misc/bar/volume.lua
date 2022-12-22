@@ -5,6 +5,8 @@ local wibox = require("wibox")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
+local ui = require("helpers.ui")
+
 local M = {}
 
 function M.new(s)
@@ -53,6 +55,8 @@ function M.new(s)
             icon.image = beautiful.get_asset("catppuccin/assets/volume-on.png")
         end
     end)
+
+    ui.add_hover_cursor(widget, "hand1")
 
     return widget
 end

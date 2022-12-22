@@ -34,7 +34,6 @@ end
 
 local theme = require("theme")
 beautiful.init(theme)
-root.cursor(beautiful.cursor_name)
 
 require("autostart")
 require("core")

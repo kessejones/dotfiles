@@ -30,7 +30,7 @@ theme.xcolorS2 = "#585b70"
 -- Overlay --
 theme.xcolorO0 = "#6c7086"
 theme.xcolorO1 = "#7f849c"
-theme.xcolorO2 = "#585b70"
+theme.xcolorO2 = "#9399b2"
 
 -- Text --
 theme.xcolorT0 = "#a6adc8"
@@ -240,7 +240,7 @@ theme.layout_machi = themes_path .. "catppuccin/layouts/machi.png"
 theme.layout_fairv = themes_path .. "catppuccin/layouts/fairv.png"
 
 -- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.xcolorS1)
+theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.xcolorS2)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
