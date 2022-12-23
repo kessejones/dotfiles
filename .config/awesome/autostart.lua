@@ -20,7 +20,6 @@ local function run(args)
 end
 
 local programs = {
-    { "monitor.sh", script = true },
     { "enable-tapping-touchpad.sh", script = true },
     { "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1", single = true },
     { "nm-applet", single = true },
