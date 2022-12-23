@@ -52,7 +52,7 @@ selection:
 live_config_reload: true
 
 shell:
-  program: /usr/local/bin/tmux
+  program: tmux
   args:
     - -u # force UTF-8 in tmux
     - new-session
