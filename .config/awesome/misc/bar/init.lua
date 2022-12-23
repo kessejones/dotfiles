@@ -24,11 +24,7 @@ function M.new(s)
     local date = require("misc.bar.date").new(s)
     local layoutbox = require("misc.bar.layoutbox").new(s)
     local battery = require("misc.bar.battery").new()
-    local systray = { nil, layout = wibox.container.background }
-
-    if s == screen.primary then
-        systray = require("misc.bar.systray").new()
-    end
+    local systray = awful.widget.only_on_screen(require("misc.bar.systray").new(), screen.primary)
 
     layoutbox:buttons(gears.table.join(
         awful.button({}, 1, function()
