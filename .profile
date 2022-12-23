@@ -19,6 +19,12 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-if [ -e /home/kesse/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kesse/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
+    . $HOME/.nix-profile/etc/profile.d/nix.sh;
+fi 
+
+if [ -f $HOME/.nix-profile/bin/fish ]; then
+    export SHELL=$HOME/.nix-profile/bin/fish
+fi
 
 export XDG_DATA_DIRS="$HOME/.nix-profile/share:$HOME/.share:$XDG_DATA_DIRS"
