@@ -5,6 +5,7 @@ local default = {
     webbrowser = "firefox",
     secondary_webbrowser = "brave-browser",
     discord = "discord",
+    filemanager = "nautilus",
 }
 
 return default

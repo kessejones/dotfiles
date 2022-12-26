@@ -18,6 +18,12 @@ function M.new()
                 awesome.spawn("systemctl poweroff")
             end,
         },
+        {
+            "Reboot",
+            function()
+                awesome.spawn("systemctl reboot")
+            end,
+        },
         { "Restart", awesome.restart },
         {
             "Quit",
@@ -42,6 +48,7 @@ function M.new()
         { "Awesome", awesome_menu },
         { "Terminal", terminal_menu },
         { "Internet", internet_menu },
+        { "Files", default.filemanager },
     }
 
     local main_menu = awful.menu({
