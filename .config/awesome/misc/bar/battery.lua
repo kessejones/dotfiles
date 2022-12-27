@@ -17,7 +17,7 @@ function M.new()
 
     local battery_bar = wibox.widget({
         max_value = 100,
-        value = 50,
+        value = 0,
         forced_width = dpi(30),
         border_width = dpi(1),
         paddings = dpi(2),
@@ -36,6 +36,21 @@ function M.new()
         spacing = dpi(1),
     })
 
+    local battery_decoration = wibox.widget({
+        {
+            wibox.widget.base.make_widget(),
+            widget = wibox.container.background,
+            bg = beautiful.xcolorO2,
+            forced_width = dpi(8),
+            forced_height = dpi(8),
+            shape = function(cr, width, height)
+                gears.shape.pie(cr, width, height, 0, math.pi)
+            end,
+        },
+        direction = "east",
+        widget = wibox.container.rotate(),
+    })
+
     local battery_percentage_text = wibox.widget({
         id = "percent_text",
         text = "0%",
@@ -49,9 +64,14 @@ function M.new()
         layout = wibox.layout.fixed.horizontal,
         spacing = dpi(5),
         {
-            battery,
-            top = dpi(1),
-            bottom = dpi(1),
+            {
+                battery,
+                battery_decoration,
+                layout = wibox.layout.fixed.horizontal,
+                spacing = dpi(-3),
+            },
+            top = dpi(2),
+            bottom = dpi(2),
             widget = wibox.container.margin,
         },
         battery_percentage_text,
