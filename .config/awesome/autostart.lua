@@ -20,11 +20,10 @@ local function run(args)
 end
 
 local programs = {
-    { "enable-tapping-touchpad.sh", script = true },
     { "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1", single = true },
     { "nm-applet", single = true },
     { "picom -b", single = true },
-    { "setxkbmap br" },
+    -- { "blueman-applet", single = true },
 }
 
 for _, program in ipairs(programs) do
