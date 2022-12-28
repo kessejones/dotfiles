@@ -3,7 +3,6 @@ pcall(require, "luarocks.loader")
 require("awful.autofocus")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-require("awful.hotkeys_popup.keys")
 
 if awesome.startup_errors then
     naughty.notify({
