@@ -37,3 +37,4 @@ fi
 
 # set homebrew to path
 export PATH="$LINUX_HOMEBREW:$MACOS_HOMEBREW:$PATH"
+export XDG_DATA_DIRS="$HOMEBREW/share:$HOME/.nix-profile/share:$HOME/.share:$XDG_DATA_DIRS"
