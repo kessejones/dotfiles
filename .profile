@@ -35,4 +35,5 @@ elif [ -f $MACOS_HOMEBREW/fish ]; then
     export SHELL=$MACOS_HOMEBREW/fish
 fi
 
-export XDG_DATA_DIRS="$HOME/.nix-profile/share:$HOME/.share:$XDG_DATA_DIRS"
+# set homebrew to path
+export PATH="$LINUX_HOMEBREW:$MACOS_HOMEBREW:$PATH"
