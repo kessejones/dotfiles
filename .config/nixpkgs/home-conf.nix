@@ -7,7 +7,7 @@ with inputs; let
   pkgs = import nixpkgs {
     inherit system;
 
-    config.allowUnfree = true;
+    config = import ./config.nix;
   };
 
   nur = import nurpkgs {
@@ -26,7 +26,7 @@ in {
     modules = [{inherit imports;}];
 
     extraSpecialArgs = {
-      inherit nur;
+      inherit nur nixGL;
     };
   };
 }

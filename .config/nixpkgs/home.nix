@@ -2,9 +2,26 @@
   config,
   pkgs,
   nur,
+  lib,
+  nixGL,
   ...
 }: let
   username = "kesse";
+
+  nixgl = import nixGL {inherit pkgs;};
+
+  nixGLWrap = pkg:
+    pkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
+      mkdir $out
+      ln -s ${pkg}/* $out
+      rm $out/bin
+      mkdir $out/bin
+      for bin in ${pkg}/bin/*; do
+        wrapped_bin=$out/bin/$(basename $bin)
+        echo "exec ${lib.getExe nixgl.auto.nixGLDefault} $bin \"\$@\"" > $wrapped_bin
+        chmod +x $wrapped_bin
+      done
+    '';
 in {
   home = {
     inherit username;
@@ -20,44 +37,16 @@ in {
     profiles.default.search = {
       default = "DuckDuckGo";
     };
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      extraNativeMessagingHosts = with nur.repos.wolfangaukang; [vdhcoapp];
 
-      extraPolicies = {
-        CaptivePortal = false;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DisableTelemetry = true;
-        DisableFirefoxAccounts = false;
-        FirefoxHome = {
-          Pocket = false;
-          Snippets = false;
-        };
-        UserMessaging = {
-          ExtensionRecomendations = false;
-          SkipOnboarding = true;
-        };
-      };
-
-      extraPrefs = ''
-        lockPref("security.identityblock.show_extended_validation", true);
-        lockPref("devtools.theme", "dark");
-        lockPref("media.peerconnection.enabled", false);
-        lockPref("geo.enabled", false);
-        lockPref("dom.battery.enabled", false);
-        lockPref("beacon.enabled", false);
-        lockPref("dom.event.contextmenu.enabled", false);
-        lockPref("network.IDN_show_punycode", false);
-        lockPref("network.IDN_show_punycode", true);
-        lockPref("browser.tabs.tabmanager.enabled", false);
-      '';
+    package = import ./pkgs/firefox.nix {
+      inherit pkgs nur;
     };
   };
 
   programs.discocss = let
     src = {
       url = "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css";
-      sha256 = "0jby4bhabqmsgkv74n9chsjraa46h55vcn5zfk988mwhbxjixj8l";
+      sha256 = "0yh8rbpliyjxl45dk5a67v7yn3n4b9w5z39y88imnryigq1wqigv";
     };
   in {
     enable = true;
@@ -67,9 +56,20 @@ in {
   };
 
   home.packages = with pkgs; [
+    nixgl.auto.nixGLDefault
+
     btop
     fish
     tmux
     neovim
+    fzf
+    tree-sitter
+    exa
+    ripgrep
+    gum
+    git
+
+    (nixGLWrap alacritty)
+    (nixGLWrap kitty)
   ];
 }
