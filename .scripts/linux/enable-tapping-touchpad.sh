@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 DEV=$(xinput list | awk '/Touchpad|TouchPad/ {print $3" "$4" "$5}')
 
