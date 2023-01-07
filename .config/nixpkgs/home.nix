@@ -45,15 +45,38 @@ in {
 
   programs.discocss = let
     src = {
-      url = "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css";
-      sha256 = "0yh8rbpliyjxl45dk5a67v7yn3n4b9w5z39y88imnryigq1wqigv";
+      url = "https://github.com/catppuccin/discord.git";
+      ref = "refs/heads/gh-pages";
     };
+
+    catppuccin-files = builtins.fetchGit src;
+    theme-file = "${catppuccin-files}/dist/catppuccin-mocha.theme.css";
   in {
     enable = true;
     discordAlias = true;
 
-    css = builtins.readFile (builtins.fetchurl src);
+    css = builtins.readFile theme-file;
   };
+
+  programs.kitty = {
+    enable = true;
+
+    theme = "Catppuccin-Mocha";
+    font = {
+      name = "Hack Nerd Font";
+      size = 13;
+    };
+
+    settings = {
+      cursor_blink_interval = 0;
+      cursor_stop_blinking_after = 0;
+      window_padding_width = 5;
+    };
+
+    package = nixGLWrap pkgs.kitty;
+  };
+
+  programs.go.enable = true;
 
   home.packages = with pkgs; [
     nixgl.auto.nixGLDefault
@@ -70,6 +93,5 @@ in {
     git
 
     (nixGLWrap alacritty)
-    (nixGLWrap kitty)
   ];
 }
