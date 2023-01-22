@@ -129,22 +129,32 @@ end
 
 local function resize_by_orientation(orientation, value)
     local focused = client.focus
+
     local screen_focused = awful.screen.focused()
 
     local tile_step = 0.05
+    local current_tag = screen_focused.selected_tag
+
+    local layout_can_resize = function()
+        return current_tag.layout ~= awful.layout.layouts[1]
+    end
 
     if orientation == "vertical" then
         if focused.floating then
             local step = screen_focused.geometry.height * 0.1
             focused.height = focused.height + (step * value)
-        else
+            return
+        end
+        if layout_can_resize() then
             awful.client.incwfact(tile_step * value)
         end
     elseif orientation == "horizontal" then
         if focused.floating then
             local step = screen_focused.geometry.width * 0.1
             focused.width = focused.width + (step * value)
-        else
+            return
+        end
+        if layout_can_resize() then
             awful.tag.incmwfact(tile_step * value)
         end
     end
