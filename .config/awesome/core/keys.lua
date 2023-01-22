@@ -307,6 +307,9 @@ function M.get_client_keys()
             c:raise()
         end, { description = "toggle fullscreen", group = "client" }),
         awful.key({ modKey }, "f", function(c)
+            if c.fullscreen then
+                c.fullscreen = false
+            end
             c.maximized = not c.maximized
             c:raise()
         end, { description = "toggle maximized", group = "client" }),
