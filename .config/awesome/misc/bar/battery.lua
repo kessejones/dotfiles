@@ -139,6 +139,11 @@ function M.new()
         bottom = dpi(5),
     })
 
+    widget.visible = false
+    awesome.connect_signal("signal::battery-setup", function()
+        widget.visible = true
+    end)
+
     return widget
 end
 
