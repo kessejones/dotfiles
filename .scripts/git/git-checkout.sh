@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 args=$@
 if [ -z "$args" ]; then

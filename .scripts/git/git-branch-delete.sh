@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 mode="$1"
 shift

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -z "$@" ]; then 
     git_files=$(git status --short -uno | grep -v '^ ' | awk '{print $2}')
