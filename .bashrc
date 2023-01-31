@@ -29,9 +29,13 @@ MACOS_HOMEBREW=/opt/homebrew/bin
 NIX_PROFILE_BIN=$HOME/.nix-profile/bin
 
 if [ -f $NIX_PROFILE_BIN/fish ]; then
-    exec $NIX_PROFILE_BIN/fish
+    export SHELL=$NIX_PROFILE_BIN/fish
 elif [ -f $LINUX_HOMEBREW/fish ]; then
-    exec $LINUX_HOMEBREW/fish
+    export SHELL=$LINUX_HOMEBREW/fish
 elif [ -f $MACOS_HOMEBREW/fish ]; then
-    exec $MACOS_HOMEBREW/fish
+    export SHELL=$MACOS_HOMEBREW/fish
+fi
+
+if [ ! "$SHELL" = "/bin/bash" ]; then
+    exec $SHELL
 fi
