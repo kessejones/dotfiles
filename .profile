@@ -27,14 +27,7 @@ LINUX_HOMEBREW=/home/linuxbrew/.linuxbrew/bin
 MACOS_HOMEBREW=/opt/homebrew/bin
 NIX_PROFILE_BIN=$HOME/.nix-profile/bin
 
-if [ -f $NIX_PROFILE_BIN/fish ]; then
-    export SHELL=$NIX_PROFILE_BIN/fish
-elif [ -f $LINUX_HOMEBREW/fish ]; then
-    export SHELL=$LINUX_HOMEBREW/fish
-elif [ -f $MACOS_HOMEBREW/fish ]; then
-    export SHELL=$MACOS_HOMEBREW/fish
-fi
-
 # set homebrew to path
 export PATH="$LINUX_HOMEBREW:$MACOS_HOMEBREW:$PATH"
+
 export XDG_DATA_DIRS="$HOMEBREW/share:$HOME/.nix-profile/share:$HOME/.share:$XDG_DATA_DIRS"
