@@ -1,7 +1,8 @@
 if type -q exa
-    alias ll "exa --long --group --icons"
+    alias ls "exa --icons"
+    alias ll "ls --long --group"
     alias la "ll --all"
-    alias lt "exa --tree --icons"
+    alias lt "ll --tree"
     alias tree "lt"
 end
 
