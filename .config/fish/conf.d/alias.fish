@@ -1,7 +1,7 @@
 if type -q exa
     alias ll "exa --long --group --icons"
     alias la "ll --all"
-    alias lt "exa --all --tree --icons"
+    alias lt "exa --tree --icons"
     alias tree "lt"
 end
 
@@ -17,3 +17,4 @@ alias tmain "ta main"
 alias d docker
 alias dc docker-compose
 
+alias ips "ip -c -br a"
