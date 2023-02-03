@@ -7,13 +7,17 @@ with inputs; let
   pkgs = import nixpkgs {
     inherit system;
 
-    config = import ./config.nix;
-  };
+    overlays = [
+      (import ./modules/overlays)
+      nixgl.overlay
+    ];
 
-  nur = import nurpkgs {
-    inherit pkgs;
-
-    nurpkgs = pkgs;
+    config.allowUnfree = true;
+    config.packageOverrides = pkgs: {
+      nur = import nurpkgs {
+        inherit pkgs;
+      };
+    };
   };
 
   imports = [
@@ -24,9 +28,5 @@ in {
     inherit pkgs;
 
     modules = [{inherit imports;}];
-
-    extraSpecialArgs = {
-      inherit nur nixGL;
-    };
   };
 }

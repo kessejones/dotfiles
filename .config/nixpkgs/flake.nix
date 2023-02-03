@@ -10,7 +10,7 @@
     };
 
     nurpkgs.url = "github:nix-community/NUR";
-    nixGL.url = "github:guibou/nixGL";
+    nixgl.url = "github:guibou/nixGL";
   };
 
   outputs = inputs: let
