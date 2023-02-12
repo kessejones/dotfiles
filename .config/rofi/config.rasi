@@ -1,4 +1,4 @@
-configuration{
+configuration {
     modi: "drun";
     icon-theme: "Papirus";
     show-icons: true;
@@ -9,10 +9,15 @@ configuration{
     hide-scrollbar: true;
     sidebar-mode: false;
 
-    ml-row-up: "Control+k";
-    ml-row-down: "Control+j";
+    // disable keymappings
+    kb-accept-entry: "";
+    kb-remove-to-eol: "";
+
+    // remap keymappings
     me-accept-entry: "MousePrimary";
     me-select-entry: "MouseSecondary";
+    kb-row-up: "Control+k,Control+p,Up";
+    kb-row-down: "Control+j,Control+n,Down";
 }
 
 @theme "catppuccin-mocha.rasi"
