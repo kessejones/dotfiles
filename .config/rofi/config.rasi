@@ -1,17 +1,18 @@
 configuration{
     modi: "drun";
-    icon-theme: "Oranchelo";
+    icon-theme: "Papirus";
     show-icons: true;
-    terminal: "alacritty";
+    terminal: "kitty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "   Apps ";
-    display-run: "   Run ";
-    display-window: " 﩯  Window";
-    display-Network: " 󰤨  Network";
-    sidebar-mode: true;
+    sidebar-mode: false;
+
+    ml-row-up: "Control+k";
+    ml-row-down: "Control+j";
+    me-accept-entry: "MousePrimary";
+    me-select-entry: "MouseSecondary";
 }
 
 @theme "catppuccin-mocha.rasi"

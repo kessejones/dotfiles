@@ -1,25 +1,53 @@
 * {
-    bg-col:  #1e1e2e;
-    bg-col-light: #1e1e2e;
-    border-col: #89b4fa;
-    selected-col: #1e1e2e;
-    blue: #89b4fa;
-    fg-col: #cdd6f4;
-    fg-col2: #f38ba8;
-    grey: #6c7086;
+    color-base: #1e1e2e;
+    color-mantle: #181825;
+    color-surface0: #313244;
+    color-surface1: #45475a;
+    color-surface2: #585b70;
+    color-overlay0: #6c7086;
+    color-overlay1: #7f849c;
+    color-overlay2: #9399b2;
+    color-subtext0: #a6adc8;
+    color-subtext1: #bac2de;
+    color-text: #cdd6f4;
+    color-lavender: #b4befe;
+    color-blue: #89b4fa;
+    color-sapphire: #74c6ec;
+    color-sky: #89dceb;
+    color-teal: #94e2d5;
+    color-green: #a6e3a1;
+    color-yellow: #f9e2af;
+    color-peach: #fab387;
+    color-maroon: #eba0ac;
+    color-red: #f38ba8;
+    color-mauve: #cba6f7;
+    color-pink: #f5c2e7;
+    color-flamingo: #f2cdcd;
+    color-rosewater: #f4e0dc;
 
-    width: 600;
-    font: "JetBrainsMono Nerd Font 14";
+    bg-col: @color-base;
+    bg-col-light: @color-base;
+    border-col: @color-blue;
+    selected-col: @color-base;
+    fg-col: @color-text;
+    fg-col2: @color-red;
+
+    width: 600px;
+    font: "JetBrainsMono Nerd Font 12";
+
+    border-radius: 4px;
+    border-xd: 3px;
+    border-sm: 1px;
 }
 
-element-text, element-icon , mode-switcher {
+element-text, element-icon, mode-switcher {
     background-color: inherit;
     text-color:       inherit;
 }
 
 window {
     height: 360px;
-    border: 3px;
+    border: @border-xd;
     border-color: @border-col;
     background-color: @bg-col;
     border-radius: 12px;
@@ -30,45 +58,35 @@ mainbox {
 }
 
 inputbar {
-    children: [prompt,entry];
+    children: [entry];
     background-color: @bg-col;
-    border-radius: 5px;
+    border-radius: @border-radius;
     padding: 2px;
 }
 
-prompt {
-    background-color: @blue;
-    padding: 6px;
-    text-color: @bg-col;
-    border-radius: 3px;
-    margin: 20px 0px 0px 20px;
-}
-
-textbox-prompt-colon {
-    expand: false;
-    str: ":";
-}
-
 entry {
-    padding: 6px;
-    margin: 20px 0px 0px 10px;
+    padding: 10px;
+    margin: 20px 20px 0px 20px;
     text-color: @fg-col;
-    background-color: @bg-col;
+    background-color: @color-mantle;
+    border-radius: @border-radius;
+    border-color: @color-surface0;
+    border: @border-sm;
 }
 
 listview {
     border: 0px 0px 0px;
     padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
-    columns: 2;
+    margin: 10px 20px 10px 20px;
+    columns: 1;
     lines: 5;
     background-color: @bg-col;
 }
 
 element {
-    padding: 5px;
+    padding: 10px;
     background-color: @bg-col;
-    text-color: @fg-col  ;
+    text-color: @fg-col;
 }
 
 element-icon {
@@ -76,24 +94,27 @@ element-icon {
 }
 
 element selected {
-    background-color:  @selected-col ;
-    text-color: @fg-col2  ;
+    background-color: @color-mantle;
+    text-color: @fg-col2;
+    border-radius: @border-radius;
+    border: @border-sm;
+    border-color: @color-blue;
 }
 
 mode-switcher {
     spacing: 0;
-  }
+}
 
 button {
     padding: 10px;
     background-color: @bg-col-light;
-    text-color: @grey;
+    text-color: @color-overlay0;
     vertical-align: 0.5; 
     horizontal-align: 0.5;
 }
 
 button selected {
   background-color: @bg-col;
-  text-color: @blue;
+  text-color: @color-blue;
 }
 
