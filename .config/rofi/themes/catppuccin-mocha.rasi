@@ -118,3 +118,7 @@ button selected {
   text-color: @color-blue;
 }
 
+textbox {
+    background-color: @bg-col;
+    text-color: @color-overlay0;
+}
