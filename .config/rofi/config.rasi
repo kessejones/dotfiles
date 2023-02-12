@@ -20,4 +20,8 @@ configuration {
     kb-row-down: "Control+j,Control+n,Down";
 }
 
+error-message { 
+    expand: false;
+}
+
 @theme "catppuccin-mocha.rasi"
