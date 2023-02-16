@@ -20,6 +20,8 @@ in {
 
   programs.go.enable = true;
 
+  programs.nnn.enable = true;
+
   home.packages = with pkgs; [
     nixgl.auto.nixGLDefault
 
@@ -27,6 +29,7 @@ in {
     btop
     exa
     unzip
+    gnused
 
     # setup requirements
     fish
@@ -46,6 +49,7 @@ in {
     gnumake
     php
     php.packages.composer
+    lua
     nodejs
 
     (nixGLWrap alacritty)
