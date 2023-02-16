@@ -93,6 +93,13 @@ function M.new(s)
             },
         },
     })
+
+    awesome.connect_signal("wibar::visibility", function(visible, screen)
+        if screen == s then
+            wibar.visible = visible
+        end
+    end)
+
     return wibar
 end
 

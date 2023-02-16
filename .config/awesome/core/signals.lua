@@ -45,6 +45,12 @@ client.connect_signal("focus", function(c)
     c.border_color = beautiful.border_focus
 end)
 
+client.connect_signal("unmanage", function(c)
+    if c.fullscreen then
+        awesome.emit_signal("wibar::visibility", true, c.screen)
+    end
+end)
+
 client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
 end)
@@ -55,6 +61,9 @@ end)
 
 client.connect_signal("property::fullscreen", function(c)
     window_rounded(c)
+
+    local wibar_visibility = not c.fullscreen
+    awesome.emit_signal("wibar::visibility", wibar_visibility, c.screen)
 end)
 
 client.connect_signal("property::floating", function(c)
