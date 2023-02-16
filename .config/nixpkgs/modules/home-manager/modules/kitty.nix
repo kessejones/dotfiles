@@ -11,4 +11,6 @@ in {
     enable = true;
     package = nixGLWrap pkgs.kitty;
   };
+
+  xdg.configFile."kitty/kitty.conf".enable = false;
 }
