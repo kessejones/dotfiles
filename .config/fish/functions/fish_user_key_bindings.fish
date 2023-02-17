@@ -1,5 +1,7 @@
 function fish_user_key_bindings
     # bind -M insert \cj _normal_mode
+    bind --erase -- \ct
+    bind --erase --mode insert -- \ct
 
     bind --user -M insert \ch _fzf_change_directory_home
     bind --user -M insert \cb '_bookmarks -m list'

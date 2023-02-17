@@ -16,5 +16,7 @@ alias ta "tmux -u new-session -A -s "
 alias tmain "ta main"
 alias d docker
 alias dc docker-compose
+alias p podman
+alias pc podman-compose
 
 alias ips "ip -c -br a"
