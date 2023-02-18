@@ -30,6 +30,8 @@ in {
     exa
     unzip
     gnused
+    fd
+    glow
 
     # setup requirements
     fish
