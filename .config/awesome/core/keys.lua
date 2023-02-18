@@ -4,6 +4,23 @@ local config = require("config")
 local default = require("default")
 local helper = require("helpers.ui")
 
+local ResizeOrientation = {
+    Horizontal = 0,
+    Vertical = 1,
+}
+
+local ResizeMode = {
+    Decrease = -1,
+    Increase = 1,
+}
+
+local Direction = {
+    Left = "left",
+    Up = "up",
+    Down = "down",
+    Right = "right",
+}
+
 local Modifiers = {
     Alt = "Mod1",
     Super = "Mod4",
@@ -42,7 +59,7 @@ local function key_move_to_tag()
 end
 
 local function focus_client_direction(dir)
-    if dir == "down" or dir == "up" then
+    if dir == Direction.Down or dir == Direction.Up then
         awful.client.focus.bydirection(dir)
         helper.move_cursor_to_window(client.focus)
         return
@@ -70,39 +87,46 @@ end
 
 local function move_client_direction(dir)
     local client_focused = client.focus
-    local screen_focused = awful.screen.focused()
 
     if client_focused.floating then
-        local step_y = screen_focused.geometry.height * 0.1
-        local step_x = screen_focused.geometry.width * 0.1
+        local value = 10
+        if dir == Direction.Down then
+            local screen_in_direction = client_focused.screen:get_next_in_direction(dir)
+            local screen = client_focused.screen
+            local limit = screen.geometry.y + screen.geometry.height - client_focused.height
+            if not screen_in_direction and client_focused.y + value > limit then
+                return
+            end
+            client_focused.y = client_focused.y + value
+        elseif dir == Direction.Up then
+            local point_y = 0
+            local screen_in_direction = client_focused.screen:get_next_in_direction(dir)
 
-        if dir == "down" then
-            if
-                client_focused.y + client_focused.height
-                < screen_focused.geometry.y + screen_focused.geometry.height
-            then
-                client_focused.y = client_focused.y + step_y
+            if not screen_in_direction and client_focused.y - value < point_y then
                 return
             end
-        elseif dir == "up" then
-            if client_focused.y > screen_focused.geometry.y then
-                client_focused.y = client_focused.y - step_y
+            client_focused.y = client_focused.y - value
+        elseif dir == Direction.Left then
+            local point_x = 0
+            local screen_in_direction = client_focused.screen:get_next_in_direction(dir)
+
+            if not screen_in_direction and client_focused.x - value < point_x then
                 return
             end
-        elseif dir == "left" then
-            if client_focused.x > screen_focused.geometry.x then
-                client_focused.x = client_focused.x - step_x
+            client_focused.x = client_focused.x - value
+        elseif dir == Direction.Right then
+            local screen_in_direction = client_focused.screen:get_next_in_direction(dir)
+            local screen = client_focused.screen
+            local limit = screen.geometry.x + screen.geometry.width - client_focused.width
+            if not screen_in_direction and client_focused.x + value > limit then
                 return
             end
-        elseif dir == "right" then
-            if client_focused.x + client_focused.width < screen_focused.geometry.x + screen_focused.geometry.width then
-                client_focused.x = client_focused.x + step_x
-                return
-            end
+            client_focused.x = client_focused.x + value
         end
+        return
     end
 
-    if dir == "down" or dir == "up" then
+    if dir == Direction.Down or dir == Direction.Up then
         awful.client.swap.bydirection(dir)
         gears.timer.delayed_call(function()
             helper.move_cursor_to_window(client.focus)
@@ -127,11 +151,9 @@ local function move_client_direction(dir)
     end)
 end
 
-local function resize_by_orientation(orientation, value)
+local function resize_by_orientation(orientation, mode)
     local focused = client.focus
-
     local screen_focused = awful.screen.focused()
-
     local tile_step = 0.05
     local current_tag = screen_focused.selected_tag
 
@@ -139,23 +161,35 @@ local function resize_by_orientation(orientation, value)
         return current_tag.layout ~= awful.layout.layouts[1]
     end
 
-    if orientation == "vertical" then
+    local grow_value = 10
+    if mode == ResizeMode.Decrease then
+        grow_value = -grow_value
+    end
+
+    if orientation == ResizeOrientation.Horizontal then
         if focused.floating then
-            local step = screen_focused.geometry.height * 0.1
-            focused.height = focused.height + (step * value)
-            return
+            local screen = focused.screen
+            local limit = screen.geometry.x + screen.geometry.width
+            if focused.x + focused.width + grow_value > limit then
+                return
+            end
+            focused.width = focused.width + grow_value
+        else
+            if layout_can_resize() then
+                awful.tag.incmwfact(tile_step * mode)
+            end
+        end
+    elseif orientation == ResizeOrientation.Vertical then
+        if focused.floating then
+            local screen = focused.screen
+            local limit = screen.geometry.y + screen.geometry.height
+            if focused.y + focused.height + grow_value > limit then
+                return
+            end
+            focused.height = focused.height + grow_value
         end
         if layout_can_resize() then
-            awful.client.incwfact(tile_step * value)
-        end
-    elseif orientation == "horizontal" then
-        if focused.floating then
-            local step = screen_focused.geometry.width * 0.1
-            focused.width = focused.width + (step * value)
-            return
-        end
-        if layout_can_resize() then
-            awful.tag.incmwfact(tile_step * value)
+            awful.client.incwfact(tile_step * mode)
         end
     end
 end
@@ -216,35 +250,35 @@ function M.get_global_keys()
                         { modKey },
                         "h",
                         function()
-                            resize_by_orientation("horizontal", -1)
+                            resize_by_orientation(ResizeOrientation.Horizontal, ResizeMode.Decrease)
                         end,
                     },
                     {
                         { modKey },
                         "l",
                         function()
-                            resize_by_orientation("horizontal", 1)
+                            resize_by_orientation(ResizeOrientation.Horizontal, ResizeMode.Increase)
                         end,
                     },
                     {
                         { modKey },
                         "j",
                         function()
-                            resize_by_orientation("vertical", -1)
+                            resize_by_orientation(ResizeOrientation.Vertical, ResizeMode.Increase)
                         end,
                     },
                     {
                         { modKey },
                         "k",
                         function()
-                            resize_by_orientation("vertical", 1)
+                            resize_by_orientation(ResizeOrientation.Vertical, ResizeMode.Decrease)
                         end,
                     },
                     {
                         { modKey },
                         "r",
                         function()
-                            awful.placement.restore()
+                            awful.placement.centered()
                         end,
                     },
                 },
@@ -331,28 +365,28 @@ function M.get_client_keys()
                         { modKey },
                         "h",
                         function()
-                            move_client_direction("left")
+                            move_client_direction(Direction.Left)
                         end,
                     },
                     {
                         { modKey },
                         "l",
                         function()
-                            move_client_direction("right")
+                            move_client_direction(Direction.Right)
                         end,
                     },
                     {
                         { modKey },
                         "j",
                         function()
-                            move_client_direction("down")
+                            move_client_direction(Direction.Down)
                         end,
                     },
                     {
                         { modKey },
                         "k",
                         function()
-                            move_client_direction("up")
+                            move_client_direction(Direction.Up)
                         end,
                     },
                     {
