@@ -6,6 +6,7 @@ function _build_dots
     echo "yabai $HOME/.config/yabai"
     echo "skhd $HOME/.config/skhd"
     echo "alacritty $HOME/.config/alacritty"
+    echo "kitty $HOME/.config/kitty"
     echo "tmux $HOME/.config/tmux"
 end
 
