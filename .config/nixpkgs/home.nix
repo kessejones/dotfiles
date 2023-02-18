@@ -39,6 +39,7 @@ in {
     ripgrep
     tree-sitter
     alejandra
+    stylua
 
     # Dev
     git
