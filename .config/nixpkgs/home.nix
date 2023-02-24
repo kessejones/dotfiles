@@ -57,7 +57,7 @@ in {
 
     (nixGLWrap alacritty)
 
-    (nixGLWrap firefox)
+    (nixGLWrap firefox-esr)
     (nixGLWrap librewolf)
 
     pkgs.nur.repos.wolfangaukang.vdhcoapp
