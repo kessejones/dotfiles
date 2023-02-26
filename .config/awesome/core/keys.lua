@@ -35,7 +35,7 @@ local M = {}
 M.Modifiers = Modifiers
 M.modKey = modKey
 
-local function key_move_to_tag()
+local function keys_move_client_to_tag()
     local keys = {}
 
     for i, name in ipairs(config.tags) do
@@ -146,12 +146,12 @@ local function move_client_direction(dir)
         end
 
         gears.timer.delayed_call(function()
-            helper.move_cursor_to_window(client.focus)
+            helper.move_cursor_to_window(client_focused, true)
         end)
     end)
 end
 
-local function resize_by_orientation(orientation, mode)
+local function resize_client_by_orientation(orientation, mode)
     local focused = client.focus
     local screen_focused = awful.screen.focused()
     local tile_step = 0.05
@@ -199,7 +199,27 @@ function M.get_global_keys()
         -- launcher
         awful.key({ modKey }, "d", function()
             awful.spawn(default.launcher)
-        end, { description = "show help", group = "awesome" }),
+        end, { description = "open launcher", group = "apps" }),
+
+        -- session
+        awful.key({ modKey }, "w", function()
+            awful.spawn("rofi -show p -modi p:rofi-power-menu")
+        end, { description = "session options", group = "session" }),
+
+        -- apps
+        awful.key({ modKey }, "b", function()
+            awful.spawn(default.webbrowser)
+        end, { description = "open default webbrowser", group = "apps" }),
+        awful.key({ modKey }, "e", function()
+            awful.spawn(default.filemanager)
+        end, { description = "open file manager", group = "apps" }),
+        -- standard program
+        awful.key({ modKey }, "Return", function()
+            awful.spawn(default.terminal)
+        end, { description = "open primary terminal (tmux)", group = "apps" }),
+        awful.key({ modKey }, ";", function()
+            awful.spawn(default.secondary_terminal)
+        end, { description = "open secondary terminal", group = "apps" }),
 
         -- layouts
         awful.key({ modKey }, "u", function()
@@ -209,29 +229,21 @@ function M.get_global_keys()
             awful.layout.inc(1, screen.screen)
         end, { description = "previous layout", group = "layout" }),
 
-        -- focus
+        -- client (focus by direction)
         awful.key({ modKey }, "h", function()
             focus_client_direction("left")
-        end, { description = "focus next by index", group = "client" }),
+        end, { description = "focus left window", group = "client" }),
         awful.key({ modKey }, "l", function()
             focus_client_direction("right")
-        end, { description = "focus next by index", group = "client" }),
+        end, { description = "focus right window", group = "client" }),
         awful.key({ modKey }, "j", function()
             focus_client_direction("down")
-        end, { description = "focus next by index", group = "client" }),
+        end, { description = "focus down window", group = "client" }),
         awful.key({ modKey }, "k", function()
             focus_client_direction("up")
-        end, { description = "focus previous by index", group = "client" }),
+        end, { description = "focus up window", group = "client" }),
 
-        -- standard program
-        awful.key({ modKey }, "Return", function()
-            awful.spawn(default.terminal)
-        end, { description = "open a terminal", group = "launcher" }),
-        awful.key({ modKey }, ";", function()
-            awful.spawn(default.secondary_terminal)
-        end, { description = "open a terminal", group = "launcher" }),
-
-        -- system
+        -- awesome
         awful.key(
             { modKey, Modifiers.Shift },
             "r",
@@ -240,7 +252,7 @@ function M.get_global_keys()
         ),
         awful.key({ modKey, Modifiers.Shift }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
-        -- resize
+        -- client (resize)
         awful.key(
             { modKey },
             "r",
@@ -250,28 +262,28 @@ function M.get_global_keys()
                         { modKey },
                         "h",
                         function()
-                            resize_by_orientation(ResizeOrientation.Horizontal, ResizeMode.Decrease)
+                            resize_client_by_orientation(ResizeOrientation.Horizontal, ResizeMode.Decrease)
                         end,
                     },
                     {
                         { modKey },
                         "l",
                         function()
-                            resize_by_orientation(ResizeOrientation.Horizontal, ResizeMode.Increase)
+                            resize_client_by_orientation(ResizeOrientation.Horizontal, ResizeMode.Increase)
                         end,
                     },
                     {
                         { modKey },
                         "j",
                         function()
-                            resize_by_orientation(ResizeOrientation.Vertical, ResizeMode.Increase)
+                            resize_client_by_orientation(ResizeOrientation.Vertical, ResizeMode.Increase)
                         end,
                     },
                     {
                         { modKey },
                         "k",
                         function()
-                            resize_by_orientation(ResizeOrientation.Vertical, ResizeMode.Decrease)
+                            resize_client_by_orientation(ResizeOrientation.Vertical, ResizeMode.Decrease)
                         end,
                     },
                     {
@@ -288,22 +300,17 @@ function M.get_global_keys()
             { description = "resize", group = "client" }
         ),
 
-        -- switch tags
+        -- tags (switch)
         awful.key({ modKey }, "p", function()
             local s = awful.screen.focused()
             awful.tag.viewprev(s)
         end, { description = "go to prev tag", group = "tags" }),
-
         awful.key({ modKey }, "n", function()
             local s = awful.screen.focused()
             awful.tag.viewnext(s)
         end, { description = "go to next tag", group = "tags" }),
 
-        awful.key({ modKey }, "w", function()
-            awful.spawn("rofi -show p -modi p:rofi-power-menu")
-        end, { description = "go to next tag", group = "tags" }),
-
-        -- volume
+        -- volume control
         awful.key({}, "XF86AudioMute", function()
             require("lib.pulseaudio").toggle_mute()
         end),
@@ -315,6 +322,7 @@ function M.get_global_keys()
         end)
     )
 
+    -- tags (focus by index)
     for i = 1, #config.tags do
         globalkeys = gears.table.join(
             globalkeys,
@@ -325,7 +333,7 @@ function M.get_global_keys()
                 if tag then
                     tag:view_only()
                 end
-            end, { description = "view tag #" .. i, group = "tag" })
+            end, { description = "switch to tag #" .. i, group = "tags" })
         )
     end
 
@@ -333,7 +341,7 @@ function M.get_global_keys()
 end
 
 function M.get_client_keys()
-    local keys_move_to_tag = key_move_to_tag()
+    local keys_move_to_tag = keys_move_client_to_tag()
 
     local keys = gears.table.join(
         awful.key({ modKey }, "g", function(c)
@@ -347,15 +355,15 @@ function M.get_client_keys()
             c.maximized = not c.maximized
             c:raise()
         end, { description = "toggle maximized", group = "client" }),
+        awful.key({ modKey }, "z", function(c)
+            c.floating = not c.floating
+        end, { description = "toggle floating", group = "client" }),
 
         awful.key({ modKey }, "q", function(c)
             c:kill()
         end, { description = "close", group = "client" }),
 
-        awful.key({ modKey }, "z", function(c)
-            c.floating = not c.floating
-        end, { description = "toggle floating", group = "client" }),
-
+        -- move client by direction
         awful.key(
             { modKey },
             "m",

@@ -31,6 +31,13 @@ function M.new()
                 awesome.quit()
             end,
         },
+        {
+            "Keys",
+            function()
+                local hotkeys_popup = require("awful.hotkeys_popup")
+                hotkeys_popup.show_help(nil, awful.screen.focused())
+            end,
+        },
     }
 
     local terminal_menu = {
@@ -50,6 +57,7 @@ function M.new()
         { "Internet", internet_menu },
         { "Files", default.filemanager },
     }
+    -- { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
 
     local main_menu = awful.menu({
         items = menu_items,
