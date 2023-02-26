@@ -126,9 +126,9 @@ function _ui.grouping_widget(w1, w2, dpi1)
     return container
 end
 
-function _ui.move_cursor_to_window(c)
+function _ui.move_cursor_to_window(c, force)
     if c then
-        if mouse.object_under_pointer() ~= c then
+        if mouse.object_under_pointer() ~= c or force then
             local geometry = c:geometry()
             mouse.coords({ x = geometry.x, y = geometry.y }, true)
         end
