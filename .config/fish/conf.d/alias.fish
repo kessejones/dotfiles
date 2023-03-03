@@ -1,5 +1,5 @@
 if type -q exa
-    alias ll "ls --long --group"
+    alias ll "exa --long --group"
     alias la "ll --all"
     alias lt "ll --tree"
     alias tree "lt"
