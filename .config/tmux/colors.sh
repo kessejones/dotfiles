@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 base="#1e1e2e"
 mantle="#181825"

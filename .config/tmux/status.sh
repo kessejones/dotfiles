@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 source ~/.config/tmux/functions.sh
 source ~/.config/tmux/colors.sh
