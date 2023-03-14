@@ -1,5 +1,5 @@
 #!/bin/sh
 
-set() {
+setg() {
     tmux set-option -g "$1" "$2"
 }
