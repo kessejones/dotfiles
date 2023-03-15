@@ -9,14 +9,32 @@ if type -q btop
     alias top btop
 end
 
-alias g git
-alias n nvim
-alias t tmux
-alias ta "tmux -u new-session -A -s "
-alias tmain "ta main"
-alias d docker
-alias dc docker-compose
-alias p podman
-alias pc podman-compose
+if type -q nvim
+    alias n nvim
+end
 
+if type -q tmux
+    alias t tmux
+    alias ta "tmux -u new-session -A -s "
+    alias tt "ta main"
+end
+
+if type -q docker
+    alias d docker
+    alias dc "docker compose"
+end
+
+if type -q docker-compose
+    alias dc docker-compose
+end
+
+if type -q podman
+    alias p podman
+end
+
+if type -q podman-compose
+    alias pc podman-compose
+end
+
+alias g git
 alias ips "ip -c -br a"
