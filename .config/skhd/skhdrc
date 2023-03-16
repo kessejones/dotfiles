@@ -14,7 +14,7 @@ alt - space : \
     yabai -m window --toggle float; \
     yabai -m window --toggle border
 
-alt - return : kitty --single-instance -d ~
+alt - return : kitty --single-instance -d ~ -e tmux -u new-session -A -s main
 alt - 0x2C : kitty --single-instance -d ~ -e fish
 
 # Full screen window or close
