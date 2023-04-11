@@ -19,4 +19,5 @@ brew install\
     exa\
     gnu-sed\
     tidy-html5\
-    gum
+    gum\
+    delta
