@@ -19,6 +19,10 @@
     line-numbers = true
     side-by-side = false
     file-modified-label = modified:
+    syntax-theme = catppuccin
+
+[interactive]
+    diffFilter = delta --color-only
 
 [alias]
     a = "!~/.scripts/git/git-add.sh"
