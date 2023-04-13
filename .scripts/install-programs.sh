@@ -20,4 +20,5 @@ brew install\
     gnu-sed\
     tidy-html5\
     gum\
-    delta
+    delta\
+    zoxide
