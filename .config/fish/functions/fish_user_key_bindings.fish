@@ -12,6 +12,7 @@ function fish_user_key_bindings
     bind --user -M insert \cg accept-autosuggestion execute
 
     bind --user -M insert \co '$EDITOR'
+    bind --user -M insert \cp __fish_toggle_private_mode
 
     set -g fish_key_bindings fish_vi_key_bindings
 end

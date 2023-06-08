@@ -22,7 +22,7 @@ function fish_default_mode_prompt --description 'Display vi prompt mode'
         end
     end
 
-    if test "$fish_private_mode" = "1"
+    if test -n "$fish_private_mode"
         _power_prompt --text=' 󰗹 ' --background="292c3c" --foreground="cdd6f4" --reset=$reset_color --bold
     end
 
