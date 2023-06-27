@@ -9,16 +9,16 @@ env:
 
 font:
   normal:
-    family: Hack Nerd Font
+    family: JetBrainsMono Nerd Font Mono
     style: Regular
   bold:
-    family: Hack Nerd Font
+    family: JetBrainsMono Nerd Font Mono
     style: Bold
   bold_italic:
-    family: Hack Nerd Font
+    family: JetBrainsMono Nerd Font Mono
     style: Bold Italic
   italic:
-    family: Hack Nerd Font
+    family: JetBrainsMono Nerd Font Mono
     style: Italic
   offset:
     x: 0
@@ -50,15 +50,6 @@ selection:
   save_to_clipboard: true
 
 live_config_reload: true
-
-shell:
-  program: tmux
-  args:
-    - -u # force UTF-8 in tmux
-    - new-session
-    - -A
-    - -s
-    - main
 
 key_bindings:
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
