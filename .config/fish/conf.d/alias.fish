@@ -38,3 +38,10 @@ end
 
 alias g git
 alias ips "ip -c -br a"
+
+switch (uname)
+    case Darwin
+        alias clip "reattach-to-user-namespace pbcopy"
+    case Linux
+        alias clip xclip
+end
