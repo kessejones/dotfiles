@@ -29,6 +29,7 @@ config.font_rules = {
     },
 }
 
+config.default_cwd = wezterm.home_dir
 config.window_decorations = 'RESIZE'
 config.front_end = "OpenGL"
 config.hide_tab_bar_if_only_one_tab = true
@@ -67,25 +68,33 @@ config.keys = {
     {
         key = 't',
         mods = 'LEADER',
-        action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+        action = wezterm.action.SpawnCommandInNewTab { cwd = wezterm.home_dir },
     },
     {
         key = "\\",
         mods = 'LEADER',
-        action = wezterm.action.SplitHorizontal {domain = 'CurrentPaneDomain'},
+        action = wezterm.action.SplitHorizontal { cwd = wezterm.home_dir },
     },
     {
         key = "'",
         mods = 'LEADER',
-        action = wezterm.action.SplitVertical {domain = 'CurrentPaneDomain'},
+        action = wezterm.action.SplitVertical { cwd = wezterm.home_dir },
     },
     {
         key = "m",
         mods = 'LEADER',
         action = wezterm.action.TogglePaneZoomState,
     },
-    { key = 'n', mods = 'LEADER', action = wezterm.action.ActivateTabRelative(1) },
-    { key = 'p', mods = 'LEADER', action = wezterm.action.ActivateTabRelative(-1) },
+    {
+        key = 'n',
+        mods = 'LEADER',
+        action = wezterm.action.ActivateTabRelative(1)
+    },
+    {
+        key = 'p',
+        mods = 'LEADER',
+        action = wezterm.action.ActivateTabRelative(-1)
+    },
 
     {
         key = "h",
@@ -193,7 +202,16 @@ config.keys = {
         mods = 'LEADER|CTRL',
         action = wezterm.action.AdjustPaneSize ({ 'Down', 5}),
     },
--- { mods = "LEADER|SHIFT", key = "L", action = wezterm.action({ AdjustPaneSize = { "Right", 5 } }) },
+    {
+        key = 'p',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.PasteFrom ('Clipboard'),
+    },
+    {
+        key = 'c',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.CopyTo ('Clipboard'),
+    },
     {
         key = ',',
         mods = 'LEADER',
