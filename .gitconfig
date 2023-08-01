@@ -56,6 +56,8 @@
     ca = commit --amend
     cu = reset --soft HEAD^
 
+    tr = "commit --allow-empty -m 'Trigger CI' -n"
+
     # push
     ps = push
     fp = push --force-with-lease
