@@ -1,0 +1,3 @@
+#!/bin/sh
+
+~/.scripts/git/git-check-unresolved-conflits.sh

@@ -5,6 +5,7 @@
 	excludesfile = ~/.gitignore_global
 	editor = nvim
     pager = delta
+    hooksPath = ~/.config/git/hooks
 
 [pull]
 	rebase = true
