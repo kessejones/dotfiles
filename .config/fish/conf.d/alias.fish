@@ -43,6 +43,8 @@ end
 alias g git
 alias ips "ip -c -br a"
 
+alias ze "zellij attach main || zellij --session main"
+
 switch (uname)
     case Darwin
         alias clip "reattach-to-user-namespace pbcopy"
