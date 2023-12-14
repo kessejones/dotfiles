@@ -22,3 +22,7 @@ brew install\
     gum\
     delta\
     zoxide
+
+# utils for kafka
+brew tap birdayz/kaf
+brew install kaf
