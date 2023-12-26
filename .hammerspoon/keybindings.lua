@@ -72,7 +72,7 @@ hs.hotkey.bind({ config.modkey }, "l", function()
             hs.spaces.gotoSpace(space_id)
         end
     end
-    -- mouse_to_focused_window()
+    mouse_to_focused_window()
 end)
 
 hs.hotkey.bind({ config.modkey }, "h", function()
@@ -84,12 +84,10 @@ hs.hotkey.bind({ config.modkey }, "h", function()
         local screen = cur_screen:toEast()
         local space_id = hs.spaces.activeSpaceOnScreen(screen)
         if space_id then
-            -- hs.spaces.gotoSpace(space_id)
-            mspaces.focusSpace(space_id)
-            -- mouse_to_focused_space()
+            hs.spaces.gotoSpace(space_id)
         end
     end
-    -- mouse_to_focused_window()
+    mouse_to_focused_window()
 end)
 
 hs.hotkey.bind({ config.modkey }, "k", function()
@@ -133,6 +131,17 @@ hs.hotkey.bind({ config.modkey }, "p", function()
         hs.spaces.gotoSpace(space_id)
     end
 end)
+
+for i = 0, 9, 1 do
+    hs.hotkey.bind({ config.modkey }, tostring(i), function()
+        local screen = current_screen()
+        local spaces = hs.spaces.spacesForScreen(screen)
+        local space_id = spaces[i]
+        if space_id then
+            hs.spaces.gotoSpace(space_id)
+        end
+    end)
+end
 
 hs.hotkey.bind({ config.modkey }, "t", function()
     local wins = hs.window.filter.new():setCurrentSpace(true):getWindows()
