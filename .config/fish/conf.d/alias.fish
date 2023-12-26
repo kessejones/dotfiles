@@ -41,7 +41,6 @@ if type -q podman-compose
 end
 
 alias g git
-alias ips "ip -c -br a"
 
 alias ze "zellij attach main || zellij --session main"
 
@@ -50,4 +49,5 @@ switch (uname)
         alias clip "reattach-to-user-namespace pbcopy"
     case Linux
         alias clip xclip
+        alias ips "ip -c -br a"
 end
