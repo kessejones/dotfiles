@@ -41,8 +41,8 @@ keybinds clear-defaults=true {
         bind "n" "Tab" { MovePane; }
         bind "p" { MovePaneBackwards; }
         bind "h" "Left" { MovePane "Left"; }
+        bind "l" "Right" { MovePane "Right"; }
         bind "j" "Down" { MovePane "Down"; }
-        bind "k" "Up" { MovePane "Up"; }
         bind "k" "Up" { MovePane "Up"; }
     }
     tab {
