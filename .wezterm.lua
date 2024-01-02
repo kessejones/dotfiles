@@ -8,40 +8,25 @@ end
 
 config.check_for_updates = false
 config.color_scheme = 'Catppuccin Mocha'
-config.font_size = 14.0
-config.font = wezterm.font("JetBrainsMono Nerd Font", {weight = "Medium", stretch = 'Normal', style = "Normal"})
+config.font = wezterm.font("JetBrainsMono Nerd Font")
+if wezterm.target_triple:match("linux") then
+    config.font_size = 10.0
+else
+end
+
 config.bold_brightens_ansi_colors = true
-config.use_cap_height_to_scale_fallback_fonts = true
-config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
-config.font_rules = {
-    {
-        italic = true,
-        font = wezterm.font("JetBrainsMono Nerd Font", {weight="Medium", stretch="Normal", style="Italic"}),
-    },
-    {
-        intensity = "Bold",
-        font = wezterm.font("JetBrainsMono Nerd Font", {weight="Bold", stretch="Normal", style="Normal"}),
-    },
-    {
-        intensity = "Bold",
-        italic = true,
-        font = wezterm.font("JetBrainsMono Nerd Font", {weight="Bold", stretch="Normal", style="Italic"})
-    },
-}
 
 config.default_cwd = wezterm.home_dir
-config.window_decorations = 'RESIZE'
-config.front_end = "OpenGL"
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.default_cursor_style = 'SteadyBar'
 config.enable_scroll_bar = false
-config.freetype_load_target = "HorizontalLcd"
+config.window_decorations = 'NONE'
 config.window_padding = {
-  left = 5,
+  left = 3,
   right = 0,
-  top = 5,
+  top = 3,
   bottom = 0,
 }
 
@@ -68,33 +53,25 @@ config.keys = {
     {
         key = 't',
         mods = 'LEADER',
-        action = wezterm.action.SpawnCommandInNewTab { cwd = wezterm.home_dir },
+        action = wezterm.action.SpawnTab 'CurrentPaneDomain',
     },
     {
         key = "\\",
         mods = 'LEADER',
-        action = wezterm.action.SplitHorizontal { cwd = wezterm.home_dir },
+        action = wezterm.action.SplitHorizontal {domain = 'CurrentPaneDomain'},
     },
     {
         key = "'",
         mods = 'LEADER',
-        action = wezterm.action.SplitVertical { cwd = wezterm.home_dir },
+        action = wezterm.action.SplitVertical {domain = 'CurrentPaneDomain'},
     },
     {
         key = "m",
         mods = 'LEADER',
         action = wezterm.action.TogglePaneZoomState,
     },
-    {
-        key = 'n',
-        mods = 'LEADER',
-        action = wezterm.action.ActivateTabRelative(1)
-    },
-    {
-        key = 'p',
-        mods = 'LEADER',
-        action = wezterm.action.ActivateTabRelative(-1)
-    },
+    { key = 'n', mods = 'LEADER', action = wezterm.action.ActivateTabRelative(1) },
+    { key = 'p', mods = 'LEADER', action = wezterm.action.ActivateTabRelative(-1) },
 
     {
         key = "h",
@@ -203,14 +180,14 @@ config.keys = {
         action = wezterm.action.AdjustPaneSize ({ 'Down', 5}),
     },
     {
-        key = 'p',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.PasteFrom ('Clipboard'),
-    },
-    {
         key = 'c',
         mods = 'CTRL|SHIFT',
-        action = wezterm.action.CopyTo ('Clipboard'),
+        action = wezterm.action.CopyTo('Clipboard'),
+    },
+    {
+        key = 'v',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.PasteFrom('Clipboard'),
     },
     {
         key = ',',
