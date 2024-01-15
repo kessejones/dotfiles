@@ -150,6 +150,11 @@ hs.hotkey.bind({ config.modkey }, "t", function()
     hs.window.tiling.tileWindows(wins, rect)
 end)
 
+hs.hotkey.bind({ config.modkey }, "q", function()
+    local win = hs.window.focusedWindow()
+    win:close()
+end)
+
 -- hs.hotkey.bind({config.modkey}, "m", function()
 -- local modal = hs.hotkey.modal.new({config.modkey}, "m")
 
