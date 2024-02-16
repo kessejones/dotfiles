@@ -66,6 +66,7 @@ keybinds clear-defaults=true {
     }
     scroll {
         bind "Ctrl s" { SwitchToMode "Normal"; }
+        bind "Enter" { SwitchToMode "Normal"; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
         bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
@@ -126,6 +127,7 @@ keybinds clear-defaults=true {
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
         bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
         bind "n" { GoToNextTab; SwitchToMode "Normal"; }
+        bind "S" { SwitchToMode "Scroll"; }
 
         bind "y" { ToggleTab; }
         bind "1" { GoToTab 1; SwitchToMode "Normal"; }
@@ -207,7 +209,7 @@ keybinds clear-defaults=true {
     shared_except "move" "locked" {
         //bind "Ctrl h" { SwitchToMode "Move"; }
     }
-    shared_except "tmux" "locked" {
+    shared_except "tmux" "locked" "scroll" {
         bind "Ctrl t" { SwitchToMode "Tmux"; }
     }
 }
