@@ -40,9 +40,19 @@ if type -q podman-compose
     alias pc podman-compose
 end
 
+if type -q lazydocker
+    alias lz lazydocker
+end
+
+if type -q bat
+    alias b bat
+end
+
 alias g git
 
-alias ze "zellij attach main || zellij --session main"
+if type -q zellij
+    alias ze "zellij attach main || zellij --session main"
+end
 
 switch (uname)
     case Darwin
