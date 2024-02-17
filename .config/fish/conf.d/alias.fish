@@ -34,14 +34,12 @@ end
 
 if type -q podman
     alias p podman
+    alias pc "podman compose"
 end
 
-if type -q podman-compose
-    alias pc podman-compose
-end
 
 if type -q lazydocker
-    alias lz lazydocker
+    alias lz __lazydocker # run docker ou podman
 end
 
 if type -q bat
