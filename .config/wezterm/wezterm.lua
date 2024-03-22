@@ -40,6 +40,7 @@ else
     config.font_size = 14.0
 end
 
+config.freetype_load_target = "HorizontalLcd"
 config.bold_brightens_ansi_colors = true
 -- config.max_fps = 120
 config.default_cwd = wezterm.home_dir
