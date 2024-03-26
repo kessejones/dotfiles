@@ -29,7 +29,6 @@ config.check_for_updates = false
 config.color_scheme = "Catppuccin Mocha"
 config.colors = {
     background = "#1E1E2F",
-    -- background = "#0f0f0f",
 }
 
 config.font = wezterm.font("JetBrainsMono Nerd Font", { stretch = "Expanded", weight = "DemiBold" })
@@ -40,6 +39,7 @@ else
     config.font_size = 14.0
 end
 
+config.window_close_confirmation = "NeverPrompt"
 config.freetype_load_target = "HorizontalLcd"
 config.bold_brightens_ansi_colors = true
 -- config.max_fps = 120
@@ -47,9 +47,8 @@ config.default_cwd = wezterm.home_dir
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
--- config.default_cursor_style = 'SteadyBar'
-config.default_cursor_style = "BlinkingBar" -- testing
-config.cursor_blink_rate = 500
+config.default_cursor_style = "BlinkingBlock"
+config.cursor_blink_rate = 400
 config.animation_fps = 1
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
@@ -57,9 +56,9 @@ config.enable_scroll_bar = false
 config.window_decorations = "RESIZE"
 
 config.window_padding = {
-    left = 2,
+    left = 5,
     right = 0,
-    top = 2,
+    top = 5,
     bottom = 0,
 }
 
