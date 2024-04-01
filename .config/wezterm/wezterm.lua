@@ -31,7 +31,10 @@ config.colors = {
     background = "#1E1E2F",
 }
 
-config.font = wezterm.font("JetBrainsMono Nerd Font", { stretch = "Expanded", weight = "DemiBold" })
+config.font = wezterm.font_with_fallback({
+    { family = "JetBrainsMono Nerd Font", weight = "Medium" },
+    { family = "Meslo LG S", scale = 1.3 },
+})
 
 if wezterm.target_triple:match("linux") then
     config.font_size = 10.0
@@ -42,7 +45,6 @@ end
 config.window_close_confirmation = "NeverPrompt"
 config.freetype_load_target = "HorizontalLcd"
 config.bold_brightens_ansi_colors = true
--- config.max_fps = 120
 config.default_cwd = wezterm.home_dir
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
