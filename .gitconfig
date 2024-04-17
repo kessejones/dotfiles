@@ -37,8 +37,10 @@
     r = "!~/.scripts/git/git-rebase.sh"
     m = "!~/.scripts/git/git-merge.sh"
 
+    ll = log --abbrev-commit --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
     lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     ls = "!~/.scripts/git/git-show.sh"
+    ld = "!~/.scripts/git/git-log-diff.sh"
 
     # add
     aa = "add --all"
