@@ -14,6 +14,7 @@ function _fzf_search_history --description "Search command history. Replace the 
             # --preview="echo -- {4..} | fish_indent --ansi" \
             # --preview-window="bottom:3:wrap" \
             --bind "ctrl-space:execute(echo 'REPLACE │ {}')+abort,enter:execute(echo 'RUN │ {}')+abort" \
+            --bind "ctrl-f:execute(echo 'REPLACE │ {}')+abort,enter:execute(echo 'RUN │ {}')+abort" \
             $fzf_history_opts |
         string collect
     )
