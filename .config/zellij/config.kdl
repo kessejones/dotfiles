@@ -125,9 +125,21 @@ keybinds clear-defaults=true {
 
         bind "d" { Detach; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
+
         bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
         bind "n" { GoToNextTab; SwitchToMode "Normal"; }
+
+        bind "P" { MoveTab "Left"; }
+        bind "N" { MoveTab "Right"; }
+
         bind "S" { SwitchToMode "Scroll"; }
+
+        bind "f" {
+            LaunchPlugin "filepicker" {
+                floating true
+                close_on_selection true
+            };
+        }
 
         bind "y" { ToggleTab; }
         bind "1" { GoToTab 1; SwitchToMode "Normal"; }
@@ -225,7 +237,7 @@ plugins {
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
 // eg. when terminal window with an active zellij session is closed
 // Options:
-//   - detach (Default)
+//   - detach ()
 //   - quit
 //
 // on_force_close "quit"

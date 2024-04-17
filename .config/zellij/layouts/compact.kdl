@@ -1,0 +1,33 @@
+layout {
+    pane
+
+    pane size=1 borderless=true {
+        plugin location="file:~/.local/share/zjstatus.wasm" {
+            format_left  "{mode} #[fg=blue,bold]{session} {tabs}"
+            format_right "{datetime}"
+            format_space ""
+
+            border_enabled  "false"
+            border_char     "─"
+            border_format   "#[fg=#white]{char}"
+            border_position "top"
+
+            hide_frame_for_single_pane "false"
+
+            mode_normal  "#[fg=blue]●"
+            mode_pane    "#[fg=yellow]▢"
+            mode_scroll  "#[fg=yellow]▮"
+            mode_search  "#[fg=yellow]∕"
+            mode_session "#[fg=yellow]▤"
+            mode_tab     "#[fg=yellow]◆"
+            mode_tmux    "#[fg=yellow]▪"
+
+            tab_normal   "#[fg=#6C7086] {name} "
+            tab_active   "#[fg=#9399B2,bold] {name} "
+
+            datetime          "{format} "
+            datetime_format   "%A, %d %b %Y %H:%M"
+            datetime_timezone "America/Sao_Paulo"
+        }
+    }
+}
