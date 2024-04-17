@@ -3,7 +3,7 @@ layout {
 
     pane size=1 borderless=true {
         plugin location="file:~/.local/share/zjstatus.wasm" {
-            format_left  "{mode} #[fg=blue,bold]{session} {tabs}"
+            format_left  " {mode} #[fg=blue,bold]{session} {tabs}"
             format_right "{datetime}"
             format_space ""
 
