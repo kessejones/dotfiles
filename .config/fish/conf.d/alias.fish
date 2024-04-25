@@ -1,7 +1,7 @@
-if type -q exa
-    alias ll "exa --long --group"
+if type -q eza
+    alias ll "eza --long --group"
     alias la "ll --all"
-    alias lt "exa --icons --tree"
+    alias lt "eza --icons --tree"
     alias lt2 "lt -L 2"
     alias lt3 "lt -L 3"
     alias lt4 "lt -L 4"
