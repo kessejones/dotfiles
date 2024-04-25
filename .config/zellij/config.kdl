@@ -129,8 +129,8 @@ keybinds clear-defaults=true {
         bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
         bind "n" { GoToNextTab; SwitchToMode "Normal"; }
 
-        bind "P" { MoveTab "Left"; }
-        bind "N" { MoveTab "Right"; }
+        bind "Ctrl p" { MoveTab "Left"; }
+        bind "Ctrl n" { MoveTab "Right"; }
 
         bind "S" { SwitchToMode "Scroll"; }
 
