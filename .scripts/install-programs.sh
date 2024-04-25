@@ -16,7 +16,7 @@ brew install\
     btop\
     tree-sitter\
     ripgrep\
-    exa\
+    eza\
     gnu-sed\
     tidy-html5\
     gum\
