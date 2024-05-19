@@ -21,6 +21,7 @@
     side-by-side = true
     file-modified-label = modified:
     syntax-theme = catppuccin
+    dark = true
 
 [interactive]
     diffFilter = delta --color-only
