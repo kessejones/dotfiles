@@ -2,7 +2,7 @@
 
 args=$@
 if [ -z "$args" ]; then
-    args=$(git branch | cut -c 3- | gum choose --limit 1)
+    args=$(git branch -a | grep -v HEAD | cut -c 3- | gum choose --limit 1)
     [ -z "$args" ] && exit 1
 fi
 
