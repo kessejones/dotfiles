@@ -11,6 +11,10 @@ function fish_user_key_bindings
     bind --user -M insert \cf accept-autosuggestion
     bind --user -M insert \cg accept-autosuggestion execute
     bind --user -M insert \cr _fzf_search_history
+    bind --user -M insert \cgl _fzf_search_git_log
+
+    bind --user -M default gl end-of-line
+    bind --user -M default gh beginning-of-line
 
     bind --user -M insert \co '$EDITOR'
     bind --user -M insert \cp __fish_toggle_private_mode

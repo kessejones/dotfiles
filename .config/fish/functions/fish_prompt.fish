@@ -1,19 +1,25 @@
 function fish_prompt
     set -l cwd (basename (prompt_pwd))
-    set -g __fish_git_prompt_showuntrackedfiles true
-    set -g __fish_git_prompt_showdirtystate true
-    set -g __fish_git_prompt_showupstream true
-    set -g __fish_git_prompt_char_upstream_equal ''
+    set -l git_info (string trim (fish_git_prompt) --chars " ()")
 
-    set -l git_info (fish_git_prompt)
-
+    echo -n (__power_text_rounded --text="$cwd" --background=$fish_color_blue --foreground=$fish_color_base --reset=normal --bold)
     if test -n "$git_info"
-        _power_prompt --text="$cwd " --background=$fish_color_cwd_bg --foreground=$fish_color_cwd_fg --reset=$fish_color_git_bg
-        _power_prompt --text="$git_info" --background=$fish_color_git_bg --foreground=$fish_color_git_fg --reset=normal
-    else
-        _power_prompt --text="$cwd " --background=$fish_color_cwd_bg --foreground=$fish_color_cwd_fg --reset=normal
+        echo -n ' '
+        echo -n (__power_text_rounded --text="$git_info" --background=$fish_color_mauve --foreground=$fish_color_base --reset=normal --bold)
     end
 
-    echo -n -s ' ' $normal
+    set -l mode_color (set_color normal)
+    switch $fish_bind_mode
+        case default
+            set mode_color (set_color $fish_color_red)
+        case insert
+            set mode_color (set_color $fish_color_subtext1)
+        case visual
+            set mode_color (set_color $fish_color_mauve)
+    end
+
+    echo -n "$mode_color |>"
+    set_color normal
+    echo -n -s ' '
 end
 
