@@ -3,7 +3,7 @@ function __power_text_rounded
         or return
 
     set -l text "$_flag_t"
-    if test -n "$_flag_o"
+    if set -ql _flag_o
         set text (string join '' -- (set_color --bold $_flag_f) $text)
     else
         set text (string join '' -- (set_color $_flag_f) $text)

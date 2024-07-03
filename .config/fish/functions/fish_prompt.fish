@@ -5,7 +5,8 @@ function fish_prompt
     echo -n (__power_text_rounded --text="$cwd" --background=$fish_color_blue --foreground=$fish_color_base --reset=normal --bold)
     if test -n "$git_info"
         echo -n ' '
-        echo -n (__power_text_rounded --text="$git_info" --background=$fish_color_mauve --foreground=$fish_color_base --reset=normal --bold)
+
+        echo -n (__power_text_rounded --text=" $git_info" --background=$fish_color_mauve --foreground=$fish_color_base --reset=normal --bold)
     end
 
     set -l mode_color (set_color normal)
