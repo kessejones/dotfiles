@@ -25,6 +25,7 @@ wezterm.on("update-right-status", function(window, pane)
     window:set_right_status(name or "")
 end)
 
+config.term = "wezterm"
 config.check_for_updates = false
 config.color_scheme = "Catppuccin Mocha"
 config.colors = {
@@ -42,8 +43,13 @@ else
     config.font_size = 14.0
 end
 
+config.underline_thickness = "2pt"
+config.underline_position = -6
+-- config.cursor_thickness = 4
+
+config.allow_square_glyphs_to_overflow_width = "Always"
 config.window_close_confirmation = "NeverPrompt"
-config.freetype_load_target = "HorizontalLcd"
+-- config.freetype_load_target = "HorizontalLcd"
 config.bold_brightens_ansi_colors = true
 config.default_cwd = wezterm.home_dir
 config.hide_tab_bar_if_only_one_tab = true

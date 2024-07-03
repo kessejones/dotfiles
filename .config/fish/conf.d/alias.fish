@@ -52,6 +52,10 @@ if type -q zellij
     alias ze "zellij attach main || zellij --session main"
 end
 
+if type -q yazi
+    alias y yazi
+end
+
 switch (uname)
     case Darwin
         alias clip "reattach-to-user-namespace pbcopy"

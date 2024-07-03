@@ -104,33 +104,33 @@ hs.hotkey.bind({ config.modkey }, "z", function()
     toggle_window_full_screen()
 end)
 
-hs.hotkey.bind({ config.modkey }, "n", function()
-    local screen = current_screen()
-    local spaces = hs.spaces.spacesForScreen(screen)
-    local index = index_by_space()
-    if not index then
-        return
-    end
-    local next_index = index + 1
-    local space_id = spaces[next_index]
-    if space_id then
-        hs.spaces.gotoSpace(space_id)
-    end
-end)
-
-hs.hotkey.bind({ config.modkey }, "p", function()
-    local screen = current_screen()
-    local spaces = hs.spaces.spacesForScreen(screen)
-    local index = index_by_space()
-    if not index then
-        return
-    end
-    local prev_index = index - 1
-    local space_id = spaces[prev_index]
-    if space_id then
-        hs.spaces.gotoSpace(space_id)
-    end
-end)
+-- hs.hotkey.bind({ config.modkey }, "n", function()
+--     local screen = current_screen()
+--     local spaces = hs.spaces.spacesForScreen(screen)
+--     local index = index_by_space()
+--     if not index then
+--         return
+--     end
+--     local next_index = index + 1
+--     local space_id = spaces[next_index]
+--     if space_id then
+--         hs.spaces.gotoSpace(space_id)
+--     end
+-- end)
+--
+-- hs.hotkey.bind({ config.modkey }, "p", function()
+--     local screen = current_screen()
+--     local spaces = hs.spaces.spacesForScreen(screen)
+--     local index = index_by_space()
+--     if not index then
+--         return
+--     end
+--     local prev_index = index - 1
+--     local space_id = spaces[prev_index]
+--     if space_id then
+--         hs.spaces.gotoSpace(space_id)
+--     end
+-- end)
 
 for i = 0, 9, 1 do
     hs.hotkey.bind({ config.modkey }, tostring(i), function()

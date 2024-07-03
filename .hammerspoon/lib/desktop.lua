@@ -1,4 +1,4 @@
-local spaces = require("hs._asm.undocumented.spaces")
+local spaces = require("hs._asm.undocumented.spaces.init")
 
 local config = {
     spacesDelay = 0.3,

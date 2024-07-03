@@ -8,3 +8,5 @@ export GUM_FILTER_CURSOR_PREFIX="[ ] "
 export GUM_FILTER_INDICATOR="> "
 
 export GUM_INPUT_PROMPT="> "
+export GUM_CHOOSE_SHOW_HELP="false"
+export GUM_CHOOSE_HEADER_HEIGHT="0"

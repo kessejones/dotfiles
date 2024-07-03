@@ -13,8 +13,10 @@ function _fzf_search_history --description "Search command history. Replace the 
             # preview current command using fish_ident in a window at the bottom 3 lines tall
             # --preview="echo -- {4..} | fish_indent --ansi" \
             # --preview-window="bottom:3:wrap" \
-            --bind "ctrl-space:execute(echo 'REPLACE │ {}')+abort,enter:execute(echo 'RUN │ {}')+abort" \
-            --bind "ctrl-f:execute(echo 'REPLACE │ {}')+abort,enter:execute(echo 'RUN │ {}')+abort" \
+            --bind "ctrl-space:execute(echo 'REPLACE │ {}')+abort" \
+            --bind "enter:execute(echo 'RUN │ {}')+abort" \
+            --bind "ctrl-f:execute(echo 'REPLACE │ {}')+abort" \
+            --bind "ctrl-y:execute(echo 'COPY │ {}')+abort" \
             $fzf_history_opts |
         string collect
     )
@@ -25,11 +27,14 @@ function _fzf_search_history --description "Search command history. Replace the 
         set command_selected $selected_parts[3]
         switch $selected_parts[1]
             case RUN
-                eval $command_selected
+                commandline --replace -- $command_selected
+                # eval $command_selected
             case REPLACE
                 commandline --replace -- $command_selected
+            case COPY
+                echo "$command_selected" | clip
         end 
     end
 
-    commandline --function repaint
+    # commandline --function repaint
 end
