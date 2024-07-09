@@ -13,6 +13,9 @@ in {
       fish
     ];
 
-    xdg.configFiles."fish".source = ../../fish;
+    xdg.configFiles."fish" = {
+      source = ../../fish;
+      recursive = true;
+    };
   };
 }
