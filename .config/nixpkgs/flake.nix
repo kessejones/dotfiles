@@ -6,7 +6,7 @@
 
   outputs = inputs @ {flake-utils, ...}:
     flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = (inputs.nixpkgs) {inherit system;};
+      pkgs = import (inputs.nixpkgs) {inherit system;};
     in {
       packages = {
         kitty = pkgs.stdenv.mkDerivation {
