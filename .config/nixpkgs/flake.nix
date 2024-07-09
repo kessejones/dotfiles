@@ -19,6 +19,19 @@
             runHook postInstall
           '';
         };
+
+        fish = pkgs.stdenv.mkDerivation {
+          name = "fish-dotfiles";
+          src = ../fish;
+          installPhase = ''
+            runHook preInstall
+
+            mkdir -p $out
+            cp -r $src/* $out/
+
+            runHook postInstall
+          '';
+        };
       };
     });
 }
