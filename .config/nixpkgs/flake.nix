@@ -11,7 +11,7 @@
       packages = {
         kitty = pkgs.stdenv.mkDerivation {
           name = "kitty-dotfiles";
-          src = ./.config/kitty;
+          src = ../kitty;
           installPhase = ''
             runHook preInstall
             mkdir -p $out
