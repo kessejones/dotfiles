@@ -8,6 +8,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import (inputs.nixpkgs) {inherit system;};
     in {
+      nixosModules.default = import ./modules;
       packages = {
         kitty = pkgs.stdenv.mkDerivation {
           name = "kitty-dotfiles";
