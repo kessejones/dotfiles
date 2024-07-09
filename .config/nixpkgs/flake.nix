@@ -1,18 +1,12 @@
 {
   inputs = {
-    utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
   };
 
-  outputs = {
-    nixpkgs,
-    utils,
-    ...
-  }:
-    utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {inherit system;};
-      in {
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      system = ["x86_64-linux" "aarch64-linux"];
+      perSystem = {pkgs, ...}: {
         packages = {
           kitty = pkgs.mkDerivation {
             src = ../kitty;
@@ -38,6 +32,6 @@
             '';
           };
         };
-      }
-    );
+      };
+    };
 }
