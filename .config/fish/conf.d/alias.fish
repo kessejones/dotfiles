@@ -1,6 +1,7 @@
 if type -q eza
-    alias ll "eza --long --group"
-    alias la "ll --all"
+    alias ls "eza --group-directories-first"
+    alias ll "eza --long --group --group-directories-first"
+    alias la "ll --all --group-directories-first"
     alias lt "eza --icons --tree"
     alias lt2 "lt -L 2"
     alias lt3 "lt -L 3"
