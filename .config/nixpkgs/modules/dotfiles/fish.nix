@@ -13,7 +13,7 @@ in {
       fish
     ];
 
-    xdg.configFiles."fish" = {
+    xdg.configFile."fish" = {
       source = ../../fish;
       recursive = true;
     };
