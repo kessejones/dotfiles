@@ -9,6 +9,6 @@
       pkgs = import (inputs.nixpkgs) {inherit system;};
     in {
       nixosModules.default = import ./modules;
-      overlays.default = import ./overlays;
+      overlay = import ./overlays;
     });
 }
