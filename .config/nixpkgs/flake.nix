@@ -1,37 +1,24 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-linux"];
-      perSystem = {pkgs, ...}: {
-        packages = {
-          kitty = pkgs.mkDerivation {
-            src = ../kitty;
-            installPhase = ''
-              runHook preInstall
-
-              mkdir -p $out
-              cp -r $src/* $out/
-
-              runHook postInstall
-            '';
-          };
-
-          wezterm = pkgs.mkDerivation {
-            src = ../wezterm;
-            installPhase = ''
-              runHook preInstall
-
-              mkdir -p $out
-              cp -r $src/* $out/
-
-              runHook postInstall
-            '';
-          };
+  outputs = inputs @ {flake-utils, ...}:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = (inputs.nixpkgs) {inherit system;};
+    in {
+      packages = {
+        kitty = pkgs.stdenv.mkDerivation {
+          name = "kitty-dotfiles";
+          src = ./.config/kitty;
+          installPhase = ''
+            runHook preInstall
+            mkdir -p $out
+            cp -r $src/* $out/
+            runHook postInstall
+          '';
         };
       };
-    };
+    });
 }
