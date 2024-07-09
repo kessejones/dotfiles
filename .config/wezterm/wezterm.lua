@@ -45,12 +45,9 @@ end
 
 config.underline_thickness = "2pt"
 config.underline_position = -6
--- config.cursor_thickness = 4
 
-config.allow_square_glyphs_to_overflow_width = "Always"
 config.window_close_confirmation = "NeverPrompt"
--- config.freetype_load_target = "HorizontalLcd"
-config.bold_brightens_ansi_colors = true
+config.bold_brightens_ansi_colors = false
 config.default_cwd = wezterm.home_dir
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
