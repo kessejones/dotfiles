@@ -9,30 +9,6 @@
       pkgs = import (inputs.nixpkgs) {inherit system;};
     in {
       nixosModules.default = import ./modules;
-      packages = {
-        kitty = pkgs.stdenv.mkDerivation {
-          name = "kitty-dotfiles";
-          src = ../kitty;
-          installPhase = ''
-            runHook preInstall
-            mkdir -p $out
-            cp -r $src/* $out/
-            runHook postInstall
-          '';
-        };
-
-        fish = pkgs.stdenv.mkDerivation {
-          name = "fish-dotfiles";
-          src = ../fish;
-          installPhase = ''
-            runHook preInstall
-
-            mkdir -p $out
-            cp -r $src/* $out/
-
-            runHook postInstall
-          '';
-        };
-      };
+      overlays.default = import ./overlays;
     });
 }

@@ -14,7 +14,7 @@ in {
     ];
 
     xdg.configFile."fish" = {
-      source = ../../fish;
+      source = config.lib.file.mkOutOfStoreSymlink pkgs.dotfiles-pkgs.fish;
       recursive = true;
     };
   };
