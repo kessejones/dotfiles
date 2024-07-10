@@ -9,6 +9,5 @@
       pkgs = import (inputs.nixpkgs) {inherit system;};
     in {
       nixosModules.default = import ./modules;
-      legacyPackages.dotfiles-pkgs = import ./default.nix {inherit pkgs;};
     });
 }
