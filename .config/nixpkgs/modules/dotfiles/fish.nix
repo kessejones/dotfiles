@@ -7,7 +7,9 @@ with lib; let
   cfg = config.dotfiles.fish;
   pkgs = import ../../pkgs;
 in {
-  options.dotfiles.fish = {enable = mkBoolOpt false;};
+  options.dotfiles.fish = {
+    enable = mkEnableOption "Fish dotfiles";
+  };
 
   config = mkIf cfg.enable {
     home-manager.home.packages = with pkgs; [
