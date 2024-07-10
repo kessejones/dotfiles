@@ -12,7 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home-manager.home.packages = with pkgs; [
+    home.packages = with pkgs; [
       fish
     ];
 
