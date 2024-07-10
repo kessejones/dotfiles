@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.modules.dotfiles.fish;
+  cfg = config.dotfiles.fish;
   pkgs = import ../../pkgs;
 in {
   options.dotfiles.fish = {enable = lib.mkBoolOpt false;};
