@@ -2,13 +2,14 @@
   config,
   lib,
   ...
-}: let
+}:
+with lib; let
   cfg = config.dotfiles.fish;
   pkgs = import ../../pkgs;
 in {
-  options.dotfiles.fish = {enable = lib.mkBoolOpt false;};
+  options.dotfiles.fish = {enable = mkBoolOpt false;};
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     home-manager.home.packages = with pkgs; [
       fish
     ];
