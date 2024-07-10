@@ -1,3 +1,3 @@
 {...}: {
-  import = [./dotfiles];
+  imports = [./dotfiles];
 }
