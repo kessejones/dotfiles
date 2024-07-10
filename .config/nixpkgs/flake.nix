@@ -4,10 +4,8 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = inputs @ {flake-utils, ...}:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import (inputs.nixpkgs) {inherit system;};
-    in {
+  outputs = {flake-utils, ...}:
+    flake-utils.lib.eachDefaultSystem (system: {
       nixosModules.default = import ./modules;
     });
 }

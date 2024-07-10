@@ -6,7 +6,7 @@
   cfg = config.modules.dotfiles.fish;
   pkgs = import ../../pkgs;
 in {
-  options.modules.dotfiles.fish = {enable = lib.mkBoolOpt false;};
+  options.dotfiles.fish = {enable = lib.mkBoolOpt false;};
 
   config = lib.mkIf cfg.enable {
     home-manager.home.packages = with pkgs; [
