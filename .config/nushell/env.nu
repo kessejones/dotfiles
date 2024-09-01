@@ -1,52 +1,58 @@
-$env.STARSHIP_SHELL = "nu"
+use modules/prompt.nu rounded
+use modules/git-prompt.nu
 
 let base_color = "#1e1e2e"
 let prompt_color = "#313244"
 
+let catppuccin_blue = "#89b4fa"
+let catppuccin_base = "#1e1e2e"
+let catppuccin_lavender = "#b4befe"
+let catppuccin_mauve = "#cba6f7"
+
 def create_left_prompt [] {
-    let home =  $nu.home-path
+  let home =  $nu.home-path
 
-    let dir = (
-        if ($env.PWD == $home) {
-            "~"
-        } else {
-            ($env.PWD | path basename)
-        }
-    )
+  let dir = (
+    if ($env.PWD == $home) {
+      "~"
+    } else {
+      ($env.PWD | path basename)
+    }
+  )
 
-    let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
-    let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
-    let path_segment = $"($path_color)($dir)"
+  let path_segment = (rounded $dir $catppuccin_blue $catppuccin_base true)
+  let git_prompt_value = (git-prompt)
+  let git_segment = if (not ($git_prompt_value | is-empty)) {
+    (rounded $git_prompt_value $catppuccin_mauve $catppuccin_base true)
+  } else {
+    ""
+  }
 
-    # 
-    $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
-    let color = ansi { bg: $prompt_color }
-    $"($color) ($path_segment) "
-    # starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)'
+  let $prompt_text = [
+    $path_segment
+    $git_segment
+  ] | str join " " | str trim
+
+  $"(ansi reset)($prompt_text)"
 }
 
 def create_right_prompt [] {
-    ""
+  ""
 }
 
 $env.PROMPT_COMMAND = {|| create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
 
-$env.PROMPT_INDICATOR = {|| "> " }
+$env.PROMPT_INDICATOR = {|| "|> " }
 $env.PROMPT_INDICATOR_VI_INSERT = {||
-    let color_insert = ansi blue
-    let color_reset = ansi { fg: $prompt_color, bg: $base_color }
-    $"($color_insert)[I]($color_reset) "
+    $" "
 }
 $env.PROMPT_INDICATOR_VI_NORMAL = {||
-    let color_normal = ansi red_bold
-    let color_reset = ansi { fg: $prompt_color, bg: $base_color }
-    $"($color_normal)[N]($color_reset) "
+    $"(ansi red_bold):"
 }
+
 $env.PROMPT_MULTILINE_INDICATOR = {||
-    let color_normal = ansi yellow
-    let color_reset = ansi { fg: $prompt_color, bg: $base_color }
-    $"($color_normal)[M]($color_reset) "
+    $"(ansi { fg: '#585b70' })  >>"
 }
 
 $env.ENV_CONVERSIONS = {
@@ -63,10 +69,11 @@ $env.ENV_CONVERSIONS = {
 $env.NU_LIB_DIRS = [
     $nu.default-config-dir
     ($nu.default-config-dir | path join 'scripts')
+    ($nu.default-config-dir | path join 'modules')
+    ($nu.default-config-dir | path join 'commands')
 ]
 
 $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins')
+    ($nu.default-config-dir | path join 'commands')
 ]
-
-# $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
