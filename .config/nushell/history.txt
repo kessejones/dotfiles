@@ -1,0 +1,886 @@
+ls
+ll
+ls
+nu --version
+cd .config/nushell
+ls
+n config.nu
+n
+ls
+ll
+>
+ls
+ll
+ls
+plugin add gstt
+plugin add gstat
+plugin list
+plugin
+plugin use gstat
+plugin add nu_plugin_gstat
+plugin
+plugin list
+plugin add gstat
+nu_plugin_gstat
+nix search gstat
+nix profile search gstat
+plugins
+plugin list
+plugin use gstat
+plugin add gstat
+plugin
+plugin list
+plugin use gstat
+cd /nix/store
+ls | grep 
+ls | grep "gstat"
+2xwimcaa0rp60abhgf5i4rmgw7r3h6gw-nushell_plugin_gstat-0.96.1
+cd 2xwimcaa0rp60abhgf5i4rmgw7r3h6gw-nushell_plugin_gstat-0.96.1
+ls
+cd bin
+ls
+g s
+plugin use nu_plugin_gstat
+plugin add nu_plugin_gstat
+ls
+plugin list
+plugin use nu_plugin_gstat
+plugin list
+plugin
+plugin use nu_plugin_gstat
+plugin list
+gstat
+l
+s
+ll
+gstat
+gstat --tag
+gstat tag
+z 
+z nix
+cd .config/nvim
+ls
+gstat
+gstat branch
+gstat --branch
+gstat --h
+gstat --help
+gstat 
+c
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+ll
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+git rev-parse 2>/dev/null
+do
+man do
+help do
+git rev-parse 2>/dev/null
+git rev-parse o>| is-empty
+git rev-parse out>| is-empty
+git rev-parse | is-empty
+do { git rev-parse } | is-empty
+do --ignore-errors { git rev-parse } | is-empty
+let a = do { git rev-parse } | is-empty
+echo $a
+let a = do -i { git rev-parse } | is-empty
+let a = do -i { git rev-parse out> } | is-empty
+let a = do -i { git rev-parse 2>/dev/null } | is-empty
+let a = do -i { git rev-parse 1>/dev/null } | is-empty
+let a = do -i { git rev-parse 3>/dev/null } | is-empty
+let a = do -i { git rev-parse >/dev/null } | is-empty
+let a = (git rev-parse >/dev/null)
+let a = (git rev-parse > /dev/null)
+let a = (git rev-parse | /dev/null)
+ls
+ll
+ls
+la
+ls
+gh
+cd src
+let a = (git rev-parse HEAD)
+let a = do -s { git rev-parse HEAD }
+let a = do -i { git rev-parse HEAD }
+let a = do -c { git rev-parse HEAD }
+let a = do -p { git rev-parse HEAD }
+let a = do -p { git rev-parse HEAD } | str
+let a = do -p { git rev-parse HEAD } | str trim
+echo $a
+do { echo 'teste' }
+do -i { echo 'teste' }
+let a = do -i { echo 'teste' }
+let a = (do -i { echo 'teste' })
+echo $a
+ls
+let a = (do -i { echo 'teste' })
+echo $a
+let a = (do  { echo 'teste' })
+nu
+ls
+kkk
+let git = $'(do -i {git rev-parse --abbrev-ref HEAD} | str trim -rc (char newline))'
+echo $git
+let git = $'(do -i {git rev-parse --abbrev-ref HEAD} | str trim -rc (char newline))'
+cd .dotfiles
+cd .config/nvim
+ls
+echo $git
+let git = $'(do -i {git rev-parse --abbrev-ref HEAD 2> discard} | str trim -rc (char newline))'
+let git = $'(do -i {git rev-parse --abbrev-ref HEAD err> discard} | str trim -rc (char newline))'
+cd
+let git = $'(do -i {git rev-parse --abbrev-ref HEAD err> discard} | str trim -rc (char newline))'
+git rev-parse --abbrev-ref HEAD
+git rev-parse --abbrev-ref HEAD err>/dev/null
+git rev-parse --abbrev-ref HEAD err> discard
+git rev-parse --abbrev-ref HEAD out> discard
+git rev-parse --abbrev-ref HEAD out+err> discard
+git rev-parse --abbrev-ref HEAD +err> discard
+git rev-parse --abbrev-ref HEAD outr> discard
+git rev-parse --abbrev-ref HEAD out> discard
+git rev-parse --abbrev-ref HEAD out+err> discard
+let git = (git rev-parse --abbrev-ref HEAD out+err> discard)
+echo $git
+cd .config/nvim
+let git = (git rev-parse --abbrev-ref HEAD out+err> discard)
+echo $git
+let git = do { git rev-parse --abbrev-ref HEAD out+err> discard } | complete | get output
+let git = do { git rev-parse --abbrev-ref HEAD out+err> discard } | complete | get stdout
+let git = do { git rev-parse --abbrev-ref HEADd } | complete | get stdout
+let git = do { git rev-parse --abbrev-ref HEAD } | complete | get stdout
+cd
+let git = do { git rev-parse --abbrev-ref HEAD } | complete | get stdout
+echo $git
+cd .config/nvim
+let git = do { git rev-parse --abbrev-ref HEAD } | complete | get stdout
+echo $git
+;
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+cd
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+ll
+cd .config/nvim
+bbb
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+z nvi
+cd .config/nvim
+ls
+ll
+cd .config/nvim
+ls
+ll
+ls
+cd .config/nvim
+ls
+cd sr
+cd src
+ls
+ll
+cd osdev
+ls
+git status
+ls
+cd osdev
+cd .config/nvim
+ls
+cd .config/nvim
+ls
+g s
+rm discard
+ls
+ll
+ls
+ll
+g 
+g s
+cd .config/nvim
+g s
+g l
+ls
+> 'let x = 3' | nu-highlight
+ll
+history
+history -h
+l
+ls Documents/
+n 
+p 9621811.jpg
+ls Documents/
+ls
+tt
+ls
+dc 
+g
+d
+z
+z nvim
+z .config/nvim
+zoxide init nushell | save -f ~/.zoxide.nu
+la
+z .config/nvim
+ls
+z nvim
+z
+z nvim
+ls
+z nvim
+z n
+ls
+cat .zoxide.nu
+z nvim
+z 
+z n
+$"($nu.home-path)/.zoxide.nu" | path exists
+ls
+z nvim
+source .zoxide.nu
+z nvim
+z con
+z 
+z .config/nvim
+source .zoxide.nu
+z .config/nvim
+z .config/
+cd .cache/
+ls
+cd
+z cac
+k
+z nvim
+$"($nu.home-path)/.zoxide.nu"
+$"($nu.home-path)/.zoxide.nu" | path exists
+if ($"($nu.home-path)/.zoxide.nu" | path exists) { echo "teste"}
+z nvim
+man source
+source --h
+source --help
+source --helpcon
+ls
+g 
+z nvim
+source ""
+source /dev/null
+export extern "git push" []
+hello kesse
+hello option 
+git branch
+git branch -m
+cd .config/nvim
+git branch
+git branch -a
+git branch -a --format "%(refname:short)"
+z nvim
+git rev-parse --abbrev-ref HEAD
+z nvim
+g ps database
+cd
+cd sc
+cd src
+ls
+mkdir a
+cd a
+ls
+cd ..
+cd b
+ls
+mkdir git-test
+cd git-test
+git init
+ls
+git status
+cd 
+cd src
+ls
+cd git-test
+git status
+git branch -l
+git branch -a --format "%(refname:short)"
+ls
+cd ..
+cd
+cd src
+cd git-test
+git init
+git branchy
+git branch
+git rev-parse --abbrev-ref HEAD
+git rev-pars
+git rev-parse
+git branch -a
+git status
+touch teste.txt
+n teste.txt
+g s
+g aa
+g ci
+g cb test
+n teste.txt
+g aa
+g ci
+z git
+g co main
+g s
+z git
+g co main
+cd git-test
+g co main
+z git
+g co main
+g m 
+z git
+g m test
+git
+z git
+g co ola
+g cb ola
+g sw main
+branches
+z nvi
+g sw 
+z git
+g sw
+g m
+d ps
+ls
+view
+json
+from json
+ls
+n ola.json
+cat ola.json | from json
+ls
+echo $git
+ll
+ls
+zellij
+ls
+echo $TERM
+echo $env.TERM
+cd .config/nushell
+lsl
+n
+ls
+rm .git -rf
+ls
+n
+ls
+zellij attach main
+ze
+zellij ls
+zellij --help
+zellij list-sessions
+ze
+ls
+ll
+echo $env.TERM
+echo $env.TERM > teste.txt
+n teste.txt
+ze
+ls
+ls
+ll
+ze
+ls
+ze
+zellij
+ls
+tmux
+z nix
+n
+sudo nixos-rebuild switch --flake .#desktop
+echo $env.TERM
+ls
+ll
+ze
+ls
+ll
+ls
+git-shell
+cd .config/nushell
+n
+tt
+cd .config/nushell
+n
+ls
+ze
+cd .config/nushell
+n
+ls
+ll
+echo $env.TERM
+z nix
+n
+sudo nixos-rebuild switch --flake .#desktop
+ze
+ls
+ll
+echo $env.TERM
+ls
+z nu
+ls
+n
+ls
+z nu
+fihs
+fish
+let zoxide_completer = {|spans|<\n>    $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}<\n>}
+$zoxide_completer
+ls
+n .user.nu
+echo $env.TESTE
+aws-test 
+g ma 
+g ma teste
+n .user.nu
+z nvim
+git_branches
+z nvim
+git_branches
+d ps
+d ps --json
+d ps --help
+d ps --format=json
+cd src
+ls
+cd ser
+cd services/
+ls
+cd kafka
+dc up -d
+dc upd
+dc upd | from json
+dc ps | from json
+dc ps --format=json | from json
+dc ps --format=jso
+dc ps --format=json
+d ps --format=json | from json
+z integra
+dc upd
+dc up -d
+d ps --format=json | from json
+i
+docker ps --format=json | from json
+docker ps --format=json
+echo $containers
+(docker ps --format=json) | lines | each {|e| $e | from json | select Name}
+(docker ps --format=json) | lines | each {|e| $e | from json | select Names}
+(docker ps --format=json) | lines | each {|e| $e | from json | select Names,Id}
+docker ps --format=json
+(docker ps --format=json) | lines | each {|e| $e | from json | select Names Id}
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names}
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Status}
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Status Port}
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Status Ports}
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Image Status Ports}
+d ll
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Image Status Ports} | table -index 0
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Image Status Ports} | table --index 0
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Image Status Ports} | table --index 1
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Image Status Ports} | table --index -1
+(docker ps --format=json) | lines | each {|e| $e | from json | select ID Names Image Status Ports} | table --index false
+d ll
+ls
+ls | table --index false
+exa
+exa --table
+ll
+ls
+ls | where type == file
+ls | sort type
+ls | sort 
+sort --help 
+la
+ls -f
+ls
+cd .config/nushell
+ls
+ll
+ls
+explorer
+explore 
+ls | explore
+man nvim
+man nvim | explore
+ls | explore
+complete
+ls Desktop/
+ls
+ll
+lu
+du
+df -h
+df -h | table
+df | table
+df | lines | table
+df | detect columns
+df | str replace "Mounted on" Mounted_on | detect columns
+dfh
+du -h .
+du .
+du -h
+du .
+dfh
+ps
+ps | explore
+ps
+ls
+cd
+cd src
+ls
+cd kafka
+cd kafka-tui/
+g s
+man explore
+explore --help
+ls | explore --peek
+less
+ls
+cat main.go | less
+cat main.go | explore
+glob
+glob *.go
+find
+find .
+find . type f
+ls | where type == file
+z kos
+ls
+env
+echo $env
+echo $env | explore
+env | table
+env | detect columns
+$env
+ls
+bat
+bat flake.nix
+d ll
+g ll
+g ls
+dc ps
+ls
+ls | to json
+ls
+cat flake.nix
+cat flake.nix | to json
+ls
+git branch
+git branch -a
+d ps
+d ll
+ls
+gh pr list
+zoxide query
+zoxide query --list
+zoxide query --help
+zoxide query -s
+zoxide query -s --list
+zoxide query --list bt
+zoxide --help
+zoxide query -l nvim
+zi nteste
+zi teste
+__completer_zoxide
+__completer_zoxide teste
+__completer_zoxide nvim
+z
+zoxide_completer
+zoxide_completer teste
+date
+date now
+date to-table
+ls
+calc
+cal
+cal -h
+cal --full-year 2025
+cal -h
+cal
+ls
+git branch
+cd
+z nvim
+git branch
+git branch | talbe
+git branch | table
+git branch | detect columns
+git log
+git log | table
+git log | detect columns
+git log | lines
+git log | columns
+git log | column
+git log | columns
+git log | lines
+ls
+cat init.lua
+cat init.lua | base
+cat init.lua | bat
+cat init.lua | table
+cat init.lua | lines
+read
+keybindings list 
+keys
+keybindings listen 
+ls
+z kos
+ls
+ll
+history
+z
+ls
+z kos
+z fish
+ls
+ls completions/
+ls conf.d/
+ls
+ls themes/
+ip addr
+ips
+ip addr
+ip addr | lines
+ip addr | dectect columns
+ls
+grid
+ls | grid
+du
+du -h
+du
+sys_cpu
+sys cpu
+sys mem
+mem
+free
+free | detect columns
+free -m | detect columns
+sys mem
+sys cpu
+sys net
+sys disks
+dfh
+p
+n
+input 
+query db 
+query db  --help
+histogram
+ls | histogram
+ls | byter
+ls | bytes
+cat config.nu | bytes
+cat config.nu | bytes length
+ls
+d ps
+s ll
+d ll
+ls
+z nushell
+ls
+cd
+z kos
+direnv
+direnv status
+direnv status --json
+cd
+direnv status --json
+gum
+gum log
+ls
+z nvim
+ls
+ll
+ls
+if \
+kfadsf \
+\
+ls \
+ls
+gray_bold
+$env.PROMPT_MULTILINE_INDICATOR = {||    $"(ansi { fg: '#585b70' })  >>"<\n>}<\n>
+cd (ls | where type == dir | each { |row| $row.name} | str join (char nl) | fzf | decode utf-8 | str trim)
+cd (ls ~ | where type == dir | each { |row| $row.name} | str join (char nl) | fzf | decode utf-8 | str trim)
+history
+history | each {|row| $row.command }
+history | each {|row| $row.command } | fzf
+history | each {|row| $row.command } | fzf | decode utf-8 | str trim
+history --help-
+history --help
+echo (history | where type == dir | each { |row| $row.name } | str join (char nl) | fzf | decode utf-8 | str trim)
+echo (history | where type == dir | each { |row| $row.command } | str join (char nl) | fzf | decode utf-8 | str trim)
+(history | where type == dir | each { |row| $row.command } | str join (char nl) | fzf | decode utf-8 | str trim)
+(history  | each { |row| $row.command } | str join (char nl) | fzf | decode utf-8 | str trim)
+echo (history | each { |row| $row.command } | str join (char nl) | fzf | decode utf-8 | str trim)
+(history | each { |row| $row.command } | str join (char nl) | fzf | decode utf-8 | str trim)
+ls
+eval (history | each { |row| $row.command } | str join (char nl) | fzf | decode utf-8 | str trim)
+commandline ls
+eval 
+ls
+commandline ls
+ls
+z kafka
+ls
+dc up -d
+dc ps
+dc ps --format=json
+z kafka
+dc ll
+d ps
+dc ps
+z kafka
+dc ps
+d ll
+dc ll
+d ll
+ll
+z nix
+ip -c -br a
+ip -c -br a | lines | detect column
+ip -c -br a | lines | detect columns
+ip -c -br a |  detect columns
+ip -c -br a | table
+ip -c -br a | rename dev status addr
+ip -c -br a | from tsv
+ip -c -br a | table
+ip -c -br a | lines
+ip -c -br a | lines | detect columns
+ip -c -br a | lines | columns
+lines --help
+table
+table --help
+[dev status addr]; ip -c -br a | lines | columns
+[dev status addr]; ip -c -br a | lines
+[dev status addr]; ip -c -br a | table
+[dev status addr]; ip -c -br a | detect columns
+[[dev status addr]; ip -c -br a] | detect columns
+[[dev status addr]; (ip -c -br a)] | detect columns
+[[dev status addr]; (ip -c -br a | lines)] | detect columns
+[[dev status addr]; (ip -c -br a) | lines] | detect columns
+[dev status addr]; ip -c -br a | detect columns
+[dev status addr]; ip -c -br a
+dev status addr | merge | ip -c -br a
+[[dev status addr]]; ip -c -br a | detect columns
+[[dev]; [status]; [addr];]; ip -c -br a | detect columns
+[[dev status addr]; []]; ip -c -br a | detect columns
+[[dev status addr]; [null null null]]; ip -c -br a | detect columns
+z kafka
+dc upd
+z kafka
+dc exec 2aa801dedb65
+dc exec 2aa801dedb65 sh
+z kafka
+dc exec 2aa801dedb65 sh
+z kafka
+dc exec ebe96abfe7f8 sh
+z kfaka
+z kafka
+dc exec 2aa801dedb65 sh
+dc ps
+dc ps --format=json
+z kafka
+dc exec kafka sh
+z kafka
+dc exec kafka 
+dc exec kafka sh
+dcb 
+Hello
+hello
+hello teste
+Hello teste
+Hello
+Hello teste
+use Hello teste
+use Hello
+Hello teste
+ls
+ls | sort-by type
+l
+ll
+l
+l .
+l
+l -a
+l a
+l modules
+l modules -a
+l modules --all
+ls
+man ls
+ls
+l
+l modules --all
+ll
+la
+ls
+la
+ls -la
+la
+la modules
+ll
+l
+ls
+l
+exa
+ls
+fish
+la
+ls -la
+la
+la /nix
+la
+la /nix
+la ~/.local/share/nix/
+la ~/.local/share/nix/trusted-settings.json
+la ~/.local/share
+la /
+la ..
+dfh
+parse
+man parse
+parse --help
+ssh mac
+z nu
+ls
+cd src/
+ls
+cd dotfiles
+ls
+cd .config/
+s
+g pl
+cd shell
+cd nushell
+ls
+cp -r * ~/.config/nushell/*
+cp -r * ~/.config/nushell/* .
+ls
+ll
+rm *
+l
+ls
+rm -rf *
+ls
+cp -r * ~/.config/nushell/* .
