@@ -19,7 +19,7 @@ in {
     xdg.configFile."kitty/kitty.conf".enable = false;
 
     home.file.".config/kitty/" = {
-      source = "${pkgs.dotfiles.kitty}/share/kitty";
+      source = "${pkgs.dotfiles.kitty}/usr/share/kitty";
       recursive = true;
     };
   };
