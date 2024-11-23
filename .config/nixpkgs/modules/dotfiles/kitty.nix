@@ -8,7 +8,7 @@ with lib; let
   cfg = config.dotfiles.kitty;
 in {
   options.dotfiles.kitty = {
-    enable = mkEnableOption "Fish dotfiles";
+    enable = mkEnableOption "Kitty dotfiles";
   };
 
   config = mkIf cfg.enable {
@@ -19,7 +19,7 @@ in {
     xdg.configFile."kitty/kitty.conf".enable = false;
 
     home.file.".config/kitty/" = {
-      source = "${pkgs.dotfiles.kitty}/usr/share/kitty";
+      source = "${pkgs.dotfiles.kitty}/";
       recursive = true;
     };
   };

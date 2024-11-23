@@ -9,8 +9,8 @@ final: prev: {
       installPhase = ''
         runHook preInstall
 
-        mkdir -p $out/usr/share/kitty
-        cp -r $src/* $out/usr/share/kitty
+        mkdir -p $out/
+        cp -r $src/* $out/
 
         runHook postInstall
       '';
@@ -27,6 +27,39 @@ final: prev: {
 
         mkdir -p $out/usr/share/fish
         cp -r $src/* $out/usr/share/fish/
+
+        runHook postInstall
+      '';
+    };
+
+    git = final.stdenv.mkDerivation {
+      name = "git-dotfiles";
+      src = ../../..;
+
+      dontBuild = true;
+
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/
+        cp -r $src/.gitconfig $out/
+        cp -r $src/.gitignore_global $out/
+
+        runHook postInstall
+      '';
+    };
+
+    git-scripts = final.stdenv.mkDerivation {
+      name = "git-scripts-dotfiles";
+      src = ../../../.scripts/git;
+
+      dontBuild = true;
+
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/
+        cp -r $src/* $out/
 
         runHook postInstall
       '';
