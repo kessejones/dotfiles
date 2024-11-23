@@ -5,7 +5,7 @@
   ...
 }:
 with lib; let
-  cfg = config.dotfiles.kitty;
+  cfg = config.dotfiles.git;
 in {
   options.dotfiles.git = {
     enable = mkEnableOption "Git dotfiles";
