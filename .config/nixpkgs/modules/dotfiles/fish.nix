@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -16,9 +17,15 @@ in {
       fish
     ];
 
-    xdg.configFile."fish" = {
-      source = config.lib.file.mkOutOfStoreSymlink pkgs.dotfiles-pkgs.fish;
+    # xdg.configFile."fish/config.fish".enable = false;
+    xdg.configFile."fish/config.fish" = {
+      source = "${pkgs.dotfiles.fish}/share/fish";
       recursive = true;
     };
+
+    # home.file.".config/fish/" = {
+    #   source = "${pkgs.dotfiles.fish}/share/fish";
+    #   recursive = true;
+    # };
   };
 }

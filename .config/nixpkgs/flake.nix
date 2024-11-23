@@ -1,9 +1,6 @@
 {
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-  };
-
-  outputs = {...}: {
-    nixosModules.default = import ./modules;
+  outputs = _: {
+    homeManagerModules.dotfiles = import ./modules;
+    overlays.default = import ./overlays;
   };
 }

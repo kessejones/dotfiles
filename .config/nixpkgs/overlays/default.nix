@@ -1,12 +1,17 @@
 final: prev: {
-  dotfiles-pkgs = {
+  dotfiles = {
     kitty = final.stdenv.mkDerivation {
       name = "kitty-dotfiles";
       src = ../../kitty;
+
+      dontBuild = true;
+
       installPhase = ''
         runHook preInstall
-        mkdir -p $out
-        cp -r $src/* $out/
+
+        mkdir -p $out/usr/share/kitty
+        cp -r $src/* $out/usr/share/kitty
+
         runHook postInstall
       '';
     };
@@ -14,11 +19,14 @@ final: prev: {
     fish = final.stdenv.mkDerivation {
       name = "fish-dotfiles";
       src = ../../fish;
+
+      dontBuild = true;
+
       installPhase = ''
         runHook preInstall
 
-        mkdir -p $out
-        cp -r $src/* $out/
+        mkdir -p $out/usr/share/fish
+        cp -r $src/* $out/usr/share/fish/
 
         runHook postInstall
       '';

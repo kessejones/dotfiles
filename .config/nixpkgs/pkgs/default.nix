@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  dotfiles-pkgs = pkgs.callPackage ./pkgs.nix {};
+  dotfiles = pkgs.callPackage ./pkgs.nix {};
 }
