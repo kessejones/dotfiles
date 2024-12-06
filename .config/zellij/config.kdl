@@ -159,7 +159,7 @@ keybinds clear-defaults=true {
 
         bind "\\" {
           NewPane {
-            cwd "/home/kesse"
+            cwd "$HOME"
             direction "Right"
           };
           SwitchToMode "Normal";
@@ -167,7 +167,7 @@ keybinds clear-defaults=true {
 
         bind "'" {
           NewPane {
-            cwd "/home/kesse"
+            cwd "$HOME"
             direction "Down"
           };
           SwitchToMode "Normal";

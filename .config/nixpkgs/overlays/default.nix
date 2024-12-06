@@ -1,4 +1,6 @@
-final: prev: {
+{zjstatus}: final: prev: {
+  zjstatus = zjstatus.packages.${prev.system}.default;
+
   dotfiles = {
     kitty = final.stdenv.mkDerivation {
       name = "kitty-dotfiles";
@@ -52,6 +54,22 @@ final: prev: {
     git-scripts = final.stdenv.mkDerivation {
       name = "git-scripts-dotfiles";
       src = ../../../.scripts/git;
+
+      dontBuild = true;
+
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/
+        cp -r $src/* $out/
+
+        runHook postInstall
+      '';
+    };
+
+    zellij = final.stdenv.mkDerivation {
+      name = "zellij-dotfiles";
+      src = ../../zellij;
 
       dontBuild = true;
 
