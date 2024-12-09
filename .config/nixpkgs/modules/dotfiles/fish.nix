@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib; let
@@ -10,22 +9,24 @@ with lib; let
 in {
   options.dotfiles.fish = {
     enable = mkEnableOption "Fish dotfiles";
+    extra-packages = mkOption {
+      type = types.listOf types.package;
+      default = [];
+      example = [pkgs.gum pkgs.fzf];
+      description = "Packages required this fish configuration";
+    };
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      fish
-    ];
+    home.packages = with pkgs;
+      [
+        fish
+      ]
+      ++ cfg.dotfiles.fish.extra-packages;
 
-    # xdg.configFile."fish/config.fish".enable = false;
-    xdg.configFile."fish/config.fish" = {
-      source = "${pkgs.dotfiles.fish}/share/fish";
+    xdg.configFile."fish" = {
+      source = "${pkgs.dotfiles.fish}";
       recursive = true;
     };
-
-    # home.file.".config/fish/" = {
-    #   source = "${pkgs.dotfiles.fish}/share/fish";
-    #   recursive = true;
-    # };
   };
 }
