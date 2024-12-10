@@ -7,6 +7,9 @@ set fish_cursor_replace underscore
 set fish_cursor_replace_one underscore
 set fish_vi_force_cursor 1
 
+export EDITOR=nvim
+export VISUAL=nvim
+
 ## Load local fish config if exists
 if test -f ~/.config.fish
    source ~/.config.fish
