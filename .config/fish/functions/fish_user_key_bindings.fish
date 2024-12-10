@@ -2,8 +2,7 @@ function fish_user_key_bindings
     bind --erase -- \ct
     bind --erase --mode insert -- \ct
 
-    bind --user -M insert \cy accept-autosuggestion
-    bind --user -M insert \cf complete
+    bind --user -M insert \cf accept-autosuggestion
 
     bind --user -M insert \ck up-or-search
     bind --user -M insert \cj down-or-search

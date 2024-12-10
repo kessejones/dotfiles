@@ -6,6 +6,9 @@
 #    alias tree "lt"
 #end
 
+if type -q lazygit
+    alias lg lazygit
+end
 
 if type -q btop
     alias top btop
