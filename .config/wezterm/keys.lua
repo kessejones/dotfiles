@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 
 local leader = { key = "a", mods = "CTRL" }
+
 local keys = {
     { key = "K", mods = "CTRL|SHIFT", action = act.SendString("\x1b[75;5u") },
     { key = "J", mods = "CTRL|SHIFT", action = act.SendString("\x1b[74;5u") },
@@ -227,11 +228,13 @@ local key_tables = {
     },
 }
 
-return function(config)
+local M = {}
+
+function M.setup(config)
     config.disable_default_key_bindings = true
     config.leader = leader
     config.keys = keys
     config.key_tables = key_tables
-
-    return config
 end
+
+return M
