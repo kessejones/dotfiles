@@ -100,5 +100,7 @@
     sp = "!~/.scripts/git/git-stash.sh pop"
     sl = "!git stash list | gum choose --limit 1 >/dev/null"
 
+    cx = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|qa\\|develop' | xargs -n 1 -r git branch -d"
+
 [include]
     path = ~/.gitconfig-user

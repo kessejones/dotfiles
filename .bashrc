@@ -28,12 +28,15 @@ LINUX_HOMEBREW=/home/linuxbrew/.linuxbrew/bin
 MACOS_HOMEBREW=/opt/homebrew/bin
 NIX_PROFILE_BIN=$HOME/.nix-profile/bin
 
-if [ -f $NIX_PROFILE_BIN/fish ]; then
-    export SHELL=$NIX_PROFILE_BIN/fish
-elif [ -f $LINUX_HOMEBREW/fish ]; then
-    export SHELL=$LINUX_HOMEBREW/fish
-elif [ -f $MACOS_HOMEBREW/fish ]; then
-    export SHELL=$MACOS_HOMEBREW/fish
+SHELL_NAME=fish
+# SHELL_NAME=nu
+
+if [ -f $NIX_PROFILE_BIN/$SHELL_NAME ]; then
+    export SHELL=$NIX_PROFILE_BIN/$SHELL_NAME
+elif [ -f $LINUX_HOMEBREW/$SHELL_NAME ]; then
+    export SHELL=$LINUX_HOMEBREW/$SHELL_NAME
+elif [ -f $MACOS_HOMEBREW/$SHELL_NAME ]; then
+    export SHELL=$MACOS_HOMEBREW/$SHELL_NAME
 fi
 
 if [ ! "$SHELL" = "/bin/bash" ]; then
