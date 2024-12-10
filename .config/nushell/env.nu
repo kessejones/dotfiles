@@ -10,13 +10,15 @@ let catppuccin_lavender = "#b4befe"
 let catppuccin_mauve = "#cba6f7"
 
 def create_left_prompt [] {
-  let home =  $nu.home-path
-
   let dir = (
-    if ($env.PWD == $home) {
+    if ($env.PWD == $nu.home-path) {
       "~"
     } else {
-      ($env.PWD | path basename)
+      let basename = ($env.PWD | path basename)
+      match ($basename) {
+        "" => "/"
+        _ => $basename
+      }
     }
   )
 
@@ -77,3 +79,6 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins')
     ($nu.default-config-dir | path join 'commands')
 ]
+
+$env.EDITOR = "nvim"
+

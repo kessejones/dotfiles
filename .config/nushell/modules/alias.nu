@@ -5,6 +5,8 @@ export alias d = docker
 export alias ll = ls -a
 export alias top = btop
 export alias n = nvim
+export alias lz = lazydocker
+export alias y = yazi
 
 # Alias for df -h with table format
 export def dfh [] {

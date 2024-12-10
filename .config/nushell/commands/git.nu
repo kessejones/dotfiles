@@ -28,18 +28,11 @@ export def "g sw" [ branch?: string@__completer_git_branches ] {
   }
 }
 
-# alis for git rebase
+# alias for git rebase
 export def "g r" [ branch?: string@__completer_git_branches ] {
   if ($branch | is-empty) {
     echo "No branches to rebase to"
   } else {
-    git switch $branch
+    git rebase $branch
   }
-}
-
-def __completer_test [] {
-  [
-    { value: "test1", description: "test1 description" },
-    { value: "test2", description: "test2 description" }
-  ]
 }

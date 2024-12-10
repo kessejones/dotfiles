@@ -9,10 +9,10 @@ def __completer_docker_containers [] {
 }
 
 def __completer_docker_compose_containers [] {
-  (docker compose ps --format=json) | lines | each {
-    |e| let item = ($e | from json | select Names Image)
+  (docker compose ps --format=json) | from json | each {
+    |e| let item = ($e | from json | select Name Image)
     {
-      value: $item.Names
+      value: $item.Name
       description: $item.Image
     }
   }
@@ -23,7 +23,14 @@ def __command_docker_ps [] {
 }
 
 def __command_docker_compose_ps [] {
-  (docker compose ps --format=json) | lines | each {|e| $e | from json | select ID Names Image Status Ports}
+  (docker compose ps --format=json) 
+    | from json
+    | select ID Name Image Status Publishers 
+    | each {
+      |e| let publichers = $e.Publishers | get 0
+
+      $e | reject Publishers | merge {Publishers: $publichers}
+    }
 }
 
 # Alias for docker ps
