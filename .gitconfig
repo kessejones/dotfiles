@@ -100,5 +100,7 @@
     sp = "!~/.scripts/git/git-stash.sh pop"
     sl = "!git stash list | gum choose --limit 1 >/dev/null"
 
+    sw = "!~/.scripts/git/git-switch.sh"
+
 [include]
     path = ~/.gitconfig-user
