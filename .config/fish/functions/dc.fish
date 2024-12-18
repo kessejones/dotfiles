@@ -10,6 +10,14 @@ function dc --wraps "docker-compose"
             set args 'logs' '-fn1' $args[2..]
         case 'bb'
             set args 'build' $args[2..]
+        case 'ee'
+            set -l containers (dc ps --format=json | jq -c -r '.[].Name')
+            set -l container (gum choose $containers)
+            if not test -n "$container"
+                return
+            end
+
+            set args 'exec' '-it' $container sh $args[2..]
     end
 
     docker compose $args
