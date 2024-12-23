@@ -5,7 +5,10 @@
     zjstatus.url = "github:dj95/zjstatus";
   };
 
-  outputs = {zjstatus}: {
+  outputs = {
+    self,
+    zjstatus,
+  }: {
     homeManagerModules.dotfiles = import ./modules;
     overlays.default = import ./overlays {inherit zjstatus;};
   };
