@@ -1,11 +1,11 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
   cfg = config.dotfiles.fish;
-  pkgs = import ../../pkgs;
 in {
   options.dotfiles.fish = {
     enable = mkEnableOption "Fish dotfiles";
