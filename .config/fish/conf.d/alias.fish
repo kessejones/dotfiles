@@ -1,10 +1,6 @@
-#if type -q eza
-#    alias ls "eza --group-directories-first"
-#    alias ll "eza --long --group --group-directories-first"
-#    alias la "ll --all --group-directories-first"
-#    alias lt "eza --icons --tree"
-#    alias tree "lt"
-#end
+if type -q eza
+    alias lt "eza --icons --tree"
+end
 
 if type -q lazygit
     alias lg lazygit
