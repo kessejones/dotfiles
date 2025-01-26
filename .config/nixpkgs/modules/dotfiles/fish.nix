@@ -22,7 +22,7 @@ in {
       [
         fish
       ]
-      ++ cfg.dotfiles.fish.extra-packages;
+      ++ cfg.fish.extra-packages;
 
     xdg.configFile."fish" = {
       source = "${pkgs.dotfiles.fish}";
