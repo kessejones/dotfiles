@@ -27,8 +27,8 @@
       installPhase = ''
         runHook preInstall
 
-        mkdir -p $out/usr/share/fish
-        cp -r $src/* $out/usr/share/fish/
+        mkdir -p $out/
+        cp -r $src/* $out/
 
         runHook postInstall
       '';
