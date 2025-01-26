@@ -11,8 +11,8 @@ in {
     enable = mkEnableOption "Fish dotfiles";
     extra-packages = mkOption {
       type = types.listOf types.package;
-      default = [];
-      example = [pkgs.gum pkgs.fzf];
+      default = [pkgs.gum pkgs.television];
+      example = [pkgs.gum pkgs.fzf pkgs.television];
       description = "Packages required this fish configuration";
     };
   };
