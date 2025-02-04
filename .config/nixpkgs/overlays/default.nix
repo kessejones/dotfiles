@@ -82,5 +82,21 @@
         runHook postInstall
       '';
     };
+
+    television = final.stdenv.mkDerivation {
+      name = "television-dotfiles";
+      src = ../../television;
+
+      dontBuild = true;
+
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/
+        cp -r $src/* $out/
+
+        runHook postInstall
+      '';
+    };
   };
 }
