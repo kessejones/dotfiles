@@ -1,3 +1,4 @@
-[[git]]
+[[cable_channel]]
 name = "git-repositories"
-source_command = "fd --type d --ignore --hidden --format=\"{//}\" \".git\""
+source_command = 'fd --type d --ignore --hidden --base-directory $HOME --format="{//}" ".git"'
+preview_command = "cd $HOME/{} && git log -n 200 --pretty=medium --all --graph --color"
