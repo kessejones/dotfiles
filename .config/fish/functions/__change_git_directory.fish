@@ -1,6 +1,6 @@
 function __change_git_directory
-    set -l repo (tv git-repos)
+    set -l repo (tv my-repositories)
     if test -n "$repo"
-        cd $repo
+        cd $HOME/$repo
     end
 end

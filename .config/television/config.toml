@@ -40,7 +40,7 @@ use_nerd_font_icons = false
 # │                                       │
 # │                                       │
 # └───────────────────────────────────────┘
-ui_scale = 100
+ui_scale = 80
 # Whether to show the top help bar in the UI by default
 # This option can be toggled with the (default) `ctrl-g` keybinding
 show_help_bar = false
