@@ -1,0 +1,3 @@
+[[git]]
+name = "git-repositories"
+source_command = "fd --type d --ignore --hidden --format=\"{//}\" \".git\""
