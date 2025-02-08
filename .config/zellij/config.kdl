@@ -1,9 +1,11 @@
 keybinds clear-defaults=true {
     normal {
     }
+
     locked {
         bind "Esc" { SwitchToMode "Normal"; }
     }
+
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
         bind "m" { SwitchToMode "Move"; }
@@ -18,6 +20,7 @@ keybinds clear-defaults=true {
         bind "=" "+" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
     }
+
     pane {
         bind "Ctrl p" { SwitchToMode "Normal"; }
         bind "h" "Left" { MoveFocus "Left"; }
@@ -35,6 +38,7 @@ keybinds clear-defaults=true {
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
     }
+
     move {
         bind "Ctrl h" { SwitchToMode "Normal"; }
         bind "r" { SwitchToMode "Resize"; }
@@ -45,6 +49,7 @@ keybinds clear-defaults=true {
         bind "j" "Down" { MovePane "Down"; }
         bind "k" "Up" { MovePane "Up"; }
     }
+
     tab {
         bind "Ctrl t" { SwitchToMode "Normal"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
@@ -64,57 +69,69 @@ keybinds clear-defaults=true {
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
         bind "Tab" { ToggleTab; }
     }
+
     scroll {
-        bind "Ctrl s" { SwitchToMode "Normal"; }
-        bind "Enter" { SwitchToMode "Normal"; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
-        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
-        bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
-        bind "j" "Down" { ScrollDown; }
-        bind "k" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
-        // uncomment this and adjust key if using copy_on_select=false
-        // bind "Alt c" { Copy; }
+
+        bind "g" { ScrollToTop; }
+        bind "G" { ScrollToBottom; }
+
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+
+        bind "Ctrl f" { PageScrollDown; }
+        bind "Ctrl b" { PageScrollUp; }
+
+        bind "Ctrl d" { HalfPageScrollDown; }
+        bind "Ctrl u" { HalfPageScrollUp; }
     }
+
     search {
-        bind "Ctrl s" { SwitchToMode "Normal"; }
-        bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "Esc" { ScrollToBottom; SwitchToMode "Normal"; }
+
+        bind "g" { ScrollToTop; }
+        bind "G" { ScrollToBottom; }
+
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
-        bind "d" { HalfPageScrollDown; }
-        bind "u" { HalfPageScrollUp; }
-        bind "n" { Search "down"; }
-        bind "N" { Search "up"; }
+
+        bind "Ctrl f" { PageScrollDown; }
+        bind "Ctrl b" { PageScrollUp; }
+
+        bind "Ctrl d" { HalfPageScrollDown; }
+        bind "Ctrl u" { HalfPageScrollUp; }
+
         bind "p" { Search "up"; }
+        bind "n" { Search "down"; }
+
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
     }
+
     entersearch {
-        bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
         bind "Enter" { SwitchToMode "Search"; }
     }
+
     renametab {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
     }
+
     renamepane {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
     }
+
     session {
-        bind "Ctrl o" { SwitchToMode "Normal"; }
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
     }
+
     tmux {
         bind "t" {
-            NewTab { cwd "/home/kesse"; }
+            NewTab { cwd "~"; }
             SwitchToMode "Normal";
         }
 
@@ -132,8 +149,8 @@ keybinds clear-defaults=true {
         bind "Ctrl p" { MoveTab "Left"; }
         bind "Ctrl n" { MoveTab "Right"; }
 
-        bind "S" { SwitchToMode "Scroll"; }
         bind "g" { SwitchToMode "Normal"; }
+        bind "Enter" { SwitchToMode "Scroll"; }
 
         bind "f" {
             LaunchPlugin "filepicker" {
@@ -143,6 +160,7 @@ keybinds clear-defaults=true {
         }
 
         bind "y" { ToggleTab; }
+
         bind "1" { GoToTab 1; SwitchToMode "Normal"; }
         bind "2" { GoToTab 2; SwitchToMode "Normal"; }
         bind "3" { GoToTab 3; SwitchToMode "Normal"; }
@@ -157,17 +175,19 @@ keybinds clear-defaults=true {
 
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
 
-        bind "\\" {
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+
+        bind "v" {
           NewPane {
-            cwd "$HOME"
+            cwd "~"
             direction "Right"
           };
           SwitchToMode "Normal";
         }
 
-        bind "'" {
+        bind "s" {
           NewPane {
-            cwd "$HOME"
+            cwd "~"
             direction "Down"
           };
           SwitchToMode "Normal";
@@ -180,7 +200,7 @@ keybinds clear-defaults=true {
         bind "r" { SwitchToMode "Resize"; }
         bind "m" { SwitchToMode "Move"; }
 
-        bind "s" {
+        bind "S" {
             LaunchOrFocusPlugin "zellij:session-manager" {
                 floating true
                 move_to_focused_tab true
@@ -188,9 +208,11 @@ keybinds clear-defaults=true {
             SwitchToMode "Normal"
         }
     }
+
     shared_except "normal" "locked" {
-        bind "Enter" "Esc" { SwitchToMode "Normal"; }
+        bind "Esc" { SwitchToMode "Normal"; }
     }
+
     shared_except "tmux" "locked" "scroll" {
         bind "Ctrl t" { SwitchToMode "Tmux"; }
     }
