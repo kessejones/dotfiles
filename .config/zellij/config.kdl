@@ -181,7 +181,6 @@ keybinds clear-defaults=true {
 
         bind "v" {
           NewPane {
-            cwd "~"
             direction "Right"
           };
           SwitchToMode "Normal";
@@ -189,7 +188,6 @@ keybinds clear-defaults=true {
 
         bind "s" {
           NewPane {
-            cwd "~"
             direction "Right"
           };
           MovePane "Down";
@@ -360,7 +358,7 @@ default_layout "compact"
 // layout_dir "/path/to/my/layout_dir"
 
 // The folder in which Zellij will look for themes
-//
+default_cwd "~"
 // theme_dir "/path/to/my/theme_dir"
 ui {
     pane_frames {
