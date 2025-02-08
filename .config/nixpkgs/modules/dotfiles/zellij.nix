@@ -17,7 +17,7 @@ in {
     ];
 
     xdg.configFile."zellij/zellij.kdl".enable = false;
-    xdg.dataFile."zjstatus.wasm".source = "${pkgs.zjstatus}/share/zjstatus.wasm";
+    xdg.dataFile."zjstatus.wasm".source = "${pkgs.zjstatus}/bin/zjstatus.wasm";
 
     home.file.".config/zellij/" = {
       source = "${pkgs.dotfiles.zellij}/";
