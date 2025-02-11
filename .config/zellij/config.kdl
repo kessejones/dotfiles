@@ -7,6 +7,8 @@ keybinds clear-defaults=true {
     }
 
     resize {
+        bind "Enter" { SwitchToMode "Normal"; }
+
         bind "Ctrl n" { SwitchToMode "Normal"; }
         bind "m" { SwitchToMode "Move"; }
         bind "h" "Left" { Resize "Increase Left"; }
@@ -40,7 +42,8 @@ keybinds clear-defaults=true {
     }
 
     move {
-        bind "Ctrl h" { SwitchToMode "Normal"; }
+        bind "Esc" "Enter" { SwitchToMode "Normal"; }
+
         bind "r" { SwitchToMode "Resize"; }
         bind "n" "Tab" { MovePane; }
         bind "p" { MovePaneBackwards; }
@@ -121,10 +124,12 @@ keybinds clear-defaults=true {
 
     renametab {
         bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
+        bind "Enter" { SwitchToMode "Normal"; }
     }
 
     renamepane {
         bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
+        bind "Enter" { SwitchToMode "Normal"; }
     }
 
     session {
@@ -153,13 +158,6 @@ keybinds clear-defaults=true {
 
         bind "g" { SwitchToMode "Normal"; }
         bind "Enter" { SwitchToMode "Scroll"; }
-
-        bind "f" {
-            LaunchPlugin "filepicker" {
-                floating true
-                close_on_selection true
-            };
-        }
 
         bind "y" { ToggleTab; }
 
