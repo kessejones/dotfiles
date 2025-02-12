@@ -1,11 +1,11 @@
 # local scripts
 fish_add_path ~/.local/bin
 
-# GOLang path config
+# GoLang path config
 export GOPATH=$HOME/go
 fish_add_path $GOPATH/bin
 
-# brew path
+# Brew path
 switch (uname)
     case Darwin
         fish_add_path /opt/homebrew/bin

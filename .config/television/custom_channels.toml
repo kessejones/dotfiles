@@ -1,0 +1,8 @@
+[[cable_channel]]
+name = "my-repositories"
+source_command = 'fd --type d --hidden --format="{//}" --base-directory $HOME --search-path "src" --search-path "Projects" --regex ".git\$"'
+preview_command = "cd $HOME/{} && git log -n 200 --pretty=medium --all --graph --color"
+
+[[cable_channel]]
+name = "my-zoxide"
+source_command = 'zoxide query -l'

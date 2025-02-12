@@ -1,0 +1,10 @@
+.local
+.config
+.cache
+.mozilla
+.floorp
+.rustup
+.cargo
+.opam
+node_modules
+vendor

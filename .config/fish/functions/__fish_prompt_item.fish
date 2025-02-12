@@ -1,4 +1,4 @@
-function __power_text_rounded
+function __fish_prompt_item
     argparse 'b/background=' 'f/foreground=' 'r/reset=' 'o/bold' 't/text=' -- $argv
         or return
 
