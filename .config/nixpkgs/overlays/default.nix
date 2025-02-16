@@ -98,5 +98,21 @@
         runHook postInstall
       '';
     };
+
+    fd = final.stdenv.mkDerivation {
+      name = "fd-dotfiles";
+      src = ../../fd;
+
+      dontBuild = true;
+
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/
+        cp -r $src/* $out/
+
+        runHook postInstall
+      '';
+    };
   };
 }

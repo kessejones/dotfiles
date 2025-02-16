@@ -5,5 +5,6 @@
     ./zellij.nix
     ./fish.nix
     ./television.nix
+    ./fd.nix
   ];
 }
