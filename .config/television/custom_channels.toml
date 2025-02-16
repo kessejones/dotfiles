@@ -1,6 +1,6 @@
 [[cable_channel]]
 name = "my-repositories"
-source_command = 'fd --type d --hidden --no-ignore --format="{//}" --base-directory $HOME --search-path "src" --search-path "Projects" --regex ".git\$"'
+source_command = 'fd --type d --hidden --no-ignore-vcs --format="{//}" --base-directory $HOME --search-path "src" --search-path "Projects" --regex ".git\$"'
 preview_command = "cd $HOME/{} && git log -n 200 --pretty=medium --all --graph --color"
 
 [[cable_channel]]
