@@ -1,0 +1,71 @@
+theme = catppuccin-mocha
+background = 1e1e2f
+
+font-size = 13
+
+font-family = ""
+
+font-family = JetBrainsMono Nerd Font
+font-style = Medium
+
+font-family = Meslo LG S
+
+font-codepoint-map = U+E001-U+F8FF=Meslo LG S
+
+gtk-titlebar = false
+gtk-tabs-location = bottom
+gtk-wide-tabs = false
+
+#window-decoration = false
+window-padding-x = 5
+window-padding-y = 5
+adjust-cell-width = 0
+adjust-cell-height = 5%
+
+cursor-style-blink = false
+confirm-close-surface = false
+
+adjust-cursor-height = 5%
+adjust-cursor-thickness = 50%
+adjust-box-thickness = 50%
+adjust-underline-thickness = 40%
+adjust-underline-position = 6
+
+mouse-hide-while-typing = true
+
+working-directory = home
+
+## Keybindings
+keybind = ctrl+a>r=reload_config
+
+keybind = ctrl+a>t=new_tab
+keybind = ctrl+a>p=previous_tab
+keybind = ctrl+a>n=next_tab
+keybind = ctrl+a>ctrl+p=move_tab:-1
+keybind = ctrl+a>ctrl+n=move_tab:+1
+keybind = ctrl+a>q=close_surface
+
+keybind = ctrl+a>v=new_split:right
+keybind = ctrl+a>s=new_split:down
+
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>l=goto_split:right
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>z=toggle_split_zoom
+
+keybind = ctrl+a>ctrl+k=resize_split:up,20
+keybind = ctrl+a>ctrl+j=resize_split:down,20
+keybind = ctrl+a>ctrl+h=resize_split:left,20
+keybind = ctrl+a>ctrl+l=resize_split:right,20
+
+keybind = ctrl+a>ctrl+left_bracket=increase_font_size:1
+keybind = ctrl+a>ctrl+right_bracket=decrease_font_size:1
+keybind = ctrl+a>ctrl+m=reset_font_size
+
+keybind = ctrl+a>shift+a=inspector:toggle
+
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+
+config-file = ?macos
