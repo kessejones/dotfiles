@@ -7,6 +7,14 @@ function __dc_subcommand_ps
     return 1
 end
 
+function __dc_subcommand_exec
+    set -l containers (docker compose ps --format=json | jq -c -r '.Name')
+    if test -z "$containers"
+        return
+    end
+    gum choose $containers
+end
+
 function dc --wraps "docker-compose"
     set -l args $argv[1..]
 
@@ -25,12 +33,10 @@ function dc --wraps "docker-compose"
                 return
             end
         case 'ee'
-            set -l containers (dc ps --format=json | jq -c -r '.[].Name')
-            set -l container (gum choose $containers)
-            if not test -n "$container"
+            set -l container (__dc_subcommand_exec)
+            if test -z "$container"
                 return
             end
-
             set args 'exec' '-it' $container sh $args[2..]
     end
 
