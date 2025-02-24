@@ -35,6 +35,8 @@ mouse-hide-while-typing = true
 
 working-directory = home
 
+copy-on-select = false
+
 ## Keybindings
 keybind = ctrl+a>r=reload_config
 
