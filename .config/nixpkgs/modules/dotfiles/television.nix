@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  unstable-pkgs,
   ...
 }:
 with lib; let
@@ -9,12 +10,17 @@ with lib; let
 in {
   options.dotfiles.television = {
     enable = mkEnableOption "Television dotfiles";
+
+    package = mkOption {
+      type = types.package;
+      default = unstable-pkgs.television;
+      example = pkgs.television;
+      description = "Television package";
+    };
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      television
-    ];
+    home.packages = [cfg.package];
 
     xdg.configFile."television" = {
       source = "${pkgs.dotfiles.television}";
