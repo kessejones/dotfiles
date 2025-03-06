@@ -9,6 +9,12 @@ with lib; let
 in {
   options.dotfiles.fish = {
     enable = mkEnableOption "Fish dotfiles";
+    package = mkOption {
+      type = types.package;
+      default = pkgs.fish;
+      example = pkgs.fish;
+      description = "Fish package";
+    };
     extra-packages = mkOption {
       type = types.listOf types.package;
       default = [pkgs.gum pkgs.television];
@@ -18,11 +24,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs;
-      [
-        fish
-      ]
-      ++ cfg.extra-packages;
+    home.packages =
+      [cfg.package] ++ cfg.extra-packages;
 
     xdg.configFile."fish" = {
       source = "${pkgs.dotfiles.fish}";
