@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  unstable-pkgs,
   ...
 }:
 with lib; let
@@ -12,7 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
+    home.packages = with unstable-pkgs; [
       zellij
     ];
 
