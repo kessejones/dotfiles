@@ -363,3 +363,5 @@ ui {
         rounded_corners true
     }
 }
+
+show_startup_tips false
