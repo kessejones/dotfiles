@@ -1,4 +1,6 @@
 {zjstatus}: final: prev: {
+  nordvpn = final.callPackage ../pkgs/nordvpn.nix {};
+
   zjstatus = zjstatus.packages.${prev.system}.default;
 
   dotfiles = {
