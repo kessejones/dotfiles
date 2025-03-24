@@ -1,5 +1,5 @@
 {...}: {
   imports = [
-    ./services.nix
+    ./nordvpn.nix
   ];
 }
