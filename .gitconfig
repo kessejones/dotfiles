@@ -20,7 +20,7 @@
     line-numbers = true
     side-by-side = true
     file-modified-label = modified:
-    syntax-theme = catppuccin
+    syntax-theme = "Catppuccin Mocha"
     dark = true
 
 [interactive]
