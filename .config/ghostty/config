@@ -1,43 +1,41 @@
+## Theme and colors
 theme = catppuccin-mocha
 background = 1e1e2f
 
-font-size = 13
-
+## Fonts
+font-size = 13.4
 font-family = ""
+font-family = Maple Mono NF
+font-codepoint-map = U+E000-U+F8FF=Meslo LG S
 
-font-family = JetBrainsMono Nerd Font
-font-style = Medium
-
-font-family = Meslo LG S
-
-font-codepoint-map = U+E001-U+F8FF=Meslo LG S
-
-gtk-titlebar = false
-gtk-tabs-location = bottom
-gtk-wide-tabs = false
-
-#window-decoration = false
+## Window config
 window-padding-x = 5
 window-padding-y = 5
-adjust-cell-width = 0
-adjust-cell-height = 5%
+window-save-state = never
 
+## General config
 cursor-style-blink = false
 confirm-close-surface = false
+working-directory = home
+resize-overlay = never
+mouse-hide-while-typing = true
 
-adjust-cursor-height = 5%
+copy-on-select = false
+app-notifications = no-clipboard-copy
+
+## Cell adjusts
+adjust-cell-width = 0
+adjust-cell-height = 0
+
 adjust-cursor-thickness = 50%
 adjust-box-thickness = 50%
+
 adjust-underline-thickness = 40%
 adjust-underline-position = 6
 
-mouse-hide-while-typing = true
-
-working-directory = home
-
-copy-on-select = false
-
 ## Keybindings
+keybind = clear
+
 keybind = ctrl+a>r=reload_config
 
 keybind = ctrl+a>t=new_tab
