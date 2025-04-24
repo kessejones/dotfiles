@@ -3,15 +3,16 @@ theme = catppuccin-mocha
 background = 1e1e2f
 
 ## Fonts
-font-size = 13.4
+font-size = 13.5
 font-family = ""
-font-family = Maple Mono NF
+font-family = Maple Mono NF CN
 font-codepoint-map = U+E000-U+F8FF=Meslo LG S
 
 ## Window config
 window-padding-x = 5
 window-padding-y = 5
 window-save-state = never
+window-decoration = true
 
 ## General config
 cursor-style-blink = false
@@ -24,8 +25,8 @@ copy-on-select = false
 app-notifications = no-clipboard-copy
 
 ## Cell adjusts
-adjust-cell-width = 0
-adjust-cell-height = 0
+adjust-cell-width = -7%
+adjust-cell-height = -4%
 
 adjust-cursor-thickness = 50%
 adjust-box-thickness = 50%
