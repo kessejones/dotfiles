@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  unstable-pkgs,
   ...
 }:
 with lib; let
@@ -13,7 +12,7 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = unstable-pkgs.television;
+      default = pkgs.television;
       example = pkgs.television;
       description = "Television package";
     };

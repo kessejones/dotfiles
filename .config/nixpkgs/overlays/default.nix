@@ -1,7 +1,11 @@
-{zjstatus}: final: prev: {
+{
+  zjstatus,
+  television,
+}: final: prev: {
   nordvpn = final.callPackage ../pkgs/nordvpn.nix {};
 
   zjstatus = zjstatus.packages.${prev.system}.default;
+  television = television.packages.${prev.system}.default;
 
   dotfiles = {
     kitty = final.stdenv.mkDerivation {
