@@ -1,6 +1,7 @@
 ## Theme and colors
 theme = catppuccin-mocha
 background = 1e1e2f
+cursor-color = cba6f7
 
 ## Fonts
 font-size = 13.5
@@ -20,6 +21,7 @@ confirm-close-surface = false
 working-directory = home
 resize-overlay = never
 mouse-hide-while-typing = true
+auto-update = off
 
 copy-on-select = false
 app-notifications = no-clipboard-copy
@@ -33,6 +35,8 @@ adjust-box-thickness = 50%
 
 adjust-underline-thickness = 40%
 adjust-underline-position = 6
+
+custom-shader = shaders/cursor_smear.glsl
 
 ## Keybindings
 keybind = clear

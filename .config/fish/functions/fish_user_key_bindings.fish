@@ -13,12 +13,12 @@ function fish_user_key_bindings
     bind --user -M default gl end-of-line
     bind --user -M default gh beginning-of-line
 
-    bind --user -M insert \co '$EDITOR'
-
     bind --user -M insert \cg '__change_git_directory; commandline -f repaint'
     bind --user -M insert \cs '__change_zoxide_directory; commandline -f repaint'
     bind --user -M insert \cn '__change_local_directory; commandline -f repaint'
     bind --user -M insert \ch '__change_home_directory; commandline -f repaint'
+
+    bind --user -M insert \co tv_smart_autocomplete
 
     set -g fish_key_bindings fish_vi_key_bindings
 end
