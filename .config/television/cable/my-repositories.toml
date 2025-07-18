@@ -1,0 +1,15 @@
+[metadata]
+name = "my-repositories"
+description = "List my repositories"
+requirements = ["fd", "bat"]
+
+[source]
+command = 'fd --type d --hidden --no-ignore-vcs --format="{//}" --base-directory $HOME --search-path "src" --search-path "Projects" --regex ".git\$"'
+
+[preview]
+command = "cd $HOME/{} && git log -n 200 --pretty=medium --all --graph --color"
+
+[ui]
+ui_scale = 80
+input_bar_position = "bottom"
+input_header = "Git Repository"
