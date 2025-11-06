@@ -19,7 +19,7 @@
   wireguard-tools,
 }: let
   pname = "nordvpn";
-  version = "3.20.2";
+  version = "4.2.1";
   maintainer = {
     name = "Kesse Jones";
     github = "kessejones";
@@ -34,7 +34,7 @@
 
     src = fetchurl {
       url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${version}_amd64.deb";
-      hash = "sha256-2eLVr0aQpMhIMCrkyIRcCabXc197GJZ31Vl5BND7Di8=";
+      hash = "sha256-1flnj4xx645mga4mxpnrpnr2cyl82np2il0x03j1pdrwrlyqvk0c";
     };
 
     buildInputs = [libxml2 libidn2 libnl libcap_ng];
