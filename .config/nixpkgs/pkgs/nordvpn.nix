@@ -34,7 +34,7 @@
 
     src = fetchurl {
       url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${version}_amd64.deb";
-      hash = "sha256-1flnj4xx645mga4mxpnrpnr2cyl82np2il0x03j1pdrwrlyqvk0c";
+      hash = "sha256-DMyNPc08txvkAB3QKK4ViHomsr3Z3l6JerUQ0zuRlro=";
     };
 
     buildInputs = [libxml2 libidn2 libnl libcap_ng];
