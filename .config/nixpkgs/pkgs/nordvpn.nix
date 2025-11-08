@@ -11,12 +11,13 @@
   iproute2,
   procps,
   cacert,
-  libxml2,
+  libxml2_13,
   libidn2,
   libnl,
   libcap_ng,
   zlib,
   wireguard-tools,
+  sqlite,
 }: let
   pname = "nordvpn";
   version = "4.2.1";
@@ -37,7 +38,7 @@
       hash = "sha256-DMyNPc08txvkAB3QKK4ViHomsr3Z3l6JerUQ0zuRlro=";
     };
 
-    buildInputs = [libxml2 libidn2 libnl libcap_ng];
+    buildInputs = [libxml2_13 libidn2 libnl libcap_ng sqlite];
     nativeBuildInputs = [dpkg autoPatchelfHook stdenv.cc.cc.lib];
 
     dontConfigure = true;
@@ -71,11 +72,6 @@
       iproute2
       procps
       cacert
-      libxml2
-      libidn2
-      libnl
-      libcap_ng
-      zlib
       wireguard-tools
     ];
   };
