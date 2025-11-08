@@ -15,7 +15,6 @@
   libidn2,
   libnl,
   libcap_ng,
-  zlib,
   wireguard-tools,
   sqlite,
 }: let

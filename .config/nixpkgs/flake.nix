@@ -2,6 +2,7 @@
   description = "Dotfiles for use with Nix flakes";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     zjstatus.url = "github:dj95/zjstatus";
     television.url = "github:alexpasmantier/television";
   };
@@ -10,6 +11,7 @@
     self,
     zjstatus,
     television,
+    ...
   }: {
     homeManagerModules.dotfiles = import ./modules/home-manager;
     modules.dotfiles = import ./modules/nixos;
