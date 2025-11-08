@@ -11,15 +11,16 @@
   iproute2,
   procps,
   cacert,
-  libxml2_13,
   libidn2,
   libnl,
   libcap_ng,
   wireguard-tools,
   sqlite,
+  pkgs,
 }: let
   pname = "nordvpn";
   version = "4.2.1";
+  libxml2_13 = pkgs.libxml2_13;
   maintainer = {
     name = "Kesse Jones";
     github = "kessejones";
