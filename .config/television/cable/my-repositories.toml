@@ -11,5 +11,7 @@ command = "cd $HOME/{} && git log -n 200 --pretty=medium --all --graph --color"
 
 [ui]
 ui_scale = 80
-input_bar_position = "bottom"
 input_header = "Git Repository"
+
+[ui.input_bar]
+position = "bottom"
