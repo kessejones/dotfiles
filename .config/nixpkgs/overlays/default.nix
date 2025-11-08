@@ -1,6 +1,7 @@
 {
   zjstatus,
   television,
+  pkgs,
 }: final: prev: {
   nordvpn = final.callPackage ../pkgs/nordvpn.nix {};
 

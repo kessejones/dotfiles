@@ -11,11 +11,14 @@
     self,
     zjstatus,
     television,
-    ...
-  }: {
+    nixpkgs,
+  }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
+  in {
     homeManagerModules.dotfiles = import ./modules/home-manager;
     modules.dotfiles = import ./modules/nixos;
 
-    overlays.default = import ./overlays {inherit zjstatus television;};
+    overlays.default = import ./overlays {inherit zjstatus television pkgs;};
   };
 }
