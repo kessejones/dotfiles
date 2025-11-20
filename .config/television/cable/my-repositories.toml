@@ -18,7 +18,26 @@ position = "bottom"
 
 [keybindings]
 ctrl-e = "actions:new_tab"
+ctrl-s = "actions:new_pane_right"
+ctrl-b = "actions:new_pane_down"
+ctrl-o = "actions:new_pane_floating"
 
 [actions.new_tab]
 description = "Open new tab on zellij"
-command = "zellij action new-tab --cwd $HOME/{} && wc -l | xargs zellij action go-to-tab"
+command = "$HOME/.config/television/scripts/new-tab.sh {}"
+mode = "fork"
+
+[actions.new_pane_right]
+description = "Open new pane on zellij"
+command = "$HOME/.config/television/scripts/new-pane.sh {} right"
+mode = "fork"
+
+[actions.new_pane_down]
+description = "Open new pane on zellij"
+command = "$HOME/.config/television/scripts/new-pane.sh {} down"
+mode = "fork"
+
+[actions.new_pane_floating]
+description = "Open new pane on zellij"
+command = "$HOME/.config/television/scripts/new-pane.sh {} floating"
+mode = "fork"
