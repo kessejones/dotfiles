@@ -15,3 +15,10 @@ input_header = "Git Repository"
 
 [ui.input_bar]
 position = "bottom"
+
+[keybindings]
+ctrl-e = "actions:new_tab"
+
+[actions.new_tab]
+description = "Open new tab on zellij"
+command = "zellij action new-tab --cwd $HOME/{} && wc -l | xargs zellij action go-to-tab"
