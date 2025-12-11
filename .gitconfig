@@ -60,6 +60,9 @@
     ca = commit --amend
     cu = reset --soft HEAD^
 
+    cp = cherry-pick
+    cpa = cherry-pick --abort
+
     tr = "commit --allow-empty -m 'Trigger CI' -n"
 
     # push
