@@ -121,5 +121,21 @@
         runHook postInstall
       '';
     };
+
+    atmos-wav = final.stdenv.mkDerivation {
+      name = "atmos-wav";
+      src = ../../pipewire;
+
+      dontBuild = true;
+
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/
+        cp -r $src/atmos.wav $out/
+
+        runHook postInstall
+      '';
+    };
   };
 }
