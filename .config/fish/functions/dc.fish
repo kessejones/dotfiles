@@ -19,7 +19,7 @@ function dc --wraps "docker-compose"
     set -l args $argv[1..]
 
     switch $args[1]
-        case 'upd'
+        case 'upd' 'u'
             set args 'up' '-d' $args[2..]
         case 'lf'
             set args 'logs' '-f' $args[2..]
@@ -27,6 +27,10 @@ function dc --wraps "docker-compose"
             set args 'logs' '-fn1' $args[2..]
         case 'bb'
             set args 'build' $args[2..]
+        case 's'
+            set args 'stop' $args[2..]
+        case 'd'
+            set args 'down' $args[2..]
         case 'ps'
              __dc_subcommand_ps
             if test $status -eq 0
