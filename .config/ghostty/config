@@ -1,10 +1,10 @@
 ## Theme and colors
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 background = 1e1e2f
 cursor-color = cba6f7
 
 ## Fonts
-font-size = 13.5
+font-size = 14.0
 font-family = ""
 font-family = Maple Mono NF CN
 font-codepoint-map = U+E000-U+F8FF=Meslo LG S
