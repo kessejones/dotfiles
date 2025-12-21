@@ -1,5 +1,13 @@
 function __fuzzy_git_repos
-    set -l fd_opts --type d --hidden --no-ignore-vcs --format="{//}" --base-directory $HOME --search-path "src" --search-path "Projects" --regex ".git\$"
+    set -l fd_opts --type d --hidden --no-ignore-vcs --format="{//}" --base-directory $HOME --regex ".git\$"
+
+    if test -d "$HOME/src"
+        set -a fd_opts --search-path "src"
+    end
+
+    if test -d "$HOME/Projects"
+        set -a fd_opts --search-path "Projects" 
+    end
 
     set -l sk_opts --preview "git -C $HOME/{} log -n 5 --pretty=medium --all --graph --color" \
         --bind=ctrl-u:half-page-up,ctrl-d:half-page-down
