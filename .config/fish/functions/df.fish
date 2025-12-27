@@ -5,5 +5,5 @@ function df --wraps "df"
         set args "-h"
     end
 
-    nu -c "df $args | detect columns | table --index=false"
+    nu -c "df $args | detect columns --guess | table --index=false"
 end
