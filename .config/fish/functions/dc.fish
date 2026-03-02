@@ -31,6 +31,8 @@ function dc --wraps "docker-compose"
             set args 'stop' $args[2..]
         case 'd'
             set args 'down' $args[2..]
+        case 'e'
+            set args 'exec' $args[2..]
         case 'ps'
              __dc_subcommand_ps
             if test $status -eq 0
