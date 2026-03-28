@@ -10,7 +10,7 @@ function __fuzzy_git_repos
     end
 
     set -l sk_opts \
-        --color="border:#45475a" \
+        --color="border:#45475a,current_bg:#b4befe,current:#1e1e2e,cursor:#f38ba8" \
         --border rounded \
         --preview "git -C $HOME/{} log -n 5 --pretty=medium --all --graph --color" \
         --bind=ctrl-u:half-page-up,ctrl-d:half-page-down
