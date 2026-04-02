@@ -35,7 +35,7 @@ if type -q bat
 end
 
 if type -q zellij
-    alias ze "zellij attach main || zellij --session main"
+    alias ze zellij
 end
 
 if type -q yazi
