@@ -26,9 +26,8 @@ auto-update = off
 copy-on-select = false
 app-notifications = no-clipboard-copy
 
-## Cell adjusts
-adjust-cell-width = -7%
-adjust-cell-height = -4%
+adjust-cell-width = 0
+adjust-cell-height = 0
 
 adjust-cursor-thickness = 50%
 adjust-box-thickness = 50%
@@ -67,6 +66,7 @@ keybind = ctrl+a>ctrl+l=resize_split:right,20
 keybind = ctrl+a>ctrl+left_bracket=increase_font_size:1
 keybind = ctrl+a>ctrl+right_bracket=decrease_font_size:1
 keybind = ctrl+a>ctrl+m=reset_font_size
+keybind = ctrl+a>f=start_search
 
 keybind = ctrl+a>shift+a=inspector:toggle
 
