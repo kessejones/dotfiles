@@ -20,6 +20,4 @@ function fish_user_key_bindings
     # bind --user -M insert \ch '__change_home_directory; commandline -f repaint'
 
     bind --user -M insert \co tv_smart_autocomplete
-
-    set -g fish_key_bindings fish_vi_key_bindings
 end
