@@ -9,7 +9,12 @@ with lib; let
 in {
   options.dotfiles.zellij = {
     enable = mkEnableOption "Zellij dotfiles";
-    package = mkDefault pkgs.unstable.zellij;
+    package = mkOption {
+      type = types.package;
+      default = pkgs.unstable.zellij;
+      exemple = pkgs.zellij;
+      description = "Zellij package";
+    };
   };
 
   config = mkIf cfg.enable {
