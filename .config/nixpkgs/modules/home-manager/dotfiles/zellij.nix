@@ -12,7 +12,7 @@ in {
     package = mkOption {
       type = types.package;
       default = pkgs.unstable.zellij;
-      exemple = pkgs.zellij;
+      example = pkgs.zellij;
       description = "Zellij package";
     };
   };
