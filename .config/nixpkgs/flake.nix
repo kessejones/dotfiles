@@ -13,8 +13,7 @@
     television,
     nixpkgs,
   }: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {};
   in {
     homeManagerModules.dotfiles = import ./modules/home-manager;
     modules.dotfiles = import ./modules/nixos;
