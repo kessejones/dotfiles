@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  unstable-pkgs,
   ...
 }:
 with lib; let
@@ -10,11 +9,12 @@ with lib; let
 in {
   options.dotfiles.zellij = {
     enable = mkEnableOption "Zellij dotfiles";
+    package = mkDefault pkgs.unstable.zellij;
   };
 
   config = mkIf cfg.enable {
-    home.packages = with unstable-pkgs; [
-      zellij
+    home.packages = [
+      cfg.package
     ];
 
     xdg.configFile."zellij/zellij.kdl".enable = false;
