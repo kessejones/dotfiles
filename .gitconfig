@@ -106,5 +106,7 @@
     cx = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|qa\\|develop' | xargs -n 1 -r git branch -d"
     sw = "!~/.scripts/git/git-switch.sh"
 
+    qa = "!~/.scripts/git/git-merge-qa.sh"
+
 [include]
     path = ~/.gitconfig-user
