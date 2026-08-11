@@ -19,7 +19,7 @@
   pkgs,
 }: let
   pname = "nordvpn";
-  version = "4.2.1";
+  version = "5.3.0";
   libxml2_13 = pkgs.libxml2_13;
   maintainer = {
     name = "Kesse Jones";
@@ -35,7 +35,7 @@
 
     src = fetchurl {
       url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${version}_amd64.deb";
-      hash = "sha256-DMyNPc08txvkAB3QKK4ViHomsr3Z3l6JerUQ0zuRlro=";
+      hash = "sha256-NM3qcqdclwDChblQ7S7Jasru1NYHATo6vRg2ZzH4wzQ=";
     };
 
     buildInputs = [libxml2_13 libidn2 libnl libcap_ng sqlite];
