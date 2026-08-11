@@ -98,8 +98,6 @@ in
       homepage = "https://www.nordvpn.com";
       license = licenses.unfree;
       maintainers = [maintainer];
-      platforms = [
-        "x86_64-linux"
-      ];
+      platforms = lib.platforms.linux;
     };
   }
