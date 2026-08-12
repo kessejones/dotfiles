@@ -5,7 +5,6 @@
 }: final: prev: {
   nordvpn = final.callPackage ../pkgs/nordvpn.nix {
     inherit pkgs;
-    inherit (final.stdenv.hostPlatform) system;
   };
 
   zjstatus = zjstatus.packages.${prev.system}.default;
