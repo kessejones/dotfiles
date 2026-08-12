@@ -13,7 +13,7 @@
     television,
     nixpkgs,
   }: let
-    pkgs = import nixpkgs {};
+    pkgs = import nixpkgs {system = builtins.currentSystem;};
   in {
     homeManagerModules.dotfiles = import ./modules/home-manager;
     modules.dotfiles = import ./modules/nixos;
