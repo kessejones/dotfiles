@@ -3,7 +3,10 @@
   television,
   pkgs,
 }: final: prev: {
-  nordvpn = final.callPackage ../pkgs/nordvpn.nix {inherit pkgs;};
+  nordvpn = final.callPackage ../pkgs/nordvpn.nix {
+    inherit pkgs;
+    inherit (final.stdenv.hostPlatform) system;
+  };
 
   zjstatus = zjstatus.packages.${prev.system}.default;
   television = television.packages.${prev.system}.default;
