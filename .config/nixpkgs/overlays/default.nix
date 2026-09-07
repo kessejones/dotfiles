@@ -139,5 +139,21 @@
         runHook postInstall
       '';
     };
+
+    tmux = final.stdenv.mkDerivation {
+      name = "tmux-dotfiles";
+      src = ../../tmux;
+
+      dontBuild = true;
+
+      installPhase = ''
+        runHook preInstall
+
+        mkdir -p $out/
+        cp -r $src/* $out/
+
+        runHook postInstall
+      '';
+    };
   };
 }

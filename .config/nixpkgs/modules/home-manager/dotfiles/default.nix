@@ -6,5 +6,6 @@
     ./fish.nix
     ./television.nix
     ./fd.nix
+    ./tmux.nix
   ];
 }
