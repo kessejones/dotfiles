@@ -1,5 +1,5 @@
 if type -q eza
-    alias lt "eza --icons --tree"
+    alias lt "eza --icons --tree --level 2 --long"
 end
 
 if type -q lazygit
